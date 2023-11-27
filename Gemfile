@@ -53,6 +53,9 @@ gem "sassc-rails"
 gem "devise"
 gem "pry-byebug"
 
+# qr codes
+gem 'rqrcode'
+
 
 group :development, :test do
   gem "dotenv-rails"
