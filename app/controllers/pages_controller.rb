@@ -2,16 +2,27 @@ class PagesController < ApplicationController
   require 'open-uri'
   require 'rest-client'
   require 'json'
+  require 'erb'
 
   skip_before_action :authenticate_user!, only: :home
   before_action :get_key
 
-  def home
-    @apikey = { 'Authorization': "Bearer BQB9XlbOSmMXIHgLKY70oY0txtSLsgXbBhOZbZAlIp_pt7P5EihIDOR95Y3KOwaeQOHBJ0nVGOrtDvlIznQ9XY5gzAxSKZY5zEu0pKLlfHh-RqEnZRU" }
+  # log into spotify
+  # def spotify_auth
+  #   client_id = ENV['CLIENT_ID']
+  #   redirect_uri = "https://beatween-e1ae66294d65.herokuapp.com/"
+  #   scope = "playlist-read-private user-read-email"
+  #   # state = "your_unique_state_value" # optional
 
+  #   spotify_auth_url = "https://accounts.spotify.com/authorize?response_type=code&client_id=#{client_id}&redirect_uri=#{ERB::Util.url_encode(redirect_uri)}&scope=#{ERB::Util.url_encode(scope)}" #&state=#{state}
+
+  #   redirect_to spotify_auth_url, allow_other_host: true
+  # end
+
+  def home
     endpoint1 = RestClient.get(
       "https://api.spotify.com/v1/artists/3ifxHfYz2pqHku0bwx8H5J?si=rRd3U9grQJG3Vgdjn8k0oA",
-      headers=@apikey
+      headers={ 'Authorization': "Bearer #{@access_token}" }
     )
     @data1 = JSON.parse(endpoint1)
 
@@ -29,6 +40,6 @@ class PagesController < ApplicationController
       client_secret: ENV['CLIENT_SECRET'] },
     { content_type: :json, accept: :json }
 
-    access_token = JSON.parse(response.body)['access_token']
+    @access_token = JSON.parse(response.body)['access_token']
   end
 end
