@@ -56,6 +56,11 @@ gem "pry-byebug"
 # qr codes
 gem 'rqrcode'
 
+# spotify gems
+gem 'rspotify'
+
+# restclient
+gem 'rest-client'
 
 group :development, :test do
   gem "dotenv-rails"

@@ -24,6 +24,8 @@ module Beatween
 
     # Configuration for the application, engines, and railties goes here.
     #
+    RSpotify::authenticate("a32d5bee73ad480890f46a0b9f69a66e", "e24f08f6ac004828bfb587a63aaa2c41")
+
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
