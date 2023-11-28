@@ -1,0 +1,45 @@
+// put both btns within a div with class show-sorting
+// as follow :
+// <div class= "show-sorting">  
+//  <div class= "show-infos">
+//    <button class= "btn-flat-long">
+
+.show-sorting{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid $grey-3;
+    border-bottom: 2px solid $grey-3;
+    padding: 2*$unit;
+    margin-top: 2*$unit;
+    margin-bottom: 2*$unit;
+}
+
+.btn-flat-long {
+  padding: $unit;
+  height: 6*$unit;
+  width: 39*$unit;
+  font-size: 3*$unit;
+  border-radius: 2*$unit;
+  color: $gray;
+  background-color: $grey-3;
+  border: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $pink-5;
+    border: 1px solid $grey-3;
+  }
+  &:active {
+    background-color: $pink-5;
+    border: 1px solid $grey-3;
+  }
+  &:disabled {
+    background-color: $grey-3;
+    border: none;
+  }
+}
+
+.btn-small{
+
+}
