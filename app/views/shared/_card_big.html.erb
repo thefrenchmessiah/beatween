@@ -1,0 +1,21 @@
+<div class="card-big">
+  <div>
+    <h2>Album info</h2>
+  </div>
+  <hr>
+  <div>
+    <ul>
+      <% if @parsed_release_date %>
+      <li>Release date: <%= @parsed_release_date.strftime("%B %d, %Y") %></li>
+      <% else %>
+      <li>Release date: Not available</li>
+      <% end %>
+      <li>Number of tracks: <%= @total_tracks %></li>
+      <% if @genre.nil? || @genre.empty? %>
+      <li>Genre: No genre to be displayed right now </li>
+      <% else %>
+      <li>Genre: <%= @genre %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

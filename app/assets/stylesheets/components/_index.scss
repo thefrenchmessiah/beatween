@@ -6,3 +6,10 @@
 @import "img-circle-large";
 @import "btn";
 @import "wrap";
+@import "cards";
+@import "container";
+
+body {
+  background-color: $background-color;
+  color: $font-color;
+}

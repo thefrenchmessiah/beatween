@@ -3,7 +3,7 @@
   justify-content: space-between;
 
   .value{
-    width: 28*$unit;
+    width: 25*$unit;
     height: 14*$unit;
     border-radius: 3*$unit;
     border: 1px solid $grey-3;
@@ -11,7 +11,7 @@
     margin: $unit;
 
     p {
-      font-size: 3*$unit;
+      font-size: 2.8*$unit;
       font-weight: 700;
       color: $grey-3;
       justify-content: center;
