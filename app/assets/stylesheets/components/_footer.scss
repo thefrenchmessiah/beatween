@@ -1,0 +1,17 @@
+#footer{
+  position: fixed;
+  bottom: 0;
+  margin:0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 12*$unit;
+  padding: 0 10*$unit;
+  color: $font-color;
+}
+
+.home .search .profile {
+width: 28*$unit;
+border: 1px solid $pink-6;
+}

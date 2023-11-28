@@ -1,10 +1,24 @@
+<div id="footer">
 
+  <div>
+  <div class="home">
+    <%= link_to "🏠", root_path, class: "nav-link" %>
+  </div>
+  </div>
+
+  <div>
+  <div class="search">
+    <%= link_to "🔍", class: "nav-link" %>
+  </div>
+  </div>
+
+  <div>
+  <div class="profile">
         <% if user_signed_in? %>
           <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
-            </div>
-          </li>
         <% else %>
-          <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
         <% end %>
+  </div>
+  </div>
+</div>
