@@ -1,0 +1,19 @@
+// put the image within a div with class show-image
+// as follow :
+// <div class= "show-image">
+// <img class= "img-circle-large"
+
+
+.show-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-circle-large{
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+}

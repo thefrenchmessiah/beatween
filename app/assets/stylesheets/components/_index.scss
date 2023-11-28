@@ -4,3 +4,13 @@
 @import "form_legend_clear";
 @import "navbar";
 @import "card-small";
+@import "img-circle-large";
+@import "btn";
+@import "wrap";
+@import "cards";
+@import "container";
+
+body {
+  background-color: $background-color;
+  color: $font-color;
+}

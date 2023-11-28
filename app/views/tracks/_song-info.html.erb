@@ -1,0 +1,42 @@
+
+
+<%# ------div for INFOS----- %>
+<div class="container-cards-medium">
+  <div class="card-medium">
+    <h2> Popularity: </h2>
+    <hr>
+    <p><%= @song_popularity %>/100</p>
+  </div>
+  
+  <div class="card-medium">
+    <h2> Duration: </h2>
+    <hr>
+    <p><%= @song_length.to_f %>min</p>
+  </div>
+</div>
+
+<%# ------div for audio features----- %>
+<div class= "card-big">
+  <h2>Audio Features</h2>
+  <hr>
+  <div class="three-value-wrap">
+  <div class= "value">
+    <p> <i class="fa-regular fa-face-smile"></i> Positiveness: </p>
+    <p><%= @song_valence%></p>
+  </div>
+
+  <div class="value">
+    <p> <i class="fa-solid fa-person-walking"></i> Danceability: </p>
+    <p><%= @song_danceability %></p>
+  </div>
+
+  <div class="value">
+    <p><i class="fa-solid fa-bolt"></i> Energy: </p>
+    <p><%= @song_energy %></p>
+  </div>
+</div>
+</div>
+
+<p>Song title: <%= @song_name %></p>
+<p>Artist: <%= @artist_name %></p>
+<p>Album: <%= @album_name %></p>
