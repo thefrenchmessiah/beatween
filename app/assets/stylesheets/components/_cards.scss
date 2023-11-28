@@ -7,7 +7,7 @@
   border: 1px solid $pink-6;
   border-radius: 5px;
   width: 40*$unit;
-  margin: 2*$unit $unit;
+  margin: 3*$unit $unit;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,6 +30,7 @@
   border: 1px solid $pink-6;
   border-radius: 5px;
   width: 83*$unit;
+  height: 50*$unit;
   margin: 0 auto;
   padding: 3*$unit $unit;
   display: flex;
