@@ -1,15 +1,19 @@
-<%# ------camera & clock space on phone------ %>
+<%# ------ div for clock ------- %>
+<div class="header">
 <div id="clock-space">
 
 </div>
 
-<%# ----------navbar----------- %>
-<div class="navbar">
-  <div class="container-fluid">
-    <%= image_tag "beatween-logo" %>
+<div class="navbar-beatween">
+  <div class="container-navbar">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag "beatween-logo.png" %>
+    <% end %>
+
 
     <div id="qr-code">
-
+      <i class="fa-solid fa-qrcode"></i>
     </div>
   </div>
+</div>
 </div>
