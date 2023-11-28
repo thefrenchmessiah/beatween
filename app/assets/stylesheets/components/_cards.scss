@@ -1,10 +1,13 @@
+// --------card medium ----------
+// note: your card title should not go over 2 lines
+
 .card-medium {
   background-color: $grey-7;
   color: $font-color;
   border: 1px solid $pink-6;
   border-radius: 5px;
-  width: 45%;
-  margin: 8px 0px 8px 0px;
+  width: 40*$unit;
+  margin: 3*$unit $unit;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,14 +16,22 @@
   padding: 24px;
 }
 
+.card-medium hr {
+  width:  75%;
+  margin: 24px auto;
+  border: 0.5px solid $pink-5;
+}
+
+// ----- card big -------
+
 .card-big {
   background-color: $grey-7;
   color: $font-color;
   border: 1px solid $pink-6;
   border-radius: 5px;
-  width: 92%;
+  width: 83*$unit;
   margin: 0 auto;
-  padding: 16px;
+  padding: 3*$unit $unit;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,12 +44,6 @@
 }
 
 .card-big hr {
-  width:  75%;
-  margin: 24px auto;
-  border: 0.5px solid $pink-5;
-}
-
-.card-medium hr {
   width:  75%;
   margin: 24px auto;
   border: 0.5px solid $pink-5;
