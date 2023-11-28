@@ -15,7 +15,7 @@ class AlbumsController < ApplicationController
     @album_artist = @data['artists'['name ']]
     @release_date = @data['release_date']
     @parsed_release_date = DateTime.parse(@release_date) rescue nil
-    @image = @data['url']
+    @album_image = @data['images'][0]['url']
     @popularity = @data['popularity']
     @total_tracks = @data['total_tracks']
     @genre = @data['genres']
