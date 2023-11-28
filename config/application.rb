@@ -1,10 +1,12 @@
 require_relative "boot"
 
 require "rails/all"
+require 'rspotify/oauth'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+RSpotify::authenticate("a32d5bee73ad480890f46a0b9f69a66e", "e24f08f6ac004828bfb587a63aaa2c41")
 
 module Beatween
   class Application < Rails::Application
@@ -24,7 +26,6 @@ module Beatween
 
     # Configuration for the application, engines, and railties goes here.
     #
-    RSpotify::authenticate("a32d5bee73ad480890f46a0b9f69a66e", "e24f08f6ac004828bfb587a63aaa2c41")
 
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.

@@ -1,34 +1,49 @@
 class UsersController < ApplicationController
-  require 'rest-client'
-  require 'json'
+  require 'rspotify/oauth'
 
-  before_action :set_user
+  def spotify
+    @spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+    # Now you can access user's private data, create playlists and much more
 
-  def show
-    # Show top user tracks
+    # # Access private data
+    # @spotify_user.country #=> "US"
+    # @spotify_user.email   #=> "example@email.com"
 
-    endpoint1 = RestClient.get(
-      "https://api.spotify.com/v1/me",
-      headers={ 'Authorization': "Bearer #{@access_token}" }
-    )
-    @data1 = JSON.parse(endpoint1)
+    # # Create playlist in user's Spotify account
+    # @playlist = @spotify_user.create_playlist!('my-awesome-playlist')
 
-    @user_name = @data1['display_name']
+    # # Add tracks to a playlist in user's Spotify account
+    # @tracks = RSpotify::Track.search('Know')
+    # @playlist.add_tracks!(tracks)
+    # @playlist.tracks.first.name #=> "Somebody That I Used To Know"
+
+    # # Access and modify user's music library
+    # @spotify_user.save_tracks!(tracks)
+    # @spotify_user.saved_tracks.size #=> 20
+    # @spotify_user.remove_tracks!(tracks)
+
+    # @albums = RSpotify::Album.search('launeddas')
+    # @spotify_user.save_albums!(albums)
+    # @spotify_user.saved_albums.size #=> 10
+    # @spotify_user.remove_albums!(albums)
+
+    # # Use Spotify Follow features
+    # @spotify_user.follow(playlist)
+    # # spotify_user.follows?(artists)
+    # # spotify_user.unfollow(users)
+
+    # # Get user's top played artists and tracks
+    # @spotify_user.top_artists #=> (Artist array)
+    # @spotify_user.top_tracks(time_range: 'short_term') #=> (Track array)
+
+    # Check doc for more
+    # @hash = @spotify_user.to_hash
   end
+  # hash containing all user attributes, including access tokens
 
-  private
+  # Use the hash to persist the data the way you prefer...
 
-  def set_user
-    @user = User.find(params[:id])
-  end
-
-  def get_key
-    response = RestClient.post 'https://accounts.spotify.com/api/token',
-    { grant_type: 'client_credentials',
-      client_id: ENV['CLIENT_ID'],
-      client_secret: ENV['CLIENT_SECRET'] },
-    { content_type: :json, accept: :json }
-
-    access_token = JSON.parse(response.body)['access_token']
-  end
+  # Then recover the Spotify user whenever you like
+  # @spotify_user = RSpotify::User.new(hash)
+  # spotify_user.create_playlist!('my_awesome_playlist') # automatically refreshes token
 end
