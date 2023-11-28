@@ -1,12 +1,19 @@
-.navbar-lewagon {
+#clock-space {
+  height: 5*$unit;
+  background: $background-color;
+  border: none;
+}
+
+.navbar{
+  height: 12*$unit;
   justify-content: space-between;
-  background: white;
+  background: $background-color;
+
+  .img {
+    width: 10*$unit;
+    margin-left: $unit;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
+
