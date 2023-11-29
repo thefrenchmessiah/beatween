@@ -28,11 +28,11 @@
   background-color: $grey-7;
   color: $font-color;
   border: 1px solid $pink-6;
-  border-radius: 5px;
+  border-radius: $unit;
   width: 83*$unit;
   height: 50*$unit;
   margin: 0 auto;
-  padding: 3*$unit $unit;
+  padding: 2*$unit $unit;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,6 +46,6 @@
 
 .card-big hr {
   width:  75%;
-  margin: 24px auto;
+  margin: 3.5*$unit auto;
   border: 0.5px solid $pink-5;
 }
