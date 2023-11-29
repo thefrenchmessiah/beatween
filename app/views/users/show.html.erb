@@ -12,13 +12,8 @@
   <% if @top_tracks && @top_tracks.any? %>
     <% @top_tracks.each do |track| %>
     <div class= "card-small">
-<<<<<<< HEAD
-      <div class= card-small-image><%= image_tag(track[:image], alt: track[:name], class: "card-small-image") %></div>
-      <div class= card-small-text><p><%= track[:name] %></p></div>
-=======
       <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
       <div class= card-small-text><p><%= track.name %></p></div>
->>>>>>> master
     </div>
     <% end %>
   <% else %>
@@ -29,25 +24,12 @@
 <h2>Top Artists</h2>
 
 <div class="scrolling-wrapper-flexbox">
-<<<<<<< HEAD
-  <% if @top_artists && @top_artists.any? %>
-  <% @top_artists.each do |track| %>
-    <div class= "card-small">
-      <div class= card-small-image><%= image_tag(album[:image], alt: album[:name], class: "card-small-image") %></div>
-      <div class= card-small-text><p><%= album[:name] %></p></div>
-    </div>
-    <% end %>
-  <% else %>
-    <p>There are no top artists</p>
-  <% end %>
-=======
     <% @top_artists.each do |artist| %>
       <div class= "card-small">
         <div class= card-small-image><%= image_tag(artist.images[0]['url'], alt: artist.name, class: "card-small-image") %></div>
         <div class= card-small-text><p><%= artist.name %></p></div>
       </div>
       <% end %>
->>>>>>> master
 </div>
 <p>
   <strong>Display Name:</strong>

@@ -62,15 +62,9 @@ class UsersController < ApplicationController
     # @matches = Match.where(generator: @user)
     # @buddies = Match.where(buddy: @user)
 
-<<<<<<< HEAD
-    ## Variables needed for the user displayed stats
-    @top_artist =  @spotify_user.top_artists
-    @top_tracks =  @spotify_user.top_tracks
-=======
     @top_artists =  @spotify_user.top_artists
     @top_tracks =  @spotify_user.top_tracks
     # @top_tracks = @top_tracks[0..4]
     # @top_artist = @top_artist[0..4]
->>>>>>> master
   end
 end
