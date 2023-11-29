@@ -209,6 +209,9 @@ GEM
     omniauth-oauth2 (1.8.0)
       oauth2 (>= 1.4, < 3)
       omniauth (~> 2.0)
+    omniauth-rails_csrf_protection (1.0.1)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     orm_adapter (0.5.0)
     pg (1.5.4)
     popper_js (2.11.8)
@@ -355,6 +358,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   importmap-rails
   jbuilder
+  omniauth-rails_csrf_protection
   pg (~> 1.1)
   pry-byebug
   puma (>= 5.0)

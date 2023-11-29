@@ -58,6 +58,8 @@ gem 'rqrcode'
 
 # spotify gems
 gem 'rspotify'
+gem "omniauth-rails_csrf_protection"
+# gem 'omniauth-spotify-oauth2', '~> 1.0'
 
 # restclient
 gem 'rest-client'
