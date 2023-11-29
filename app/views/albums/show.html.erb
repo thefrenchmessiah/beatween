@@ -3,15 +3,25 @@
     <img class= "img-circle-large" src="<%= @album_image %>" alt=""></p>
   </div>
 <%# ---------div for buttons--------- %>
-<div class="show-sorting">
-  <div class= "show-infos">
-    <button class= "btn-flat-long" data-controller="switch-button" data-action="click->switch-button#switchToInfo">Infos</button>
+<div data-controller="switch-button">
+  <%# ---------div handles all cuz i need to control all the elements--------- %>
+  <div class="show-sorting">
+    <div class= "show-infos">
+      <button class= "btn-flat-long" data-action="click->switch-button#switchToInfo">Infos</button>
+    </div>
+    <div class= "show-stats" data-action="click->switch-button#switchToStats">
+      <button class= "btn-flat-long">Stats</button>
+    </div>
   </div>
-  <div class= "show-stats" data-controller="switch-button" data-action="click->switch-button#switchToStats">
-    <button class= "btn-flat-long">Stats</button>
+
+  <div data-switch-button-target="info">
+    <%= render "shared/card_medium_info" %>
+
+    <%= render "shared/card_big_info" %>
+  </div>
+  <div data-switch-button-target="stats" style="display: none;">
+    <%= render "shared/card_medium_stats" %>
+
+    <%= render "shared/card_big_stats" %>
   </div>
 </div>
-
-<%= render "shared/card_medium_info" %>
-
-<%= render "shared/card_big_info" %>

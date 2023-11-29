@@ -5,10 +5,14 @@
   </div>
 
 <%# ---------div for buttons--------- %>
-<%= render "shared/btn_sorting" %>
+<div data-controller="switch-button">
+  <%= render "shared/btn_sorting" %>
 
-<%# ------Render INFO or STATS--------- %>
-<% if  %>
-  
-<% end %>
-<%= render "song-info" %>
+  <%# ------Render INFO or STATS--------- %>
+  <div data-switch-button-target="info">
+    <%= render "song-info" %>
+  </div>
+  <div data-switch-button-target="stats" style="display: none;">
+    <%= render "song-stats" %>
+  </div>
+</div>
