@@ -1,9 +1,4 @@
 class PagesController < ApplicationController
-  require 'open-uri'
-  require 'rest-client'
-  require 'json'
-  require 'erb'
-
   skip_before_action :authenticate_user!, only: :home
   before_action :get_key
 
@@ -32,7 +27,6 @@ class PagesController < ApplicationController
   end
 
   def match
-    
   end
 
   private

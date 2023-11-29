@@ -1,1 +1,33 @@
-<h1><%= @user_name %></h1>
+<h1>#show<h1>User Information</h1>
+
+<p>
+  <strong>Display Name:</strong>
+  <%= @user.display_name %>
+</p>
+
+<p>
+  <strong>Spotify Auth:</strong>
+  <%= @user.spotify_auth %>
+</p>
+
+<p>
+  <strong>Spotify ID:</strong>
+  <%= @user.spotify_id %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @user.image_url if @user.image_url.present? %>
+</p>
+
+
+
+<p>
+  <strong>Spotify URL:</strong>
+  <%= link_to @user.spotify_url, @user.spotify_url if @user.spotify_url.present? %>
+</p></h1>
