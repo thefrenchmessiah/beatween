@@ -5,13 +5,13 @@
 <%# ---------div for buttons--------- %>
 <div class="show-sorting">
   <div class= "show-infos">
-    <button class= "btn-flat-long">Infos</button>
+    <button class= "btn-flat-long" data-controller="switch-button" data-action="click->switch-button#switchToInfo">Infos</button>
   </div>
-  <div class= "show-stats">
+  <div class= "show-stats" data-controller="switch-button" data-action="click->switch-button#switchToStats">
     <button class= "btn-flat-long">Stats</button>
   </div>
 </div>
 
-<%= render "shared/card_medium" %>
+<%= render "shared/card_medium_info" %>
 
-<%= render "shared/card_big" %>
+<%= render "shared/card_big_info" %>
