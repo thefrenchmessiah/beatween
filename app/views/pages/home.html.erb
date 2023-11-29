@@ -1,7 +1,4 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
-<p><%= @artist_name %></p>
-<p><%= @artist_popularity %></p>
-<p><%= @artist_followers %></p>
 
-<%# <p><%= link_to "Sign into Spotify", spotify_auth_path %>
+<%= link_to 'Sign in with Spotify', '/auth/spotify', method: :post %>
