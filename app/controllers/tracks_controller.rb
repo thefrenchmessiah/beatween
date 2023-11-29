@@ -35,6 +35,9 @@ class TracksController < ApplicationController
     @song_valence = @data2['valence']
     @song_danceability = @data2['danceability']
     @song_energy = @data2['energy']
+    @song_instrumentalness = @data2['instrumentalness']
+    @song_acousticness = @data2['acousticness']
+    @song_loudness = @data2['loudness']
 
 
     @artist_name = @data1['artists'][0]['name']
