@@ -31,6 +31,10 @@ class PagesController < ApplicationController
     @artist_followers = @data1['followers']['total']
   end
 
+  def match
+    
+  end
+
   private
 
   def get_key
