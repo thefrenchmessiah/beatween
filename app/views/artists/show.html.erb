@@ -1,31 +1,32 @@
-
 <h1><%= @artist_name %></h1>
 
-<div class = "image-circle-large">
-    <%= image_tag @artist_image_url, alt: @artist_name %>
-</div>
-
-<div class = "card-medium">
-  <p>Popularity: <%= @artist_popularity %></p>
-</div>
-
-<div class="card-medium">
-  <p>Followers: <%= @artist_followers %></p>
-</div>
-
-
-<h2>Top Tracks</h2>
-
-<div class="scrolling-wrapper-flexbox">
-  <% @top_tracks.each do |track| %>
-  <div class= "card-small">
-    <div class= card-small-image><%= image_tag(track[:image], alt: track[:name], class: "card-small-image") %></div>
-    <div class= card-small-text><p><%= track[:name] %></p></div>
+  <div class= "show-image">
+    <%= image_tag @artist_image_url, alt: @artist_name,  class: "img-circle-large" %>
   </div>
-  <% end %>
-</div>
 
-<h1>helllo</h1>
+<%= render "shared/btn_sorting" %>
 
-<h1>helllo</h1>
+  <div class="container-cards-medium">
+  <div class = "card-medium">
+   <div> <h2>Popularity:</h2></div>
+        <hr>
+   <div> <p><%= @artist_popularity %></p></div>
+  </div>
+
+
+  <div class = "card-medium">
+   <div> <h2>Followers:</h2></div>
+        <hr>
+   <div> <p><%= @artist_followers %></p></div>
+  </div>
+
+  <h2>Top Tracks</h2>
+  <div class="scrolling-wrapper-flexbox">
+    <% @top_tracks.each do |track| %>
+    <div class= "card-small">
+      <div class= card-small-image><%= image_tag(track[:image], alt: track[:name], class: "card-small-image") %></div>
+      <div class= card-small-text><p><%= track[:name] %></p></div>
+    </div>
+    <% end %>
+  </div>
 <%# <%= link_to 'Back', artists_path %>
