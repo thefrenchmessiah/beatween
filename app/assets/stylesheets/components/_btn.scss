@@ -1,6 +1,6 @@
 // put both btns within a div with class show-sorting
 // as follow :
-// <div class= "show-sorting">  
+// <div class= "show-sorting">
 //  <div class= "show-infos">
 //    <button class= "btn-flat-long">
 
@@ -40,6 +40,27 @@
   }
 }
 
-.btn-small{
+.btn-md-users {
+  background-color: $background-color;
+  display: inline-flex;
+  padding: 8px;
+  border-radius: 8px;
+  flex: 1;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+  max-width: 15%;
 
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
+  a {
+    text-decoration: none;
+  }
 }
+
+//.btn-small{
+//}
