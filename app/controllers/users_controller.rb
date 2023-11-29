@@ -61,5 +61,10 @@ class UsersController < ApplicationController
     @spotify_user = RSpotify::User.new(@user.spotify_auth)
     # @matches = Match.where(generator: @user)
     # @buddies = Match.where(buddy: @user)
+
+    @top_artists =  @spotify_user.top_artists
+    @top_tracks =  @spotify_user.top_tracks
+    # @top_tracks = @top_tracks[0..4]
+    # @top_artist = @top_artist[0..4]
   end
 end
