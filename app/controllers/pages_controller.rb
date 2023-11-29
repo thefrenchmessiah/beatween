@@ -1,9 +1,4 @@
 class PagesController < ApplicationController
-  require 'open-uri'
-  require 'rest-client'
-  require 'json'
-  require 'erb'
-
   skip_before_action :authenticate_user!, only: :home
   before_action :get_key
 
@@ -29,6 +24,9 @@ class PagesController < ApplicationController
     @artist_name = @data1['name']
     @artist_popularity = @data1['popularity']
     @artist_followers = @data1['followers']['total']
+  end
+
+  def match
   end
 
   private

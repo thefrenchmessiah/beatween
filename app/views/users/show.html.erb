@@ -1,1 +1,60 @@
+  <div class= "show-image">
+    <%= image_tag @user_image_url, alt: @user_name,  class: "img-circle-medium" %>
+  </div>
+
 <h1><%= @user_name %></h1>
+
+<%= render "shared/btn_sorting" %>
+
+<h2>Top Tracks</h2>
+
+<div class="scrolling-wrapper-flexbox">
+  <% @top_tracks.each do |track| %>
+  <div class= "card-small">
+    <div class= card-small-image><%= image_tag(track[:image], alt: track[:name], class: "card-small-image") %></div>
+    <div class= card-small-text><p><%= track[:name] %></p></div>
+  </div>
+  <% end %>
+</div>
+
+<h2>Top Albums</h2>
+
+<div class="scrolling-wrapper-flexbox">
+  <% @top_albums.each do |track| %>
+  <div class= "card-small">
+    <div class= card-small-image><%= image_tag(album[:image], alt: album[:name], class: "card-small-image") %></div>
+    <div class= card-small-text><p><%= album[:name] %></p></div>
+  </div>
+  <% end %>
+</div>
+<p>
+  <strong>Display Name:</strong>
+  <%= @user.display_name %>
+</p>
+
+<p>
+  <strong>Spotify Auth:</strong>
+  <%= @user.spotify_auth %>
+</p>
+
+<p>
+  <strong>Spotify ID:</strong>
+  <%= @user.spotify_id %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @user.image_url if @user.image_url.present? %>
+</p>
+
+
+
+<p>
+  <strong>Spotify URL:</strong>
+  <%= link_to @user.spotify_url, @user.spotify_url if @user.spotify_url.present? %>
+</p></h1>

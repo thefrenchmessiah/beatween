@@ -19,22 +19,40 @@
 <div class= "card-big">
   <h2>Audio Features</h2>
   <hr>
-  <div class="three-value-wrap">
-  <div class= "value">
-    <p> <i class="fa-regular fa-face-smile"></i> Positiveness: </p>
-    <p><%= @song_valence%></p>
-  </div>
+  <div class="value-wrap">
+    <%# <div class="scrolling-wrapper-flexbox"> %>
+      <div class= "value">
+        <h2> <i class="fa-regular fa-face-smile"></i> </h2>
+        <p> Positiveness:</p>
+        <h3><%= @song_valence%></h3>
+      </div>
 
-  <div class="value">
-    <p> <i class="fa-solid fa-person-walking"></i> Danceability: </p>
-    <p><%= @song_danceability %></p>
-  </div>
+      <div class="value">
+        <h2> <i class="fa-solid fa-person-walking"></i> </h2>
+        <p> Danceability: </p>
+        <h3><%= @song_danceability %></h3>
+      </div>
 
-  <div class="value">
-    <p><i class="fa-solid fa-bolt"></i> Energy: </p>
-    <p><%= @song_energy %></p>
-  </div>
-</div>
+      <div class="value">
+        <h2><i class="fa-solid fa-guitar"></i></h2>
+        <p> Acoustic: </p>
+        <h3><%= @song_acousticness %></h3>
+      </div>
+      
+      <div class="value">
+        <h2><i class="fa-regular fa-comment"></i></h2>
+        <p> Instrumental: </p>
+        <h3><%= @song_instrumentalness %></h3>
+      </div>
+
+      <div class="value">
+        <h2><i class="fa-solid fa-volume-high"></i></h2>
+        <p> Loudness: </p>
+        <h3><%= @song_loudness %> dB</h3>
+      </div>
+
+    </div>
+<%# </div> %>
 </div>
 
 <p>Song title: <%= @song_name %></p>

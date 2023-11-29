@@ -3,10 +3,10 @@
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  padding-left: 15px;
+  padding-left: 3*$unit;
 
   .card-small {
-    margin-right: 10px;
+    margin-right: 2*$unit;
     display: flex;
     flex: 0 0 auto;
   }
