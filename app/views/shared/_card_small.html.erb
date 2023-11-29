@@ -1,0 +1,17 @@
+  
+ <%# ------- the card itself--------  %>
+  <div class= "card-small">
+    <div class= card-small-image><%= image_tag(track[:image], alt: track[:name], class: "card-small-image") %></div>
+    <div class= card-small-text><p><%= track[:name] %></p></div>
+  </div>
+
+<%#------- if you want the carroussel ------- %>
+  
+<div class="scrolling-wrapper-flexbox">
+  <% @top_tracks.each do |track| %>
+  <div class= "card-small">
+    <div class= card-small-image><%= image_tag(track[:image], alt: track[:name], class: "card-small-image") %></div>
+    <div class= card-small-text><p><%= track[:name] %></p></div>
+  </div>
+  <% end %>
+</div>
