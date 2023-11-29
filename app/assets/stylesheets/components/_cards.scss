@@ -18,7 +18,7 @@
 
 .card-small {
   width: 130px;
-  height: 160px;
+  height: 180px;
   flex-direction: column;
   p {
     margin: 0;
@@ -38,7 +38,7 @@
   color: white;
 
   width: 120px;
-  height: 24px;
+  height: 20px;
 
   font-family: Exo 2;
   font-size: 12px;
@@ -46,6 +46,9 @@
   font-weight: 600;
   line-height: normal;
   margin-top: 2px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .card-small-text-small {

@@ -1,5 +1,10 @@
   <div class= "show-image">
-    <%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%>
+        <% if @user.image_url.present? %>
+      <%= image_tag @user.image_url, alt: @user_name, class: "img-circle-medium" %>
+    <% else %>
+      <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-medium" %>
+    <% end %>
+
   </div>
 
 <h1><%= @user.display_name %></h1>
@@ -14,6 +19,8 @@
     <div class= "card-small">
       <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
       <div class= card-small-text><p><%= track.name %></p></div>
+      <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
+
     </div>
     <% end %>
   <% else %>
