@@ -1,24 +1,28 @@
 <div id="footer">
+<table>
+  <thead>
+    <tr>
+    <th scope="col"><div class= "icon">
+    <a href= root_path><i class="fa-solid fa-house"></i></a>
+    </div>
+    </th>
 
-  <div>
-  <div class="home">
-    <%= link_to "🏠", root_path, class: "nav-link" %>
-  </div>
-  </div>
+    <th scope="col">
+    <div class= "icon">
+    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></i></a>
+    </div>
+    </th>
 
-  <div>
-  <div class="search">
-    <%= link_to "🔍", class: "nav-link" %>
-  </div>
-  </div>
-
-  <div>
-  <div class="profile">
+    <th scope="col">
+    <div class= "icon">
+    <a href="#">
         <% if user_signed_in? %>
           <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
         <% else %>
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         <% end %>
-  </div>
-  </div>
+    </a>
+    </div>
+    </th> 
 </div>
+
