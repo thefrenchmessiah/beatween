@@ -1,30 +1,38 @@
   <div class= "show-image">
-    <%= image_tag @user_image_url, alt: @user_name,  class: "img-circle-medium" %>
+    <%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%>
   </div>
 
-<h1><%= @user_name %></h1>
+<h1><%= @user.display_name %></h1>
 
 <%= render "shared/btn_sorting" %>
 
 <h2>Top Tracks</h2>
 
 <div class="scrolling-wrapper-flexbox">
-  <% @top_tracks.each do |track| %>
-  <div class= "card-small">
-    <div class= card-small-image><%= image_tag(track[:image], alt: track[:name], class: "card-small-image") %></div>
-    <div class= card-small-text><p><%= track[:name] %></p></div>
-  </div>
+  <% if @top_tracks && @top_tracks.any? %>
+    <% @top_tracks.each do |track| %>
+    <div class= "card-small">
+      <div class= card-small-image><%= image_tag(track[:image], alt: track[:name], class: "card-small-image") %></div>
+      <div class= card-small-text><p><%= track[:name] %></p></div>
+    </div>
+    <% end %>
+  <% else %>
+  <p>There are no top tracks</p>
   <% end %>
 </div>
 
-<h2>Top Albums</h2>
+<h2>Top Artists</h2>
 
 <div class="scrolling-wrapper-flexbox">
-  <% @top_albums.each do |track| %>
-  <div class= "card-small">
-    <div class= card-small-image><%= image_tag(album[:image], alt: album[:name], class: "card-small-image") %></div>
-    <div class= card-small-text><p><%= album[:name] %></p></div>
-  </div>
+  <% if @top_artists && @top_artists.any? %>
+  <% @top_artists.each do |track| %>
+    <div class= "card-small">
+      <div class= card-small-image><%= image_tag(album[:image], alt: album[:name], class: "card-small-image") %></div>
+      <div class= card-small-text><p><%= album[:name] %></p></div>
+    </div>
+    <% end %>
+  <% else %>
+    <p>There are no top artists</p>
   <% end %>
 </div>
 <p>
