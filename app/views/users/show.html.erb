@@ -1,5 +1,12 @@
-  <div class= "show-image">
+  <div class= "show-image" style="position:relative">
     <%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%>
+      <% if user_signed_in? %>
+        <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
+          <i class="fa-solid fa-right-from-bracket fa-xl" id="logout-icon"></i>
+        <% end %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      <% end %>
   </div>
 
 <h1><%= @user.display_name %></h1>
