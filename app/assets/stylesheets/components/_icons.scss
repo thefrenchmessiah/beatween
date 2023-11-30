@@ -1,0 +1,52 @@
+#logout-icon{
+  position: absolute;
+  top: 5%;
+  left: 90%;
+  color: $buttons-color;
+  border: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: $pink-5;
+  }
+  &:active {
+    color: $pink-5;
+  }
+  &:disabled {
+    color: $grey-3;
+  }
+}
+.spotify-button{
+  padding: $unit;
+  height: 6*$unit;
+  width: 39*$unit;
+  font-size: 3*$unit;
+  border-radius: 2*$unit;
+  color: $gray;
+  background-color: $buttons-color;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  // formatting position
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  // Text on the thingy
+
+  &:hover {
+    background-color: $pink-5;
+    border: 1px solid $grey-3;
+  }
+  &:active {
+    background-color: $pink-5;
+    border: 1px solid $grey-3;
+  }
+  &:disabled {
+    background-color: $grey-3;
+    border: none;
+  }
+
+  .spotify-icon{
+    width: 20px;
+    height: 20px;
+  }
+}

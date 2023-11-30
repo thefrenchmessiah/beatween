@@ -15,10 +15,12 @@
     <h2>Top Tracks</h2>
     <div class="scrolling-wrapper-flexbox">
       <% @top_tracks.each do |track| %>
-      <div class= "card-small">
-        <div class= card-small-image><%= image_tag(track[:image], alt: track[:name], class: "card-small-image") %></div>
-        <div class= card-small-text><p><%= track[:name] %></p></div>
-      </div>
+        <%= link_to track_path(id: track[:uri][1]), style: "text-decoration: none;" do %>
+          <div class= "card-small">
+            <div class= card-small-image><%= image_tag(track[:image], alt: track[:name], class: "card-small-image") %></div>
+            <div class= card-small-text><p><%= track[:name] %></p></div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
