@@ -1,0 +1,26 @@
+  <div class="container-cards-medium">
+    <div class = "card-medium">
+      <div> <h2>Popularity:</h2></div>
+            <hr>
+      <div> <p><%= @artist_popularity %></p></div>
+    </div>
+
+
+    <div class = "card-medium">
+      <div> <h2>Followers:</h2></div>
+            <hr>
+      <div> <p><%= @artist_followers %></p></div>
+    </div>
+
+    <h2>Top Tracks</h2>
+    <div class="scrolling-wrapper-flexbox">
+      <% @top_tracks.each do |track| %>
+        <%= link_to track_path(id: track[:uri][1]), style: "text-decoration: none;" do %>
+          <div class= "card-small">
+            <div class= card-small-image><%= image_tag(track[:image], alt: track[:name], class: "card-small-image") %></div>
+            <div class= card-small-text><p><%= track[:name] %></p></div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>

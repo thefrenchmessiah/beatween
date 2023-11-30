@@ -7,13 +7,13 @@ class TracksController < ApplicationController
   before_action :get_key
 
   # https://api.spotify.com/v1/browse/categories/{category_id}/playlists
-  
+
   def index
 
   end
 
   def show
-    @track = "0bYg9bo50gSsH3LtXe2SQn?si=c9d8cbfa5566461c"
+    @track = params[:id]
     endpoint1 = RestClient.get(
       "https://api.spotify.com/v1/tracks/#{@track}",
       headers={ 'Authorization': "Bearer #{@access_token}" }
@@ -28,7 +28,7 @@ class TracksController < ApplicationController
 
 
     # ---- song infos ----
-    @song_name = @data1['name']    
+    @song_name = @data1['name']
     @song_popularity = @data1['popularity']
     @song_length = @data1['duration_ms']/60000
     # ---- audio features ----

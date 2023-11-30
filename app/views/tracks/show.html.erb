@@ -1,14 +1,18 @@
 <%= render "shared/navbar" %>
 <%# ---------div for image--------- %>
   <div class= "show-image">
-    <img class= "img-circle-large" src="<%= @album_image %>" alt=""></p>
+    <img class= "img-circle-large" src="<%= @album_image %>" alt="">
   </div>
 
 <%# ---------div for buttons--------- %>
-<%= render "shared/bar_2btn_sorting" %>
+<div data-controller="switch-button">
+  <%= render "shared/bar_2btn_sorting" %>
 
-<%# ------Render INFO or STATS--------- %>
-<% if  %>
-  
-<% end %>
-<%= render "song-info" %>
+  <%# ------Render INFO or STATS--------- %>
+  <div data-switch-button-target="info">
+    <%= render "song-info" %>
+  </div>
+  <div data-switch-button-target="stats" style="display: none;">
+    <%= render "song-stats" %>
+  </div>
+</div>
