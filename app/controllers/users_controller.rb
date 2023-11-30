@@ -57,6 +57,7 @@ class UsersController < ApplicationController
   # spotify_user.create_playlist!('my_awesome_playlist') # automatically refreshes token
   def show
     @user = current_user
+    @buddy = 
     # Pass this whenever we need to access the user's spotify account
     @spotify_user = RSpotify::User.new(@user.spotify_auth)
     # @matches = Match.where(generator: @user)
