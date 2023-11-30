@@ -22,14 +22,12 @@
 
 <div class="card-big">
   <div>
-    <h2>In Depth Data:</h2>
-  </div>
+ <h1>Genres:</h1>
   <hr>
-  <div>
-    <ul>
-      <li>Release date: </li>
-      <li>Release date: Not available</li>
-      <li>Genre: </li>
-    </ul>
+<ul>
+  <% @artist_genres.each do |genre| %>
+    <li><%= genre %></li>
+  <% end %>
+</ul>
   </div>
 </div>
