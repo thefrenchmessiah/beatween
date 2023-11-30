@@ -21,6 +21,8 @@ class MatchesController < ApplicationController
       @buddy_image = @spotify_buddy.images[0]['url']
     end
 
+    listening_stats
+    comp_percentage
     shared_artists
     shared_tracks
   end
@@ -93,7 +95,9 @@ class MatchesController < ApplicationController
     @spotify_generator = RSpotify::User.new(@generator.spotify_auth)
     @buddy = User.find(params[:user_id])
     @spotify_buddy = RSpotify::User.new(@buddy.spotify_auth)
+  end
 
+  def listening_stats
     @this_week = ((Time.now - 1.days).to_f * 1000).to_i
     @played_this_week_gen = @spotify_generator.recently_played(after: @this_week)
     @played_this_week_bud = @spotify_buddy.recently_played(after: @this_week)
@@ -101,5 +105,9 @@ class MatchesController < ApplicationController
     @this_year = ((Time.now - 365.days).to_f * 1000).to_i
     @played_this_year_gen = @spotify_generator.recently_played(after: @this_year)
     @played_this_year_bud = @spotify_buddy.recently_played(after: @this_year)
+  end
+
+  def comp_percentage
+    @comp_percentage= ((@shared_artists.to_i/20).to_f * 100).to_i
   end
 end
