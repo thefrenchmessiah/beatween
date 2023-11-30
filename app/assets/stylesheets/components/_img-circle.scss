@@ -1,0 +1,78 @@
+// put the image within a div with class show-image
+// as follow :
+// <div class= "show-image">
+// <img class= "img-circle-large"
+
+
+.show-image{
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: center;
+
+    .profile-pic-left {
+      margin-left: 25px;
+      margin-right: 15px;
+    }
+
+    .profile-pic-right {
+      margin-left: 15px;
+      margin-right: 25px;
+    }
+}
+
+.img-circle-large{
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.img-circle-medium{
+  border-radius: 50%;
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.img-circle-small{
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.comp-icon img{
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+
+}
+
+.comp-icon{
+  margin:0;
+
+  h2{
+    font-size: 5*$unit;
+    font-weight: 700;
+    color: $grey-3;
+    text-align: center;
+    padding-top:0;
+    margin-top: -30px;
+  }
+
+  h3{
+    font-size: 3*$unit;
+    font-weight: 700;
+    color: $grey-3;
+    text-align: center;
+    padding:0;
+  }
+}
