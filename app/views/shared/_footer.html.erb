@@ -17,13 +17,19 @@
       </th>
       <th scope="col">
         <div class= "icon">
-          <% if user_signed_in? %>
+          <% if user_signed_in? && !current_user.spotify_auth.nil? %>
             <%=  link_to user_path(current_user) do %>
               <i class="fa-solid fa-user"></i>
             <% end %>
           <% else %>
-            <%=  link_to new_user_session_path do %>
-              <i class="fa-solid fa-user"></i>
+            <% if user_signed_in? && current_user.spotify_auth.nil?%>
+              <%= link_to '/auth/spotify', method: :post, style: "text-decoration: none;" do%>
+                  <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', style:"width: 28px; height: 28px;" %>
+              <% end %>
+            <% elsif !user_signed_in? %>
+              <%=  link_to new_user_session_path do %>
+                <i class="fa-solid fa-user"></i>
+              <% end %>
             <% end %>
           <% end %>
         </div>
