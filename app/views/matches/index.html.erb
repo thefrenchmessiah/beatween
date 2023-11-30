@@ -4,17 +4,17 @@
 
   <div class= "show-image">
   <div class="profile-pic-left">
-    <img class= "img-circle-small" src="<%= @maria_photo %>" alt="">
+    <%# <img class= "img-circle-small" src="<%= @maria_photo %>" alt=""> %>
   </div>
 
   <div class="comp-icon">
     <%= image_tag "compatibility_icon_pink.png" %>
-    <h2>78%</h2>
+    <h2>?? %</h2>
 
   </div>
 
   <div class="profile-pic-right">
-    <img class= "img-circle-small" src="<%= @romeo_photo %>" alt="">
+    <%# <img class= "img-circle-small" src="<%= @romeo_photo %>" alt=""> %>
   </div>
   </div>
 
@@ -23,7 +23,13 @@
 
     <div class="stats">
       <div class="stat">
-        <h3>176</h3>
+        <h3>
+          <% sum = 0 %>
+          <% @played_this_week_gen.each do |play| %>
+          <% sum += play.duration_ms.to_i%>
+          <% end %>
+          <%= sum/60000 %>
+        </h3>
         <p>min/day</p>
       </div>
 
@@ -32,14 +38,26 @@
       </div>
 
       <div class="stat">
-        <h3>58</h3>
+        <h3>
+          <% sum = 0 %>
+          <% @played_this_week_bud.each do |play| %>
+          <% sum += play.duration_ms.to_i%>
+          <% end %>
+          <%= sum/60000 %>
+        </h3>
         <p>min/day</p>
       </div>
     </div>
 
         <div class="stats">
       <div class="stat">
-        <h3>152</h3>
+         <h3>
+          <% sum = 0 %>
+          <% @played_this_year_gen.each do |play| %>
+          <% sum += play.duration_ms.to_i%>
+          <% end %>
+          <%= sum/60000 %>
+        </h3>
         <p>min/day</p>
       </div>
 
@@ -48,7 +66,13 @@
       </div>
 
       <div class="stat">
-        <h3>208</h3>
+         <h3>
+          <% sum = 0 %>
+          <% @played_this_year_bud.each do |play| %>
+          <% sum += play.duration_ms.to_i%>
+          <% end %>
+          <%= sum/60000 %>
+        </h3>
         <p>min/day</p>
       </div>
     </div>

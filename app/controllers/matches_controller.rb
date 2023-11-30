@@ -7,8 +7,19 @@ class MatchesController < ApplicationController
     @spotify_generator = RSpotify::User.new(@generator.spotify_auth)
     @buddy = User.find(params[:user_id])
     @spotify_buddy = RSpotify::User.new(@buddy.spotify_auth)
+
+    @this_week = ((Time.now - 1.days).to_f * 1000).to_i
+    @played_this_week_gen = @spotify_generator.recently_played(after: @this_week)
+    @played_this_week_bud = @spotify_buddy.recently_played(after: @this_week)
+
+    @this_year = ((Time.now - 365.days).to_f * 1000).to_i
+    @played_this_year_gen = @spotify_generator.recently_played(after: @this_year)
+    @played_this_year_bud = @spotify_buddy.recently_played(after: @this_year)
+
+    
   end
 
+  # # --------- for the time being till we get the actual profile pics--------
   # endpoint1 = RestClient.get(
   #   "https://api.spotify.com/v1/artists/4iHNK0tOyZPYnBU7nGAgpQ?si=1v21fDMzRjKRLTyoFyBZFA",
   #   headers={ 'Authorization': "Bearer #{@access_token}" }
