@@ -10,6 +10,7 @@
     padding: 0;
     margin: 0;
     width: 100%;
+    justify-content: center;
 
     .profile-pic-left {
       margin-left: 25px;
@@ -52,7 +53,7 @@
   height: 150px;
   object-fit: cover;
   object-position: center;
-  
+
 }
 
 .comp-icon{
