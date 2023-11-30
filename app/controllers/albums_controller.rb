@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   require 'rest-client'
   require 'json'
 
-  before_action :get_key
+  before_action :get_key, :get_user
 
   def show
     @album_id = "4LH4d3cOWNNsVw41Gqt2kv"
@@ -11,7 +11,10 @@ class AlbumsController < ApplicationController
     @album_name = album.name
     # @album_name = @data['name']
     # @album_artist = @data['artists'['name ']]
+    @artist = album.artists[0]
+    @albums_by_artist = @artist.albums
     @album_artist = album.artists[0].name
+    @user_albums = current_user.saved_albums[limit: 3]
     # @release_date = @data['release_date']
     @release_date = album.release_date
     @parsed_release_date = DateTime.parse(@release_date) rescue nil
@@ -27,6 +30,10 @@ class AlbumsController < ApplicationController
   end
 
   private
+
+  def get_user
+
+  end
 
   def get_key
     response = RestClient.post 'https://accounts.spotify.com/api/token',

@@ -1,0 +1,27 @@
+  <div class="container-cards-medium">
+  <div class="card-medium">
+  <div>
+    <h2>Also, check this:</h2>
+  </div>
+  <hr>
+  <div>
+  <% popularity = @popularity %>
+    <ul>
+      <% sorted_albums = @albums_by_artist.sort_by { |album| -album.popularity }.take(1) %>
+      <% sorted_albums.each do |album| %>
+        <li><%= album.name %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+  <div class="card-medium">
+    <div>
+      <h2>Number of tracks</h2>
+    </div>
+    <hr>
+    <div>
+    <%= @total_tracks %>
+    </div>
+  </div>
+</div>

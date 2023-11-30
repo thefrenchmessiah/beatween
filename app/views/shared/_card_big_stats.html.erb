@@ -1,0 +1,15 @@
+<div class="card-big">
+  <div>
+    <h2>Saved Albums</h2>
+  </div>
+  <hr>
+  <div>
+    <ul>
+      <% if @user_albums %>
+      <li><%= @user_albums %></li>
+      <% else %>
+      <li>No saved albums yet</li>
+      <% end %>
+    </ul>
+  </div>
+</div>
