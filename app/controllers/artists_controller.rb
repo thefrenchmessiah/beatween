@@ -7,7 +7,7 @@ class ArtistsController < ApplicationController
   before_action :get_key
 
   def show
-    @artist_id = "4iHNK0tOyZPYnBU7nGAgpQ?si=TmVgtD2OSXSOvBDsXEcX9g"
+    @artist_id = params[:id]
     @top_tracks = fetch_top_tracks(@artist_id)
 
     endpoint1 = RestClient.get(

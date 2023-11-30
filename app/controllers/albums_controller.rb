@@ -5,7 +5,7 @@ class AlbumsController < ApplicationController
   before_action :get_key
 
   def show
-    @album_id = "4LH4d3cOWNNsVw41Gqt2kv"
+    @album_id = params[:id]
     # @data = JSON.parse(endpoint1)
     album = RSpotify::Album.find(@album_id)
     @album_name = album.name
