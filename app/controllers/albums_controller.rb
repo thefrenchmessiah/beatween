@@ -1,6 +1,7 @@
 class AlbumsController < ApplicationController
   require 'rest-client'
   require 'json'
+  require 'rspotify/oauth'
 
   before_action :get_key, :get_user
 
@@ -14,7 +15,7 @@ class AlbumsController < ApplicationController
     @artist = album.artists[0]
     @albums_by_artist = @artist.albums
     @album_artist = album.artists[0].name
-    @user_albums = current_user.saved_albums[limit: 3]
+    @user_albums = @spotify_user.saved_albums(limit: 3)
     # @release_date = @data['release_date']
     @release_date = album.release_date
     @parsed_release_date = DateTime.parse(@release_date) rescue nil
@@ -32,7 +33,14 @@ class AlbumsController < ApplicationController
   private
 
   def get_user
+    @user = current_user
+    # Pass this whenever we need to access the user's spotify account
 
+    @spotify_user = RSpotify::User.new(@user.spotify_auth)
+
+    if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
+      refresh_spotify_token(current_user)
+    end
   end
 
   def get_key

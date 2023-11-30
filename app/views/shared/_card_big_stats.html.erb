@@ -5,10 +5,14 @@
   <hr>
   <div>
     <ul>
-      <% if @user_albums %>
-      <li><%= @user_albums %></li>
+      <% if @user_albums.empty? %>
+        <li>No saved albums yet</li>
       <% else %>
-      <li>No saved albums yet</li>
+        <li>
+          <% @user_albums.each do |album| %>
+            <%= album.instance_variable_get(:@name) %>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>
