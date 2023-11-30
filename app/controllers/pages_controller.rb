@@ -26,26 +26,6 @@ class PagesController < ApplicationController
     @artist_followers = @data1['followers']['total']
   end
 
-  def match
-    endpoint1 = RestClient.get(
-      "https://api.spotify.com/v1/artists/4iHNK0tOyZPYnBU7nGAgpQ?si=1v21fDMzRjKRLTyoFyBZFA",
-      headers={ 'Authorization': "Bearer #{@access_token}" }
-    )
-    @data1 = JSON.parse(endpoint1)
-
-    @maria = @data1['name']
-    @maria_photo = @data1['images'][0]['url']
-
-    endpoint2 = RestClient.get(
-      "https://api.spotify.com/v1/artists/5lwmRuXgjX8xIwlnauTZIP?si=zA8LyXDLSVC65iuKFPiKmg",
-      headers={ 'Authorization': "Bearer #{@access_token}" }
-    )
-    @data2 = JSON.parse(endpoint2)
-
-    @romeo = @data2['name']
-    @romeo_photo = @data2['images'][0]['url']
-  end
-
   private
 
   def get_key
