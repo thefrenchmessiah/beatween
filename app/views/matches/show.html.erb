@@ -1,0 +1,15 @@
+<h1><%= @playlist.name %></h2>
+<h3>By <%= @generator.display_name %> & <%= @buddy.display_name %></h3>
+
+<div class="scrolling-wrapper-flexbox">
+  <% if @playlist && @playlist.tracks.any? %>
+    <% @playlist.tracks.each do |track| %>
+      <div class= "card-small">
+        <div class= card-small-image><%= image_tag(track.album.images.first["url"], alt: track.name, class: "card-small-image") %></div>
+        <div class= card-small-text><p><%= track.name %> by <%= track.artists.first.name %></p></div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No tracks in the playlist</p>
+  <% end %>
+</div>

@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     @user = current_user.link_to_spotify(spotify_user, spotify_auth)
     # Redirects, even if not successfull jsut testingg
     redirect_to user_path(@user)
-
   end
 
   def refresh_spotify_token(user)
@@ -35,8 +34,6 @@ class UsersController < ApplicationController
     # Pass this whenever we need to access the user's spotify account
 
     @spotify_user = RSpotify::User.new(@user.spotify_auth)
-    # @matches = Match.where(generator: @user)
-    # @buddies = Match.where(buddy: @user)
 
     if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
       refresh_spotify_token(current_user)
