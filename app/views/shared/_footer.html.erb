@@ -2,27 +2,30 @@
 <table>
   <thead>
     <tr>
-    <th scope="col"><div class= "icon">
-    <a href= root_path><i class="fa-solid fa-house"></i></a>
-    </div>
-    </th>
+      <th scope="col">
+        <div class= "icon">
+          <a href= root_path><i class="fa-solid fa-house"></i></a>
+        </div>
+      </th>
 
-    <th scope="col">
-    <div class= "icon">
-    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></i></a>
-    </div>
-    </th>
-
-    <th scope="col">
-    <div class= "icon">
-    <a href="#">
-        <% if user_signed_in? %>
-          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
-        <% else %>
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        <% end %>
-    </a>
-    </div>
-    </th> 
+      <th scope="col">
+        <div class= "icon">
+          <a href="#"><i class="fa-solid fa-magnifying-glass"></i></i></a>
+        </div>
+      </th>
+      <th scope="col">
+        <div class= "icon">
+          <% if user_signed_in? %>
+            <%=  link_to user_path(current_user) do %>
+              <i class="fa-solid fa-user"></i>
+            <% end %>
+          <% else %>
+            <%=  link_to new_user_session_path do %>
+              <i class="fa-solid fa-user"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </th>
+    </tr>
+  </thead>
 </div>
-
