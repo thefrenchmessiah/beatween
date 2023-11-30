@@ -44,7 +44,8 @@ end
     top_tracks_info = top_tracks.map do |track|
       {
         name: track.name,
-        image: track.album.images.any? ? track.album.images.first['url'] : nil
+        image: track.album.images.any? ? track.album.images.first['url'] : nil,
+        uri: track.uri.match(/spotify:track:(.*)/)
       }
     end
 
