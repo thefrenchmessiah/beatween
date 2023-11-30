@@ -9,7 +9,7 @@
 
   <div class="comp-icon">
     <%= image_tag "compatibility_icon_pink.png" %>
-    <h2>?? %</h2>
+    <h2> <%= @comp_percentage %> %</h2>
 
   </div>
 
@@ -76,6 +76,7 @@
         <p>min/day</p>
       </div>
     </div>
+
 
 <%= form_with url: user_matches_path, method: :post do %>
   <!-- Add any form fields here -->
