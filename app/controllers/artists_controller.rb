@@ -9,7 +9,7 @@ class ArtistsController < ApplicationController
   before_action :get_key
 
   def show
-    @artist_id = "4iHNK0tOyZPYnBU7nGAgpQ?si=TmVgtD2OSXSOvBDsXEcX9g"
+    @artist_id = params[:id]
     @top_tracks = fetch_top_tracks(@artist_id)
 
     endpoint1 = RestClient.get(
@@ -46,7 +46,8 @@ class ArtistsController < ApplicationController
     top_tracks_info = top_tracks.map do |track|
       {
         name: track.name,
-        image: track.album.images.any? ? track.album.images.first['url'] : nil
+        image: track.album.images.any? ? track.album.images.first['url'] : nil,
+        uri: track.uri.match(/spotify:track:(.*)/)
       }
     end
     top_tracks_info

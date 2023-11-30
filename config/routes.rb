@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources "users"
+  resources "users" do
+    resources "matches", only: [:index, :show, :create]
+  end
 
   resources "tracks"
   resources "albums"

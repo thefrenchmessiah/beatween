@@ -1,5 +1,5 @@
 // ---------- for btn-flat-long ----------
-// put both btns within a div with class show-sorting 
+// put both btns within a div with class show-sorting
 
 .show-sorting{
     display: flex;
@@ -37,6 +37,30 @@
   }
 }
 
+.btn-md-users {
+  background-color: $background-color;
+  display: inline-flex;
+  padding: 8px;
+  border-radius: 8px;
+  flex: 1;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+  max-width: 15%;
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+//.btn-small{
+//}
 // ---------- for btn-small ----------
 // put all filter btns within a div with class show-filter
 

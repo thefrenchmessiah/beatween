@@ -3,39 +3,14 @@
   <div class= "show-image">
     <%= image_tag @artist_image_url, alt: @artist_name,  class: "img-circle-large" %>
   </div>
-
-<%= render "shared/btn_sorting" %>
-
-  <div class="container-cards-medium">
-  <div class = "card-medium">
-   <div> <h2>Popularity:</h2></div>
-        <hr>
-   <div> <p><%= @artist_popularity %>/100</p></div>
+  <%# ---------div for buttons--------- %>
+<div data-controller="switch-button">
+  <%= render "shared/bar_2btn_sorting" %>
+  <%# ------Render INFO or STATS--------- %>
+  <div data-switch-button-target="info">
+    <%= render "artist-info" %>
   </div>
-
-  <div class = "card-medium">
-   <div> <h2>Followers:</h2></div>
-        <hr>
-   <div> <p><%= @artist_followers %></p></div>
+  <div data-switch-button-target="stats" style="display: none;">
+    <%= render "artist-stats" %>
   </div>
-
-  <h2>Top Tracks</h2>
-  <div class="scrolling-wrapper-flexbox">
-    <% @top_tracks.each do |track| %>
-    <div class= "card-small">
-      <div class= card-small-image><%= image_tag(track[:image], alt: track[:name], class: "card-small-image") %></div>
-      <div class= card-small-text><p><%= track[:name] %></p></div>
-    </div>
-    <% end %>
-  </div>
-
- <h1>Genres:</h1>
-<ul>
-  <% @artist_genres.each do |genre| %>
-    <li><%= genre %></li>
-  <% end %>
-</ul>
-
-<%# <%= link_to 'Back', artists_path %>
-
-<%= @ranking %>
+</div>

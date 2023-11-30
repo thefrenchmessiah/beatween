@@ -1,0 +1,91 @@
+<%#-------- div for matching photos------- %>
+<%= render "shared/navbar" %>
+<%= render "shared/bar_4btn_filter" %>
+
+<div class= "show-image">
+<div class="profile-pic-left">
+  <img class= "img-circle-small" src="<%= @generator_image %>" alt="">
+</div>
+
+<div class="comp-icon">
+  <%= image_tag "compatibility_icon_pink.png" %>
+  <h2>78%</h2>
+</div>
+
+<div class="profile-pic-right">
+  <img class= "img-circle-small" src="<%= @romeo_photo %>" alt="">
+</div>
+</div>
+
+<%#-------- div for matching stats------- %>
+<div class="stats-wrap">
+  <div class="stats">
+    <div class="stat">
+      <h3>176</h3>
+      <p>min/day</p>
+    </div>
+
+    <div class="stat">
+      <h2>Your addiction this week: </h2>
+    </div>
+
+    <div class="stat">
+      <h3>58</h3>
+      <p>min/day</p>
+    </div>
+  </div>
+
+      <div class="stats">
+    <div class="stat">
+      <h3>152</h3>
+      <p>min/day</p>
+    </div>
+
+    <div class="stat">
+      <h2>Average listenning this year: </h2>
+    </div>
+
+    <div class="stat">
+      <h3>208</h3>
+      <p>min/day</p>
+    </div>
+  </div>
+</div>
+
+<%= form_with url: user_matches_path, method: :post do %>
+  <!-- Add any form fields here -->
+  <%= submit_tag "Generate Playlist" %>
+<% end %>
+<%# <%= link_to "Generate Playlist", user_matches_path(current_user), method: :post %>
+
+<%# Common stats %>
+
+<h2>Top Common Artists</h2>
+
+<div class="scrolling-wrapper-flexbox">
+  <% if @shared_artists && @shared_artists.any? %>
+    <% @shared_artists.each do |artist| %>
+      <div class= "card-small">
+        <div class= card-small-image><%= image_tag(artist[:image_url], alt: artist[:name], class: "card-small-image") %></div>
+        <div class= card-small-text><p><%= artist[:name] %></p></div>
+      </div>
+      <% end %>
+  <% else %>
+    <p>You have no shared artists</p>
+  <% end %>
+</div>
+
+<h2>Your Common Tracks</h2>
+
+<div class="scrolling-wrapper-flexbox">
+  <% if @shared_tracks && @shared_tracks.any? %>
+    <% @shared_tracks.each do |track| %>
+    <div class= "card-small">
+      <div class= card-small-image><%= image_tag(track[:image_url], alt: track[:name], class: "card-small-image") %></div>
+      <div class= card-small-text><p><%= track[:name] %></p></div>
+    </div>
+    <% end %>
+  <% else %>
+    <p>You have no shared tracks</p>
+  <% end %>
+</div>

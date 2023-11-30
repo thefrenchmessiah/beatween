@@ -1,7 +1,4 @@
-// .three-value-wrap {
-//   display: flex;
-//   justify-content: space-between;
-//   width: 100%;
+// This is used in the show of tracks to get the audio features of the track
 
 .value-wrap {
   display: flex;
@@ -41,6 +38,58 @@
       color: $grey-3;
       text-align: center;
       width: 110px;
+    }
+  }
+}
+
+// This is used in the match page to show the stats of the user and the match
+
+.stats-wrap {
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  // margin: 2*$unit;
+
+  h2{
+    text-align: center;
+    font-size: 3*$unit;
+  }
+  
+  .stats{
+    display: flex;
+    // flex-wrap: wrap;
+    justify-content: space-between;
+    // align-items: center;
+    // width: 100%;
+    padding-top: $unit;
+    background-color: $grey-7;
+    border-top: 1px solid $pink-5;
+    border-bottom: 1px solid $pink-5;
+    margin-bottom: 2*$unit;
+    
+    .stat{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding-top: 0;
+     
+      h3{
+        font-size: 3*$unit;
+        font-weight: 700;
+        color: $grey-3;
+        text-align: center;
+        padding-bottom: $unit;
+      }
+
+      p {
+        font-size: 2*$unit;
+        font-weight: 700;
+        color: $grey-3;
+        text-align: center;
+        margin-top: -15px;
+      }
     }
   }
 }

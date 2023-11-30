@@ -1,26 +1,33 @@
-  <div class= "show-image">
-        <% if @user.image_url.present? %>
-      <%= image_tag @user.image_url, alt: @user_name, class: "img-circle-medium" %>
-    <% else %>
-      <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-medium" %>
-    <% end %>
+  <div class= "show-image" style="position:relative">
+    <%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%>
+    <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-medium" if  !@user.image_url.present? %>
 
+      <% if user_signed_in? %>
+        <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
+          <i class="fa-solid fa-right-from-bracket fa-xl" id="logout-icon"></i>
+        <% end %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      <% end %>
   </div>
 
 <h1><%= @user.display_name %></h1>
 
-<%= render "shared/btn_sorting" %>
+<%= render "shared/bar_2btn_sorting" %>
 
 <h2>Top Tracks</h2>
 
 <div class="scrolling-wrapper-flexbox">
   <% if @top_tracks && @top_tracks.any? %>
     <% @top_tracks.each do |track| %>
-    <div class= "card-small">
-      <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
-      <div class= card-small-text><p><%= track.name %></p></div>
-      <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
-    </div>
+    <%# We call it with @track_id[1]  TODO: will do albums first%>
+      <%= link_to track_path(id: track.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do%>
+        <div class= "card-small">
+          <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
+          <div class= card-small-text><p><%= track.name %></p></div>
+          <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
+        </div>
+      <% end %>
     <% end %>
   <% else %>
   <p>There are no top tracks</p>
@@ -31,11 +38,14 @@
 
 <div class="scrolling-wrapper-flexbox">
     <% @top_artists.each do |artist| %>
-      <div class= "card-small">
-        <div class= card-small-image><%= image_tag(artist.images[0]['url'], alt: artist.name, class: "card-small-image") %></div>
-        <div class= card-small-text><p><%= artist.name %></p></div>
-      </div>
+      <%# We call it with @artist_id[1]%>
+      <%= link_to artist_path(id: artist.uri.match(/spotify:artist:(.*)/)[1]), style: "text-decoration: none;" do%>
+        <div class= "card-small">
+          <div class= card-small-image><%= image_tag(artist.images[0]['url'], alt: artist.name, class: "card-small-image") %></div>
+          <div class= card-small-text><p><%= artist.name %></p></div>
+        </div>
       <% end %>
+    <% end %>
 </div>
 
 <p>
