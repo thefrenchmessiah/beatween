@@ -5,4 +5,9 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<%= link_to 'Sign in with Spotify', '/auth/spotify', method: :post %>
+<%= link_to '/auth/spotify', method: :post, style: "text-decoration: none;" do%>
+  <div class="spotify-button">
+    <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %>
+    <span>Sign in with Spotify</span>
+  </div>
+<% end %>
