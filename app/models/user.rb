@@ -17,5 +17,4 @@ class User < ApplicationRecord
   def spotify_user
     RSpotify::User.new(spotify_auth)
   end
-
 end

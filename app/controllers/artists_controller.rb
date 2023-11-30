@@ -3,6 +3,8 @@ class ArtistsController < ApplicationController
   require 'rest-client'
   require 'json'
   require 'erb'
+  require 'uri'
+  require 'net/http'
 
   before_action :get_key
 
@@ -12,7 +14,7 @@ class ArtistsController < ApplicationController
 
     endpoint1 = RestClient.get(
       "https://api.spotify.com/v1/artists/#{@artist_id}",
-      headers={ 'Authorization': "Bearer #{@access_token}" }
+      headers = { 'Authorization': "Bearer #{@access_token}" }
     )
 
     @data1 = JSON.parse(endpoint1)
@@ -22,6 +24,7 @@ class ArtistsController < ApplicationController
     @artist_followers = @data1['followers']['total']
     @artist_image_url = @data1['images'][0]['url']
     @artist_genres = @data1['genres']
+    # @ranking = @ranking["content"]["1"]["artist"]
   end
 
   private
@@ -35,11 +38,10 @@ class ArtistsController < ApplicationController
 
     @access_token = JSON.parse(response.body)['access_token']
   end
-end
 
   def fetch_top_tracks(artist_spotify_id)
     artist = RSpotify::Artist.find(artist_spotify_id)
-    top_tracks = artist.top_tracks('ES') # You can specify a country code
+    top_tracks = artist.top_tracks('ES')
 
     top_tracks_info = top_tracks.map do |track|
       {
@@ -47,6 +49,20 @@ end
         image: track.album.images.any? ? track.album.images.first['url'] : nil
       }
     end
-
     top_tracks_info
   end
+
+  # def ranking
+  #   url = URI("https://billboard-api2.p.rapidapi.com/artist-100?date=2023-11-30&range=1-100")
+
+  #   http = Net::HTTP.new(url.host, url.port)
+  #   http.use_ssl = true
+
+  #   request = Net::HTTP::Get.new(url)
+  #   request["X-RapidAPI-Key"] = '7628b4f9e5msh4326c1a97dab124p1a5949jsne5ca77cd4cba'
+  #   request["X-RapidAPI-Host"] = 'billboard-api2.p.rapidapi.com'
+
+  #   response = http.request(request)
+  #   response = JSON.parse(response.read_body)
+  # end
+end
