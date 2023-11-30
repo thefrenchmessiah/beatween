@@ -52,7 +52,11 @@
   </div>
 </div>
 
-<button>Generate Playlist</button>
+<%= form_with url: user_matches_path, method: :post do %>
+  <!-- Add any form fields here -->
+  <%= submit_tag "Generate Playlist" %>
+<% end %>
+<%# <%= link_to "Generate Playlist", user_matches_path(current_user), method: :post %>
 
 <%# Common stats %>
 
