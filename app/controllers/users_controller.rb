@@ -15,20 +15,22 @@ class UsersController < ApplicationController
   end
 
   def refresh_spotify_token(user)
-    body = {
-      grant_type: 'refresh_token',
-      refresh_token: user.spotify_auth['credentials']['refresh_token'],
-      client_id: ENV['CLIENT_ID'] ,
-      client_secret: ENV['CLIENT_SECRET']
+    callback_proc = Proc.new { |new_access_token, token_lifetime |
+      now = Time.now.utc.to_i  # seconds since 1/1/1970, midnight UTC
+      deadline = now+token_lifetime
+      #puts("new access token will expire at #{Time.at(deadline).utc.to_s}")
+      self.save_new_access_token(new_access_token)
     }
 
-    response = RestClient.post('https://accounts.spotify.com/api/token', body)
-    auth_params = JSON.parse(response.body)
-
-    user.spotify_auth['credentials'].update(
-      'token'=> auth_params['access_token'],
-      'expires_at'=> Time.current + auth_params['expires_in'].seconds
-    )
+    @spotify_user = RSpotify::User.new(
+      {
+        'credentials' => {
+          "token" => user.spotify_auth["access_token"],
+          "refresh_token" => user.spotify_auth["refresh_token"],
+          "access_refresh_callback" => callback_proc
+        } ,
+        'id' => user.spotify_auth["user_id"]
+      })
   end
 
   def show
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
       refresh_spotify_token(current_user)
     end
 
-    @top_artists =  @spotify_user.top_artists
+    @top_artists = @spotify_user.top_artists
     @top_tracks = @spotify_user.top_tracks
 
     # users all time listents

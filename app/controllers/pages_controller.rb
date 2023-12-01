@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
-  before_action :get_key
+  # before_action :get_key
   require 'rspotify/oauth'
   require 'rest-client'
 
@@ -20,20 +20,25 @@ class PagesController < ApplicationController
     if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
       refresh_spotify_token(current_user)
     end
+    ## Actual page functionality
+    query = params[:search].present? ? params[:search][:query] : ""
+    if query.present?
+      @artist_results = RSpotify::Artist.search(query, limit: 10)
+      @track_results = RSpotify::Track.search(query, limit: 20)
+      @album_results = RSpotify::Album.search(query, limit: 10)
+      @playlist_results = RSpotify::Playlist.search(query, limit: 10)
+      ## passing params to the render partial
+      render partial: 'results', locals: {
+        artist_results: @artist_results,
+        track_results: @track_results,
+        album_results: @album_results,
+        playlist_results: @playlist_results
+      },
+      formats: [:html]
+    end
   end
 
   private
-
-  def get_key
-    response = RestClient.post 'https://accounts.spotify.com/api/token',
-    { grant_type: 'client_credentials',
-      client_id: ENV['CLIENT_ID'],
-      client_secret: ENV['CLIENT_SECRET'] },
-    { content_type: :json, accept: :json }
-
-    @access_token = JSON.parse(response.body)['access_token']
-  end
-
 
   def refresh_spotify_token(user)
     body = {
