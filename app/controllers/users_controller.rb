@@ -28,9 +28,10 @@ class UsersController < ApplicationController
           "token" => user.spotify_auth["access_token"],
           "refresh_token" => user.spotify_auth["refresh_token"],
           "access_refresh_callback" => callback_proc
-        } ,
+        },
         'id' => user.spotify_auth["user_id"]
-      })
+      }
+    )
   end
 
   def show
