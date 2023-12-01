@@ -57,7 +57,7 @@ class AlbumsController < ApplicationController
     body = {
       grant_type: 'refresh_token',
       refresh_token: user.spotify_auth['credentials']['refresh_token'],
-      client_id: ENV['CLIENT_ID'] ,
+      client_id: ENV['CLIENT_ID'],
       client_secret: ENV['CLIENT_SECRET']
     }
     response = RestClient.post('https://accounts.spotify.com/api/token', body)
