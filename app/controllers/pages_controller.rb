@@ -5,10 +5,12 @@ class PagesController < ApplicationController
   require 'rest-client'
 
   def home
-    user_top_tracks
-    buddies_top_tracks
+    if current_user.nil? == false && current_user.spotify_auth.nil? == false
+      user_top_tracks
+      buddies_top_tracks
+    end
     top_fifty = RSpotify::Playlist.find("spotifycharts", "37i9dQZEVXbMDoHDwVN2tF")
-    @top_fifty_tracks = top_fifty.tracks(limit:10)
+    @top_fifty_tracks = top_fifty.tracks(limit: 10)
     # endpoint1 = RestClient.get(
     #   "https://api.spotify.com/v1/artists/3ifxHfYz2pqHku0bwx8H5J?si=rRd3U9grQJG3Vgdjn8k0oA",
     #   headers={ 'Authorization': "Bearer #{@access_token}" }
@@ -17,15 +19,23 @@ class PagesController < ApplicationController
   end
 
   def user_top_tracks
-    @user= current_user
-    @user_spot = RSpotify::User.new(@user.spotify_auth)
-    @user_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'short_term')
+    @user = current_user
+    if !@user.nil?
+      if @user.spotify_auth &&
+        @user_spot = RSpotify::User.new(@user.spotify_auth)
+        @user_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'short_term')
+      end
+    end
   end
 
   def buddies_top_tracks
-    @user= current_user
-    @user_spot = RSpotify::User.new(@user.spotify_auth)
-    @buddies_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'long_term')
+    @user = current_user
+    if !@user.nil?
+      if @user.spotify_auth
+        @user_spot = RSpotify::User.new(@user.spotify_auth)
+        @buddies_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'long_term')
+      end
+   end
   end
 
   def discover
