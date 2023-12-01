@@ -1,7 +1,12 @@
 <%= render "shared/navbar" %>
 <%# ---------div for image--------- %>
-  <div class= "show-image">
-    <img class= "img-circle-large-square" src="<%= @album_image %>" alt="">
+  <div class="presentation">
+    <div class= "show-image">
+    <img class= "img-circle-large" src="<%= @album_image %>" alt="">
+  </div>
+  <div class="Artist_name">
+    <p><%= @artist_name %></p>
+  </div>
   </div>
 
 <%# ---------div for buttons--------- %>

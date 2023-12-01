@@ -1,9 +1,24 @@
 
 <%= render "shared/navbar" %>
-<%= render "shared/bar_4btn_filter" %>
 
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div data-controller="switch-button">
+ <%= render "shared/bar_4btn_filter" %>
+
+  <%# ------Render INFO or STATS--------- %>
+  <div data-switch-button-target="albums">
+    <%= render "top_albums" %>
+  </div>
+  <div data-switch-button-target="artists" style="display: none;">
+    <%= render "top_artists" %>
+  </div>
+  <div data-switch-button-target="songs" style="display: none;">
+    <%= render "top_songs" %>
+  </div>
+  <div data-switch-button-target="all" style="display: none;">
+    <%= render "all_items" %>
+  </div>
+</div>
+
 
 <% if current_user.nil? || current_user.spotify_auth.nil?%>
   <%= link_to '/auth/spotify', method: :post, style: "text-decoration: none;" do%>

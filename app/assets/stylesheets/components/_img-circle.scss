@@ -3,6 +3,20 @@
 // <div class= "show-image">
 // <img class= "img-circle-large"
 
+.presentation {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    font-size: 4*$unit;
+    font-weight: 400;
+    color: $pink-3;
+    text-align: right;
+    padding: 0;
+    margin-right: 2*$unit;
+    margin-top: -4*$unit;
+  };
+
 
 .show-image{
     display: flex;
@@ -21,6 +35,7 @@
       margin-left: 15px;
       margin-right: 25px;
     }
+}
 }
 
 .img-circle-large{
