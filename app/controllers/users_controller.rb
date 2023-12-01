@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   require 'rspotify/oauth'
+  require 'rest-client'
 
   def spotify
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
