@@ -1,12 +1,18 @@
 <div class="scrolling-wrapper-flexbox">
-  <% @trending_tracks.each do |track| %>
-    <%= link_to album_path(id: album.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do%>
+  <% @trending_tracks.instance_variable_get(:@tracks_cache).slice(0, 10).each do |track|  %>
+
+      <div class="card-small">
+        <div class= card-small-image>
+          <%= image_tag(track.instance_variable_get(:@album).instance_variable_get(:@images)[0]["url"], alt: track.instance_variable_get(:@name), class: "card-small-image") %>
+        </div>
+        <div class="card-small-text">
+          <p><%= track.instance_variable_get(:@name) %></p>
+        </div>
+        <% track.artists.each do |artist|  %>
+          <div class="card-small-text-small">
+          <%= artist.name %>
+          </div>
         <% end %>
-    <div class= "card-small">
-      <div class= card-small-image><%= image_tag(track.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
-      <div class= card-small-text><p><%= track.name %></p></div>
-      <div class="card-small-text-small"><%= track.artists[0].name %></div>
-    </div>
-    <% end %>
+      </div>
   <% end %>
 </div>
