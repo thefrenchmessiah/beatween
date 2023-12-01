@@ -78,4 +78,16 @@
   <% end %>
 </div>
 
-<h1> <%=  %></h1>
+<div class="qr-code-wrapper">
+  <div class="qr-code">
+    <%= raw @user.generate_qr_code %>
+  </div>
+  <div class="logo">
+    <%= image_tag "beatween-logo.png" %>
+  </div>
+</div>
+
+<h1>hello</h1>
+<h1>hello</h1>
+<h1>hello</h1>
+<h1>hello</h1>
