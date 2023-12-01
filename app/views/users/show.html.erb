@@ -1,8 +1,10 @@
 <div class="divs-column">
   <div class="margin-top-20">
-    <div class="show-image" style="position:relative">
-      <div><%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%></div>
-      <div><% if user_signed_in? %>
+  <div class= "show-image" style="position:relative">
+    <%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%>
+    <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-medium" if  !@user.image_url.present? %>
+
+      <% if user_signed_in? %>
         <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
           <i class="fa-solid fa-right-from-bracket fa-xl" id="logout-icon"></i>
         <% end %>
@@ -30,6 +32,7 @@
         <div class= "card-small">
           <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
           <div class= card-small-text><p><%= track.name %></p></div>
+          <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
         </div>
       <% end %>
     <% end %>
@@ -43,7 +46,7 @@
 <div class="scrolling-wrapper-flexbox">
     <% @top_artists.each do |artist| %>
       <%# We call it with @artist_id[1]%>
-      <%= link_to artist_path(id: artist.uri.match(/spotify:artist:(.*)/)[1]) do%>
+      <%= link_to artist_path(id: artist.uri.match(/spotify:artist:(.*)/)[1]), style: "text-decoration: none;" do%>
         <div class= "card-small">
           <div class= card-small-image><%= image_tag(artist.images[0]['url'], alt: artist.name, class: "card-small-image") %></div>
           <div class= card-small-text><p><%= artist.name %></p></div>
@@ -51,3 +54,47 @@
       <% end %>
     <% end %>
 </div>
+
+<p>
+  <strong>Spotify URL:</strong>
+  <%= link_to @user.spotify_url, @user.spotify_url if @user.spotify_url.present? %>
+</p></h1>
+
+<%# -------------------------- %>
+
+<h1>Total All-Time Minutes Listened: <%= @total_duration_minutes %> minutes</h1>
+
+<h1>Total liked songs: <%= @total_liked_songs %></h1>
+
+<h2>Saved songs</h2>
+
+<div class="scrolling-wrapper-flexbox">
+  <% @saved_tracks.each do |track| %>
+    <div class="card-small">
+      <% album = track.album %>
+      <% if album.images.present? && album.images[0].present? %>
+        <div class="card-small-image">
+          <%= image_tag(album.images[0]['url'], alt: track.name, class: "card-small-image") %>
+        </div>
+      <% else %>
+      <% end %>
+      <div class="card-small-text"><p><%= track.name %></p></div>
+      <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
+
+    </div>
+  <% end %>
+</div>
+
+<div class="qr-code-wrapper">
+  <div class="qr-code">
+    <%= raw @user.generate_qr_code %>
+  </div>
+  <div class="logo">
+    <%= image_tag "beatween-logo.png" %>
+  </div>
+</div>
+
+<h1>hello</h1>
+<h1>hello</h1>
+<h1>hello</h1>
+<h1>hello</h1>
