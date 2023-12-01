@@ -1,3 +1,5 @@
+<div class="divs-column">
+  <div class="margin-top-20">
   <div class= "show-image" style="position:relative">
     <%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%>
     <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-medium" if  !@user.image_url.present? %>
@@ -8,10 +10,15 @@
         <% end %>
       <% else %>
         <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-      <% end %>
+      <% end %></div>
+    </div>
   </div>
-
-<h1><%= @user.display_name %></h1>
+  <div class="divs-center margin-top-10">
+    <div class="icon-profile"><%= link_to "💞", user_matches_path(@user), class:"link-match" %></div>
+    <div><a href="https://open.spotify.com/user/<%= @user.spotify_id %>" class="link-spotify-user">@<%= @user.display_name %></a></div>
+    <div class="icon-profile"><i class="fa-solid fa-plus"></i></div>
+  </div>
+</div>
 
 <%= render "shared/bar_2btn_sorting" %>
 
@@ -48,13 +55,6 @@
     <% end %>
 </div>
 
-<p>
-  <strong>Spotify URL:</strong>
-  <%= link_to @user.spotify_url, @user.spotify_url if @user.spotify_url.present? %>
-</p></h1>
-
-<%# -------------------------- %>
-
 <h1>Total All-Time Minutes Listened: <%= @total_duration_minutes %> minutes</h1>
 
 <h1>Total liked songs: <%= @total_liked_songs %></h1>
@@ -63,19 +63,24 @@
 
 <div class="scrolling-wrapper-flexbox">
   <% @saved_tracks.each do |track| %>
-    <div class="card-small">
-      <% album = track.album %>
-      <% if album.images.present? && album.images[0].present? %>
-        <div class="card-small-image">
-          <%= image_tag(album.images[0]['url'], alt: track.name, class: "card-small-image") %>
-        </div>
-      <% else %>
-      <% end %>
-      <div class="card-small-text"><p><%= track.name %></p></div>
-      <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
-
-    </div>
+    <%= link_to album_path(id: track.album.uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do%>
+      <div class="card-small">
+        <% album = track.album %>
+        <% if album.images.present? && album.images[0].present? %>
+          <div class="card-small-image">
+            <%= image_tag(album.images[0]['url'], alt: track.name, class: "card-small-image") %>
+          </div>
+        <% else %>
+        <% end %>
+        <div class="card-small-text"><p><%= track.name %></p></div>
+        <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
-<h1> <%=  %></h1>
+<%# <div class="qr-code-wrapper">
+  <div class="qr-code">
+    <%= raw @user.generate_qr_code %>
+  <%# </div> %>
+<%# </div> %>

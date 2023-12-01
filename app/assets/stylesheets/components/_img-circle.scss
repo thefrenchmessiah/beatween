@@ -4,6 +4,7 @@
 // <img class= "img-circle-large"
 
 
+
 .show-image{
     display: flex;
     align-items: center;
@@ -29,6 +30,14 @@
     height: 250px;
     object-fit: cover;
     object-position: center;
+}
+
+.img-square-large{
+  border-radius: 5px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .img-circle-medium{

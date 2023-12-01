@@ -8,4 +8,9 @@ class PlaylistsController < ApplicationController
   #   @buddy_recommended_tracks = @spotify_buddy.recommendations.tracks
   #   recommendations = RSpotify::Recommendations.generate(seed_tracks: ['0c6xIDDpzE81m2q797ordA'], seed_artists: ['4NHQUGzhtTLFvgF5SZesLK']
   # end
+  def show
+    @playlist_id = params[:id]
+    @playlist_image = playlist.images[0]['url']
+
+  end
 end

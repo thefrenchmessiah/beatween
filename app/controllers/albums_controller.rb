@@ -43,21 +43,13 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def get_key
-    response = RestClient.post 'https://accounts.spotify.com/api/token',
-    { grant_type: 'client_credentials',
-      client_id: ENV['CLIENT_ID'],
-      client_secret: ENV['CLIENT_SECRET'] },
-    { content_type: :json, accept: :json }
 
-    @access_token = JSON.parse(response.body)['access_token']
-  end
 
   def refresh_spotify_token(user)
     body = {
       grant_type: 'refresh_token',
       refresh_token: user.spotify_auth['credentials']['refresh_token'],
-      client_id: ENV['CLIENT_ID'] ,
+      client_id: ENV['CLIENT_ID'],
       client_secret: ENV['CLIENT_SECRET']
     }
     response = RestClient.post('https://accounts.spotify.com/api/token', body)

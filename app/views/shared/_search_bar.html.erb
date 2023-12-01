@@ -1,0 +1,4 @@
+<%= simple_form_for :search, url: discover_path, method: 'GET', html: { class: 'form-inline' } do |f| %>
+  <%= f.input :query, input_html: {value: ""} %>
+  <%= f.submit "Search", class: "btn btn-primary", data: { action: 'search-bar#search'} %>
+<% end %>

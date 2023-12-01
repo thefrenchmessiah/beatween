@@ -61,8 +61,8 @@ class MatchesController < ApplicationController
   private
 
   def shared_artists
-    generator_top_artists = @spotify_generator.top_artists(limit: 20)
-    buddy_top_artists = @spotify_buddy.top_artists(limit: 20)
+    generator_top_artists = @spotify_generator.top_artists(limit: 50)
+    buddy_top_artists = @spotify_buddy.top_artists(limit: 50)
 
     shared_artist_ids = generator_top_artists.map(&:id) & buddy_top_artists.map(&:id)
     @shared_artists = shared_artist_ids.map do |id|
@@ -76,8 +76,8 @@ class MatchesController < ApplicationController
   end
 
   def shared_tracks
-    generator_top_tracks = @spotify_generator.top_tracks(limit: 20)
-    buddy_top_tracks = @spotify_buddy.top_tracks(limit: 20)
+    generator_top_tracks = @spotify_generator.top_tracks(limit: 50)
+    buddy_top_tracks = @spotify_buddy.top_tracks(limit: 50)
 
     shared_tracks_ids = generator_top_tracks.map(&:id) & buddy_top_tracks.map(&:id)
     @shared_tracks = shared_tracks_ids.map do |id|
