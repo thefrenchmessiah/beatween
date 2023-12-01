@@ -62,7 +62,7 @@ gem "omniauth-rails_csrf_protection"
 # gem 'omniauth-spotify-oauth2', '~> 1.0'
 
 # restclient
-
+gem 'rest-client'
 
 group :development, :test do
   gem "dotenv-rails"

@@ -357,6 +357,7 @@ DEPENDENCIES
   pry-byebug
   puma (>= 5.0)
   rails (~> 7.1.2)
+  rest-client
   rqrcode
   rspotify
   sassc-rails
