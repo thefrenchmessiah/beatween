@@ -1,6 +1,5 @@
-<h1>TOP ARTISTS</h1>
 <div class= "trends">
-  <h2>Albums trending this week: </h2>
+  <h2>Artists trending this week: </h2>
   <div class="scrolling-wrapper-flexbox">
       <% @top_fifty_tracks.each do |play| %>
       <%# We call it with @track_id[1]  TODO: will do albums first%>
@@ -16,7 +15,7 @@
 </div>
 
 <div class= "trends">
-  <h2>Your friends top albums this month: </h2>
+  <h2>Your friends top artists this month: </h2>
   <div class="scrolling-wrapper-flexbox">
     <% @buddies_top_tracks.each do |play| %>
     <%# We call it with @track_id[1]  TODO: will do albums first%>
@@ -32,7 +31,7 @@
 </div>
 
 <div class= "trends">
-  <h2>Your top albums this month: </h2>
+  <h2>Your top artists this month: </h2>
   <div class="scrolling-wrapper-flexbox">
     <% @user_top_tracks.each do |play| %>
     <%# We call it with @track_id[1]  TODO: will do albums first%>
