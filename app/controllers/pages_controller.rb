@@ -6,8 +6,9 @@ class PagesController < ApplicationController
 
   def home
     user_top_tracks
+    buddies_top_tracks
     top_fifty = RSpotify::Playlist.find("spotifycharts", "37i9dQZEVXbMDoHDwVN2tF")
-    @top_fifty_tracks = top_fifty.tracks
+    @top_fifty_tracks = top_fifty.tracks(limit:10)
     # endpoint1 = RestClient.get(
     #   "https://api.spotify.com/v1/artists/3ifxHfYz2pqHku0bwx8H5J?si=rRd3U9grQJG3Vgdjn8k0oA",
     #   headers={ 'Authorization': "Bearer #{@access_token}" }
@@ -18,7 +19,13 @@ class PagesController < ApplicationController
   def user_top_tracks
     @user= current_user
     @user_spot = RSpotify::User.new(@user.spotify_auth)
-    @user_top_tracks = @user_spot.top_tracks(limit: 20)
+    @user_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'short_term')
+  end
+
+  def buddies_top_tracks
+    @user= current_user
+    @user_spot = RSpotify::User.new(@user.spotify_auth)
+    @buddies_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'long_term')
   end
 
   def discover
