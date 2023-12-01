@@ -2,14 +2,14 @@
 // put both btns within a div with class show-sorting
 
 .show-sorting{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 2px solid $grey-3;
-    border-bottom: 2px solid $grey-3;
-    padding: 2*$unit;
-    margin-top: 2*$unit;
-    margin-bottom: 2*$unit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid $grey-3;
+  border-bottom: 2px solid $grey-3;
+  padding: 2*$unit;
+  margin-top: 2*$unit;
+  margin-bottom: 2*$unit;
 }
 
 .btn-flat-long {
