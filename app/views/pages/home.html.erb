@@ -1,10 +1,7 @@
 
 <%= render "shared/navbar" %>
 
-
-
-
-<% if current_user.nil? || current_user.spotify_auth.nil?%>
+<% if current_user.nil? || current_user.spotify_auth.nil? %>
   <%= link_to '/auth/spotify', method: :post, style: "text-decoration: none;" do%>
     <div class="spotify-button">
       <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %>
