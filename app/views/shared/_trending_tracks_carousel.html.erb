@@ -1,0 +1,12 @@
+<div class="scrolling-wrapper-flexbox">
+  <% @trending_tracks.each do |track| %>
+    <%= link_to album_path(id: album.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do%>
+        <% end %>
+    <div class= "card-small">
+      <div class= card-small-image><%= image_tag(track.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
+      <div class= card-small-text><p><%= track.name %></p></div>
+      <div class="card-small-text-small"><%= track.artists[0].name %></div>
+    </div>
+    <% end %>
+  <% end %>
+</div>
