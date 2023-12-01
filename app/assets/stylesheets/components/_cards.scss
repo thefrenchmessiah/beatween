@@ -1,5 +1,11 @@
 
-// ----- card small -------
+// ----- card small & scrolling wrapper-------
+
+.trends {
+  margin-top: 2*$unit;
+  margin-bottom: 2*$unit;
+  align-items: center;
+}
 
 .scrolling-wrapper-flexbox {
 
@@ -66,7 +72,14 @@
 
 // --------card medium ----------
 // note: your card title should not go over 2 lines
-
+.song_title {
+  text-align: center;
+  margin: 0;
+  margin-bottom: -4*$unit;
+  font-size: 4*$unit;
+  font-weight: 400;
+  color: $pink-3;
+}
 .card-medium {
   background-color: $grey-7;
   color: $font-color;
@@ -79,12 +92,12 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 24px;
+  padding: 2*$unit;
 }
 
 .card-medium hr {
   width:  75%;
-  margin: 24px auto;
+  margin: 2*$unit auto;
   border: 0.5px solid $pink-5;
 }
 
