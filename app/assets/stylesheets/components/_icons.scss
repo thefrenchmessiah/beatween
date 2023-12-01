@@ -50,3 +50,33 @@
     height: 20px;
   }
 }
+
+.icon-profile {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-plus {
+  font-size: 30px;
+  text-align: center;
+  margin: 0 10px;
+  color: $pink-5;
+}
+
+.link-match {
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.link-spotify-user {
+  text-decoration: none;
+  color: $pink-1;
+  font-size: 25px;
+}

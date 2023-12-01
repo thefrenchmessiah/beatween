@@ -46,6 +46,14 @@
     object-position: center;
 }
 
+.img-circle-large-square{
+  border-radius: 5px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+}
+
 .img-circle-medium{
   border-radius: 50%;
   width: 170px;

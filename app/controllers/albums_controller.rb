@@ -52,4 +52,19 @@ class AlbumsController < ApplicationController
 
     @access_token = JSON.parse(response.body)['access_token']
   end
+
+  def refresh_spotify_token(user)
+    body = {
+      grant_type: 'refresh_token',
+      refresh_token: user.spotify_auth['credentials']['refresh_token'],
+      client_id: ENV['CLIENT_ID'] ,
+      client_secret: ENV['CLIENT_SECRET']
+    }
+    response = RestClient.post('https://accounts.spotify.com/api/token', body)
+    auth_params = JSON.parse(response.body)
+    user.spotify_auth['credentials'].update(
+      'token'=> auth_params['access_token'],
+      'expires_at'=> Time.current + auth_params['expires_in'].seconds
+    )
+  end
 end

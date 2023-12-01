@@ -13,3 +13,9 @@
     <p>No tracks in the playlist</p>
   <% end %>
 </div>
+
+<button class="spotify-button">
+  <a href="https://open.spotify.com/playlist/<%= @playlist.id%>">
+    <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %><span>Open on Spotify</span>
+  </a>
+</button>
