@@ -63,18 +63,19 @@
 
 <div class="scrolling-wrapper-flexbox">
   <% @saved_tracks.each do |track| %>
-    <div class="card-small">
-      <% album = track.album %>
-      <% if album.images.present? && album.images[0].present? %>
-        <div class="card-small-image">
-          <%= image_tag(album.images[0]['url'], alt: track.name, class: "card-small-image") %>
-        </div>
-      <% else %>
-      <% end %>
-      <div class="card-small-text"><p><%= track.name %></p></div>
-      <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
-
-    </div>
+    <%= link_to album_path(id: track.album.uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do%>
+      <div class="card-small">
+        <% album = track.album %>
+        <% if album.images.present? && album.images[0].present? %>
+          <div class="card-small-image">
+            <%= image_tag(album.images[0]['url'], alt: track.name, class: "card-small-image") %>
+          </div>
+        <% else %>
+        <% end %>
+        <div class="card-small-text"><p><%= track.name %></p></div>
+        <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
+      </div>
+    <% end %>
   <% end %>
 </div>
 

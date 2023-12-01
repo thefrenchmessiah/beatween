@@ -1,0 +1,47 @@
+<div class= "trends">
+  <h2>Albums trending this week: </h2>
+  <div class="scrolling-wrapper-flexbox">
+      <% @top_fifty_tracks.each do |play| %>
+      <%# We call it with @track_id[1]  TODO: will do albums first%>
+        <%= link_to track_path(id: play.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do %>
+          <div class= "card-small">
+            <div class= card-small-image><%= image_tag(play.album.images[0]['url'], alt: play.name, class: "card-small-image")%></div> 
+            <div class= card-small-text><p><%= play.album.name%></p></div>
+            <div class= card-small-text-small><p><%= play.album.artists.map { |artist| artist.name }.join(', ')%></p></div> 
+          </div>
+        <% end %>
+      <% end %>
+  </div>
+</div>
+
+<div class= "trends">
+  <h2>Your friends top albums this month: </h2>
+  <div class="scrolling-wrapper-flexbox">
+    <% @buddies_top_tracks.each do |play| %>
+    <%# We call it with @track_id[1]  TODO: will do albums first%>
+      <%= link_to track_path(id: play.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do %>
+        <div class= "card-small">
+          <div class= card-small-image><%= image_tag(play.album.images[0]['url'], alt: play.name, class: "card-small-image")%></div> 
+          <div class= card-small-text><p><%= play.album.name %></p></div>
+          <div class= card-small-text-small><p><%= play.album.artists.map { |artist| artist.name }.join(', ')%></p></div> 
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class= "trends">
+  <h2>Your top albums this month: </h2>
+  <div class="scrolling-wrapper-flexbox">
+    <% @user_top_tracks.each do |play| %>
+    <%# We call it with @track_id[1]  TODO: will do albums first%>
+      <%= link_to track_path(id: play.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do %>
+        <div class= "card-small">
+          <div class= card-small-image><%= image_tag(play.album.images[0]['url'], alt: play.name, class: "card-small-image")%></div> 
+          <div class= card-small-text><p><%= play.album.name %></p></div>
+          <div class= card-small-text-small><p><%= play.album.artists.map { |artist| artist.name }.join(', ')%></p></div> 
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
