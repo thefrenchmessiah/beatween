@@ -1,31 +1,32 @@
-
 <%= render "shared/navbar" %>
 
-<% if current_user.nil? || current_user.spotify_auth.nil? %>
-  <%= link_to '/auth/spotify', method: :post, style: "text-decoration: none;" do%>
-    <div class="spotify-button">
-      <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %>
-      <span>Sign in with Spotify</span>
-    </div>
+<% if current_user.nil? || current_user.spotify_auth.nil?%>
+  <% if current_user.nil? %>
+    <%= link_to "login", new_user_session_path, class: "nav-link" %>
+  <% else %>
+    <%= link_to '/auth/spotify', method: :post, style: "text-decoration: none;" do%>
+      <div class="spotify-button">
+        <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %>
+        <span>Sign in with Spotify</span>
+      </div>
+    <% end %>
   <% end %>
 <% else %>
   <div data-controller="switch-button">
   <%= render "shared/bar_4btn_filter" %>
 
-    <% if current_user.nil? == false || current_user.spotify_auth.nil? %>
-      <%# ------Render INFO or STATS--------- %>
-      <div data-switch-button-target="albums">
-        <%= render "top_albums" %>
-      </div>
-      <div data-switch-button-target="artists" style="display: none;">
-        <%= render "top_artists" %>
-      </div>
-      <div data-switch-button-target="songs" style="display: none;">
-        <%= render "top_songs" %>
-      </div>
-      <div data-switch-button-target="all" style="display: none;">
-        <%= render "all_items" %>
-      </div>
-    <% end %>
+    <%# ------Render INFO or STATS--------- %>
+    <div data-switch-button-target="albums">
+      <%= render "top_albums" %>
+    </div>
+    <div data-switch-button-target="artists" style="display: none;">
+      <%= render "top_artists" %>
+    </div>
+    <div data-switch-button-target="songs" style="display: none;">
+      <%= render "top_songs" %>
+    </div>
+    <div data-switch-button-target="all" style="display: none;">
+      <%= render "all_items" %>
+    </div>
   </div>
 <% end %>
