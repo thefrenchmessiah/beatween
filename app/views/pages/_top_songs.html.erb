@@ -1,0 +1,18 @@
+<h1>TOP SONGS</h1>
+<h2>Trending this week: </h2>
+<div class="scrolling-wrapper-flexbox">
+    <% @top_fifty_tracks.each do |play| %>
+    <%# We call it with @track_id[1]  TODO: will do albums first%>
+      <%= link_to track_path(id: play.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do %>
+        <div class= "card-small">
+          <div class= card-small-image><%= image_tag(play.album.images[0]['url'], alt: play.name, class: "card-small-image")%></div> 
+          <div class= card-small-text><p><%= play.name %></p></div>
+          <div class= card-small-text-small><p><%= play.album.artists.map { |artist| artist.name }.join(', ')%></p></div> 
+        </div>
+      <% end %>
+    <% end %>
+  
+</div>
+
+  <h2>Your Stats: </h2>
+  

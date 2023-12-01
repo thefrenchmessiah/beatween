@@ -1,18 +1,18 @@
 <%# ---------div for short buttons--------- %>
 <div class="show-filter">
-  <div class= "show-albums">
+  <div class= "show-albums" data-action="click->switch-button#switchToAlbums">
     <button class= "btn-small">Albums</button>
   </div>
 
-  <div class= "show-artists">
+  <div class= "show-artists" data-action="click->switch-button#switchToArtists">
     <button class= "btn-small">Artists</button>
   </div>
 
-  <div class= "show-tracks">
+  <div class= "show-tracks"data-action="click->switch-button#switchToSongs">
     <button class= "btn-small">Tracks</button>
   </div>
   
-  <div class= "show-all">
+  <div class= "show-all"data-action="click->switch-button#switchToAll">
     <button class= "btn-small" >All</button>
   </div>
 </div>
