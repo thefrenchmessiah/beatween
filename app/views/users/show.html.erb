@@ -1,23 +1,22 @@
 <div class="divs-column">
-  <div>
-    <div class= "show-image" style="position:relative">
-      <%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%>
-        <% if user_signed_in? %>
-          <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
-            <i class="fa-solid fa-right-from-bracket fa-xl" id="logout-icon"></i>
-          <% end %>
-        <% else %>
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+  <div class="margin-top-20">
+    <div class="show-image" style="position:relative">
+      <div><%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%></div>
+      <div><% if user_signed_in? %>
+        <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
+          <i class="fa-solid fa-right-from-bracket fa-xl" id="logout-icon"></i>
         <% end %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      <% end %></div>
     </div>
   </div>
-  <div class="divs-center">
-    <div class="icon-profile"><%= image_tag "compatibility_icon_pink.svg" %></div>
+  <div class="divs-center margin-top-10">
+    <div class="icon-profile"><%= link_to "💞", user_matches_path(@user), class:"link-match" %></div>
+    <div><a href="https://open.spotify.com/user/<%= @user.spotify_id %>" class="link-spotify-user">@<%= @user.display_name %></a></div>
     <div class="icon-profile"><i class="fa-solid fa-plus"></i></div>
   </div>
 </div>
-
-<h1><%= @user.display_name %></h1>
 
 <%= render "shared/bar_2btn_sorting" %>
 
@@ -52,34 +51,3 @@
       <% end %>
     <% end %>
 </div>
-<p>
-  <strong>Display Name:</strong>
-  <%= @user.display_name %>
-</p>
-
-<p>
-  <strong>Spotify Auth:</strong>
-  <%= @user.spotify_auth %>
-</p>
-
-<p>
-  <strong>Spotify ID:</strong>
-  <%= @user.spotify_id %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @user.image_url if @user.image_url.present? %>
-</p>
-
-
-
-<p>
-  <strong>Spotify URL:</strong>
-  <%= link_to @user.spotify_url, @user.spotify_url if @user.spotify_url.present? %>
-</p></h1>

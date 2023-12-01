@@ -52,11 +52,14 @@
   </div>
 </div>
 
-<%= form_with url: user_matches_path, method: :post do %>
-  <!-- Add any form fields here -->
-  <%= submit_tag "Generate Playlist" %>
-<% end %>
-<%# <%= link_to "Generate Playlist", user_matches_path(current_user), method: :post %>
+<div class="divs-center">
+  <%= form_with url: user_matches_path, method: :post do %>
+    <button type="submit" class="spotify-button">
+      <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class: "spotify-icon" %>
+      <span>Generate Playlist</span>
+    </button>
+  <% end %>
+</div>
 
 <%# Common stats %>
 
