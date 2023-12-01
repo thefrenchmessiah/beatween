@@ -20,14 +20,19 @@ class PagesController < ApplicationController
 
   def user_top_tracks
     @user = current_user
-    @user_spot = RSpotify::User.new(@user.spotify_auth)
-    @user_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'short_term')
+
+    if @user.spotify_auth
+      @user_spot = RSpotify::User.new(@user.spotify_auth)
+      @user_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'short_term')
+
   end
 
   def buddies_top_tracks
     @user = current_user
-    @user_spot = RSpotify::User.new(@user.spotify_auth)
-    @buddies_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'long_term')
+    if @user.spotify_auth
+      @user_spot = RSpotify::User.new(@user.spotify_auth)
+      @buddies_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'long_term')
+    end
   end
 
   def discover
