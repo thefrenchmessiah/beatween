@@ -1,5 +1,11 @@
 
-// ----- card small -------
+// ----- card small & scrolling wrapper-------
+
+.trends {
+  margin-top: 2*$unit;
+  margin-bottom: 2*$unit;
+  align-items: center;
+}
 
 .scrolling-wrapper-flexbox {
 
