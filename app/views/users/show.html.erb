@@ -41,89 +41,122 @@
     <button class="btn-flat-long"><%= @current_user.following_users.count %> Following</button>
   </div>
 </div>
+<%# ---------div for buttons--------- %>
+<div data-controller="switch-button">
+  <%= render "shared/bar_2btn_sorting" %>
+  <div style="margin-bottom: 70px; padding: 10px 0px;" data-switch-button-target="info">
+    <h2>Top Tracks</h2>
 
-<%= render "shared/bar_2btn_sorting" %>
-
-<div style="margin-bottom: 70px; padding: 10px 0px;">
-  <h2>Top Tracks</h2>
-
-  <div class="scrolling-wrapper-flexbox">
-    <% if @top_tracks && @top_tracks.any? %>
-      <% @top_tracks.each do |track| %>
-      <%# We call it with @track_id[1]  TODO: will do albums first%>
-        <%= link_to track_path(id: track.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do%>
-          <div class= "card-small">
-            <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
-            <div class= card-small-text><p><%= track.name %></p></div>
-            <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
-          </div>
-        <% end %>
-      <% end %>
-    <% else %>
-    <p>There are no top tracks</p>
-    <% end %>
-  </div>
-
-  <h2 class="margin-top-20">Top Artists</h2>
-
-  <div class="scrolling-wrapper-flexbox">
-      <% @top_artists.each do |artist| %>
-        <%# We call it with @artist_id[1]%>
-        <%= link_to artist_path(id: artist.uri.match(/spotify:artist:(.*)/)[1]), style: "text-decoration: none;" do%>
-          <div class= "card-small">
-            <div class= card-small-image><%= image_tag(artist.images[0]['url'], alt: artist.name, class: "card-small-image") %></div>
-            <div class= card-small-text><p><%= artist.name %></p></div>
-          </div>
-        <% end %>
-      <% end %>
-  </div>
-
-  <h2 class="margin-top-20">Saved songs</h2>
-
-  <div class="scrolling-wrapper-flexbox">
-    <% @saved_tracks.each do |track| %>
-      <%= link_to album_path(id: track.album.uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do%>
-        <div class="card-small">
-          <% album = track.album %>
-          <% if album.images.present? && album.images[0].present? %>
-            <div class="card-small-image">
-              <%= image_tag(album.images[0]['url'], alt: track.name, class: "card-small-image") %>
+    <div class="scrolling-wrapper-flexbox">
+      <% if @top_tracks && @top_tracks.any? %>
+        <% @top_tracks.each do |track| %>
+        <%# We call it with @track_id[1]  TODO: will do albums first%>
+          <%= link_to track_path(id: track.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do%>
+            <div class= "card-small">
+              <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
+              <div class= card-small-text><p><%= track.name %></p></div>
+              <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
             </div>
-          <% else %>
           <% end %>
-          <div class="card-small-text"><p><%= track.name %></p></div>
-          <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
-  <h2 class="margin-top-20"><%= @user.display_name.capitalize %>'s Playlists</h2>
-
-  <div class="scrolling-wrapper-flexbox">
-      <% @playlists.each do |playlist| %>
-        <%# We call it with @artist_id[1]%>
-        <%= link_to "https://open.spotify.com/playlist/#{playlist.id}", style: "text-decoration: none;" do %>
-          <div class= "card-small">
-            <div class= "card-small-image"><%= image_tag(playlist.images[0]['url'], alt: playlist.name, class: "card-small-image") %></div>
-            <div class= "card-small-text"><p><%= playlist.name %></p></div>
-          </div>
         <% end %>
+      <% else %>
+      <p>There are no top tracks</p>
       <% end %>
-  </div>
+    </div>
 
-  <h2 class="margin-top-20"><%= @user.display_name.capitalize %>'s Recently Played Tracks</h2>
+    <h2 class="margin-top-20">Top Artists</h2>
 
-  <div class="scrolling-wrapper-flexbox">
-      <% @recently_played.each do |track| %>
-        <%# We call it with @artist_id[1]%>
-        <%= link_to track_path(id: track.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do%>
-          <div class= "card-small">
-            <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
-            <div class= card-small-text><p><%= track.name %></p></div>
+    <div class="scrolling-wrapper-flexbox">
+        <% @top_artists.each do |artist| %>
+          <%# We call it with @artist_id[1]%>
+          <%= link_to artist_path(id: artist.uri.match(/spotify:artist:(.*)/)[1]), style: "text-decoration: none;" do%>
+            <div class= "card-small">
+              <div class= card-small-image><%= image_tag(artist.images[0]['url'], alt: artist.name, class: "card-small-image") %></div>
+              <div class= card-small-text><p><%= artist.name %></p></div>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+
+    <h2 class="margin-top-20">Saved songs</h2>
+
+    <div class="scrolling-wrapper-flexbox">
+      <% @saved_tracks.each do |track| %>
+        <%= link_to album_path(id: track.album.uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do%>
+          <div class="card-small">
+            <% album = track.album %>
+            <% if album.images.present? && album.images[0].present? %>
+              <div class="card-small-image">
+                <%= image_tag(album.images[0]['url'], alt: track.name, class: "card-small-image") %>
+              </div>
+            <% else %>
+            <% end %>
+            <div class="card-small-text"><p><%= track.name %></p></div>
             <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
           </div>
         <% end %>
       <% end %>
+    </div>
+
+    <h2 class="margin-top-20"><%= @user.display_name.capitalize %>'s Playlists</h2>
+
+    <div class="scrolling-wrapper-flexbox">
+        <% @playlists.each do |playlist| %>
+          <%# We call it with @artist_id[1]%>
+          <%= link_to "https://open.spotify.com/playlist/#{playlist.id}", style: "text-decoration: none;" do %>
+            <div class= "card-small">
+              <div class= "card-small-image"><%= image_tag(playlist.images[0]['url'], alt: playlist.name, class: "card-small-image") %></div>
+              <div class= "card-small-text"><p><%= playlist.name %></p></div>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+
+    <h2 class="margin-top-20"><%= @user.display_name.capitalize %>'s Recently Played Tracks</h2>
+
+    <div class="scrolling-wrapper-flexbox">
+        <% @recently_played.each do |track| %>
+          <%# We call it with @artist_id[1]%>
+          <%= link_to track_path(id: track.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do%>
+            <div class= "card-small">
+              <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
+              <div class= card-small-text><p><%= track.name %></p></div>
+              <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+  <div data-switch-button-target="stats" style="display: none;">
+    <div class="container-cards-medium">
+      <div class="card-medium">
+        <div>
+          <h2>Total liked songs:</h2>
+        </div>
+        <hr>
+        <div>
+          <%= @total_liked_songs %>
+        </div>
+      </div>
+      <div class="card-medium">
+        <div>
+          <h2>Total All-Time Minutes Listened:</h2>
+        </div>
+        <hr>
+        <div>
+          <%= number_with_delimiter(@total_duration_minutes) %> minutes    </div>
+      </div>
+    </div>
+    <div class="card-big">
+      <div>
+        <h2>In Depth Data</h2>
+      </div>
+      <hr>
+      <div>
+        <ul>
+          <li>IDK</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>

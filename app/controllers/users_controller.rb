@@ -14,17 +14,18 @@ class UsersController < ApplicationController
   end
 
   def show
+
+
+    if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
+      refresh_spotify_token(current_user)
+    end
+
     @user = User.find(params[:id])
     # Pass this whenever we need to access the user's spotify account
     @spotify_user = RSpotify::User.new(@user.spotify_auth)
     # matches = Match.where(generator: @user)
     # buddies = Match.where(buddy: @user)
     # Check if token is expired
-
-    if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
-      refresh_spotify_token(current_user)
-    end
-
     @top_artists = @spotify_user.top_artists
     @top_tracks = @spotify_user.top_tracks
 
