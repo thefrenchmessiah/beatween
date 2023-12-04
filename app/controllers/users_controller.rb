@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     @user = current_user.link_to_spotify(spotify_user, spotify_auth)
     # Redirects, even if not successfull jsut testingg
     redirect_to user_path(@user)
-
   end
 
   def refresh_spotify_token(user)
@@ -30,7 +29,8 @@ class UsersController < ApplicationController
           "access_refresh_callback" => callback_proc
         } ,
         'id' => user.spotify_auth["user_id"]
-      })
+      }
+    )
   end
 
   def show
@@ -74,6 +74,5 @@ class UsersController < ApplicationController
       offset += limit
     end
     total_count
-
   end
 end
