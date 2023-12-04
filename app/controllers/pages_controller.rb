@@ -37,7 +37,7 @@ class PagesController < ApplicationController
         @user_spot = RSpotify::User.new(@user.spotify_auth)
         @buddies_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'long_term')
       end
-   end
+    end
   end
 
   def discover
@@ -82,7 +82,7 @@ class PagesController < ApplicationController
       @qr_code.save
     end
 
-    @qr_code.generate_qr_code
+    @qr_code.generate_qr_code(current_user)
   end
 
   private
