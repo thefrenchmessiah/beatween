@@ -5,17 +5,19 @@ class PagesController < ApplicationController
   require 'rest-client'
 
   def home
+    @user = current_user
+    # Pass this whenever we need to access the user's spotify account
+    @spotify_user = RSpotify::User.new(@user.spotify_auth)
+    # Check if token is expired
+    if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
+      refresh_spotify_token(current_user)
+    end
     if current_user.nil? == false && current_user.spotify_auth.nil? == false
       user_top_tracks
       buddies_top_tracks
     end
     top_fifty = RSpotify::Playlist.find("spotifycharts", "37i9dQZEVXbMDoHDwVN2tF")
     @top_fifty_tracks = top_fifty.tracks(limit: 10)
-    # endpoint1 = RestClient.get(
-    #   "https://api.spotify.com/v1/artists/3ifxHfYz2pqHku0bwx8H5J?si=rRd3U9grQJG3Vgdjn8k0oA",
-    #   headers={ 'Authorization': "Bearer #{@access_token}" }
-    # )
-    # @data1 = JSON.parse(endpoint1)
   end
 
   def user_top_tracks
@@ -40,6 +42,8 @@ class PagesController < ApplicationController
 
   def discover
     @user = current_user
+    @new_releases = RSpotify::Album.new_releases(limit: 10)
+    @trending_tracks = playlist = RSpotify::Playlist.find('Discover Weekly', '37i9dQZEVXcQ9COmYvdajy')
     # Pass this whenever we need to access the user's spotify account
     @spotify_user = RSpotify::User.new(@user.spotify_auth)
     # Check if token is expired

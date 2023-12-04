@@ -1,0 +1,18 @@
+<div class="scrolling-wrapper-flexbox">
+  <% @trending_tracks.instance_variable_get(:@tracks_cache).slice(0, 10).each do |track|  %>
+
+      <div class="card-small">
+        <div class= card-small-image>
+          <%= image_tag(track.instance_variable_get(:@album).instance_variable_get(:@images)[0]["url"], alt: track.instance_variable_get(:@name), class: "card-small-image") %>
+        </div>
+        <div class="card-small-text">
+          <p><%= track.instance_variable_get(:@name) %></p>
+        </div>
+        <% track.artists.each do |artist|  %>
+          <div class="card-small-text-small">
+          <%= artist.name %>
+          </div>
+        <% end %>
+      </div>
+  <% end %>
+</div>
