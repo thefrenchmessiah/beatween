@@ -13,32 +13,13 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
-  def refresh_spotify_token(user)
-    callback_proc = Proc.new { |new_access_token, token_lifetime |
-      now = Time.now.utc.to_i  # seconds since 1/1/1970, midnight UTC
-      deadline = now+token_lifetime
-      #puts("new access token will expire at #{Time.at(deadline).utc.to_s}")
-      self.save_new_access_token(new_access_token)
-    }
-
-    @spotify_user = RSpotify::User.new(
-      {
-        'credentials' => {
-          "token" => user.spotify_auth["access_token"],
-          "refresh_token" => user.spotify_auth["refresh_token"],
-          "access_refresh_callback" => callback_proc
-        } ,
-        'id' => user.spotify_auth["user_id"]
-      }
-    )
-  end
-
   def show
     @user = User.find(params[:id])
     # Pass this whenever we need to access the user's spotify account
     @spotify_user = RSpotify::User.new(@user.spotify_auth)
     # matches = Match.where(generator: @user)
     # buddies = Match.where(buddy: @user)
+    # Check if token is expired
 
     if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
       refresh_spotify_token(current_user)
@@ -59,6 +40,22 @@ class UsersController < ApplicationController
   end
 
   private
+
+
+  def refresh_spotify_token(user)
+    body = {
+      grant_type: 'refresh_token',
+      refresh_token: user.spotify_auth['credentials']['refresh_token'],
+      client_id: ENV['CLIENT_ID'] ,
+      client_secret: ENV['CLIENT_SECRET']
+    }
+    response = RestClient.post('https://accounts.spotify.com/api/token', body)
+    auth_params = JSON.parse(response.body)
+    user.spotify_auth['credentials'].update(
+      'token'=> auth_params['access_token'],
+      'expires_at'=> Time.current + auth_params['expires_in'].seconds
+    )
+  end
 
   def total_saved_tracks
     limit = 50
