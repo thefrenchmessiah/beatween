@@ -68,6 +68,18 @@ class PagesController < ApplicationController
     end
   end
 
+  def qr_page
+    @user = current_user
+    @qr_code = QrCode.find_by(user: @user)
+
+    if @qr_code.nil?
+      @qr_code = QrCode.new(user: @user)
+      @qr_code.save
+    end
+
+    @qr_code.generate_qr_code
+  end
+
   private
 
   def refresh_spotify_token(user)
