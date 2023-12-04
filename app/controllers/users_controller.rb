@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     @user = current_user.link_to_spotify(spotify_user, spotify_auth)
     # Redirects, even if not successfull jsut testingg
     redirect_to user_path(@user)
-
   end
 
   def show
@@ -79,6 +78,5 @@ class UsersController < ApplicationController
       offset += limit
     end
     total_count
-
   end
 end
