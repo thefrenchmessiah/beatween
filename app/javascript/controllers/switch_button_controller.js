@@ -2,10 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="switch-button"
 export default class extends Controller {
-  static targets = ["info", "stats", "albums", "artists", "songs", "all", "playlists"]
+  static targets = ["info", "stats", "followers", "following", "albums", "artists", "songs", "all", "playlists"]
   connect() {
     console.log("Switch Button Controller connected!");
   }
+
   switchToInfo() {
     console.log("Switching to info");
     this.infoTarget.style.display = "block";
@@ -16,6 +17,18 @@ export default class extends Controller {
     console.log("Switching to stats");
     this.infoTarget.style.display = "none";
     this.statsTarget.style.display = "block";
+  }
+
+  switchToFollowers() {
+    console.log("Switching to info");
+    this.followersTarget.style.display = "block";
+    this.followingTarget.style.display = "none";
+  }
+
+  switchToFollowing() {
+    console.log("Switching to stats");
+    this.followersTarget.style.display = "none";
+    this.followingTarget.style.display = "block";
   }
 
   switchToAlbums() {
