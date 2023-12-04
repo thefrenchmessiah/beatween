@@ -59,4 +59,13 @@ class AlbumsController < ApplicationController
       'expires_at'=> Time.current + auth_params['expires_in'].seconds
     )
   end
+  def get_key
+    response = RestClient.post 'https://accounts.spotify.com/api/token',
+    { grant_type: 'client_credentials',
+      client_id: ENV['CLIENT_ID'],
+      client_secret: ENV['CLIENT_SECRET'] },
+    { content_type: :json, accept: :json }
+
+    @access_token = JSON.parse(response.body)['access_token']
+  end
 end
