@@ -1,12 +1,19 @@
-<%= link_to "New chat", new_user_chatroom %>
-
-<% @chatrooms.each do |chatroom| %>
-  <div class="chatroom">
-    <div class="buddy-profile-photo">
-      <%= image_tag chatroom.buddy.profile_photo %>
-    </div>
-    <div class="chatroom-name">
-      <%= link_to "#{chatroom.name}", user_chatroom_path%>
-    </div>
+<div class= "container col-10">
+  <div class= "new-chat">
+    <%= link_to "New chat", new_user_chatroom_path %>
   </div>
-<% end %>
+
+  <div class = "chat-list">
+    <% @chatrooms.each do |chatroom| %>
+      <div class="chatroom d-flex">
+        <div class="buddy-profile-photo">
+          <%# <%= image_tag chatroom.buddy.image_url%> <%= chatroom.buddy_id%> %>
+        </div>
+
+        <div class="chatroom-name">
+          <%= link_to "#{chatroom.name}", user_chatroom_path(@user.id, chatroom.id)%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

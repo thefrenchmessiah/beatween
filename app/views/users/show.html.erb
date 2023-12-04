@@ -4,7 +4,7 @@
     <%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%>
     <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-medium" if  !@user.image_url.present? %>
       
-      <%= link_to "📨", user_chatrooms_path, class:"link-match" %>
+      <%= link_to "📨", user_chatrooms_path(@user), class:"link-match" %>
     
       <% if user_signed_in? %>
         <%= link_to destroy_user_session_path(@user), data: {turbo_method: :delete} do%>

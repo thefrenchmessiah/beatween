@@ -1,4 +1,7 @@
-<%= simple_form_for @chatroom do |f| %>
+<div class = "new-chat">
+  <%= simple_form_for [@user, @chatroom] do |f| %>
+  <%= f.input :owner_id, as: :hidden, input_html: { value: current_user.id } %>
   <%= f.input :buddy_id, collection: User.all, label: "Your buddy" %>
-  <%= f.button :submit, "Create Chatroom" %>
+  <%= f.button :submit, "Create Chatroom"%>
 <% end %>
+</div>

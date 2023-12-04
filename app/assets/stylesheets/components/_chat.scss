@@ -1,0 +1,33 @@
+.new-chat{
+  margin: 2*$unit auto;
+  width:100%;
+  border-radius: $unit;
+  border: 1px solid $pink-3;
+  text-align: center;
+  padding: $unit;
+  margin-bottom: 1.5*$unit;
+  background-color: $grey-7;
+
+  &:hover{
+    background-color: $pink-2;
+  }
+
+  a{
+    text-decoration: none;
+    color: $pink-5;
+    font-size: 4*$unit;
+    font-weight: bold;
+  }
+}
+
+.chat-list{
+  margin: auto;
+  width: 350px;
+
+  a{
+    text-decoration: none;
+    text-align: center;
+    color: $grey-3;
+    font-size: 4*$unit;
+  }
+}

@@ -1,4 +1,4 @@
-<div class="container chatroom" data-controller="chatroom-subscription"
+<div class="container-chatroom" data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
   <h1>#<%= @chatroom.name %></h1>
 
@@ -8,14 +8,8 @@
     <% end %>
   </div>
 
-  <%= simple_form_for [@chatroom, @message],
-  html: {class: "d-flex"} do |f|
-  %>
-  <%= f.input :content,
-    label: false,
-    placeholder: "Message ##{@chatroom.name}",
-    wrapper_html: {class: "flex-grow-1"}
-  %>
+  <%= simple_form_for [@user, @chatroom, @message],  html: {class: "d-flex"} do |f| %>
+  <%= f.input :content, placeholder: "Type your Message",  wrapper_html: {class: "flex-grow-1"} %>
   <%= f.submit "Send", class: "btn btn-primary mb-3" %>
 <% end %>
 </div>

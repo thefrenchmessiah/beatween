@@ -19,6 +19,10 @@ class User < ApplicationRecord
     RSpotify::User.new(spotify_auth)
   end
 
+  # def display_name
+  #   return @user.display_name if @user.display_name
+  # end
+
   # def generate_qr_code
   #   data = Rails.application.routes.url_helpers.user_url(self, host: 'https://www.beatween.us')
   #   qr = RQRCode::QRCode.new(data, size: 10, level: :h)
