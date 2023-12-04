@@ -1,0 +1,37 @@
+.search-group{
+  display: flex;
+  padding: 10px;
+}
+
+.field-search {
+  flex-basis: 84%;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-right: 1px solid #000;
+  border-radius: 25px 0 0 25px;
+  background-color: $grey-1;
+  &:focus{
+    outline: none;
+  }
+  color: $grey-5;
+}
+
+.btn-icon-search{
+  flex-basis: 16%;
+  background-color: $grey-1;
+  border: 1px solid #ccc;
+  border-radius: 0 25px 25px 0;
+  border-left: none;
+  padding: 10px;
+  cursor: pointer;
+  &:hover{
+    background-color: #ccc;
+  }
+}
+
+.search-results-container{
+  h2{
+    padding-left: 2.2%;
+  }
+}
