@@ -11,14 +11,18 @@ export default class extends Controller {
   search(event) {
     event.preventDefault();
 
-    fetch(this.formTarget.action, {
+    const url = new URL(this.formTarget.action);
+    const params = new URLSearchParams(new FormData(this.formTarget));
+    url.search = params;
+
+    fetch(url, {
       method: this.formTarget.method,
-      body: new FormData(this.formTarget),
       headers: { 'Accept': 'application/json' }
     })
     .then(response => response.text())
     .then(data => {
-      this.mainContentTarget.outerHTML = data;
-
+      console.log(data);
+      this.mainContentTarget.innerHTML = data;
     });
+  }
 }

@@ -1,4 +1,11 @@
-<%= render "shared/search_bar" %>
-<div id="discover-main-content" data-search-bar-target="search-bar.mainContent">
 
+<div data-controller="search-bar">
+  <%= simple_form_for :search, url: discover_path, method: 'GET', html: { class: 'form-inline' }, data: { search_bar_target: 'form' } do |f| %>
+    <%= f.input :query, input_html: {value: ""} %>
+    <%= f.submit "Search", class: "btn btn-primary", data: {action: 'search-bar#search'} %>
+  <% end %>
+
+  <div id="discover-main-content"  data-search-bar-target='mainContent'>
+
+  </div>
 </div>
