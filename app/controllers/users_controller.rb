@@ -67,7 +67,7 @@ class UsersController < ApplicationController
       saved_tracks = @spotify_user.saved_tracks(limit: limit, offset: offset)
       total_count += saved_tracks.count
 
-      break if saved_tracks.count < limit
+      break if saved_tracks.count < limit || total_count >= 500
 
       offset += limit
     end
