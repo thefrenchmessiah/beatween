@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="switch-button"
 export default class extends Controller {
-  static targets = ["info", "stats","albums","artists","songs","all"]
+  static targets = ["info", "stats", "albums", "artists", "songs", "all"]
   connect() {
     console.log("Switch Button Controller connected!");
   }
@@ -17,6 +17,7 @@ export default class extends Controller {
     this.infoTarget.style.display = "none";
     this.statsTarget.style.display = "block";
   }
+
   switchToAlbums() {
     console.log("Switching to Albums");
     this.albumsTarget.style.display = "block";
@@ -32,6 +33,7 @@ export default class extends Controller {
     this.songsTarget.style.display = "none";
     this.allTarget.style.display = "none";
   }
+
   switchToSongs() {
     console.log("Switching to Songs");
     this.albumsTarget.style.display = "none";
