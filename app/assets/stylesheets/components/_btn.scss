@@ -138,3 +138,19 @@
     border: none;
   }
 }
+
+.button-pink-beatween {
+  background-color: $pink-3;
+  color: $grey-8;
+  width: 50%;
+  margin: 16px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  &:hover {
+    background-color: $purple-8;
+    color: $font-color;
+    box-shadow: 2px 2px 3px 1px $pink-5;
+  }
+}
