@@ -2,6 +2,7 @@
 <%= render "shared/navbar" %>
 <%= render "shared/bar_4btn_filter" %>
 
+<div>
   <div class= "show-image">
   <div class="profile-pic-left">
     <img class= "img-circle-small" src="<%= @generator_image %>" alt="">
@@ -14,7 +15,7 @@
   </div>
 
   <div class="profile-pic-right">
-    <img class= "img-circle-small" src="<%= @buddy_image %>" alt=""> 
+    <img class= "img-circle-small" src="<%= @buddy_image %>" alt="">
   </div>
   </div>
 
@@ -49,7 +50,7 @@
       </div>
     </div>
 
-        <div class="stats">
+    <div class="stats">
       <div class="stat">
          <h3>
           <% sum = 0 %>
@@ -76,7 +77,8 @@
         <p>min/day</p>
       </div>
     </div>
-
+  </div>
+</div>
 
 <div class="divs-center">
   <%= form_with url: user_matches_path, method: :post do %>

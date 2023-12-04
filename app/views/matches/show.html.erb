@@ -1,3 +1,24 @@
+<%= render "shared/navbar" %>
+<%= render "shared/bar_4btn_filter" %>
+
+<div>
+  <div class= "show-image">
+  <div class="profile-pic-left">
+    <img class= "img-circle-small" src="<%= @generator_image %>" alt="">
+  </div>
+
+  <div class="comp-icon">
+    <%= image_tag "compatibility_icon_pink.png" %>
+    <h2> <%= @comp_percentage %> %</h2>
+
+  </div>
+
+  <div class="profile-pic-right">
+    <img class= "img-circle-small" src="<%= @buddy_image %>" alt="">
+  </div>
+  </div>
+</div>
+
 <h1><%= @playlist.name %></h2>
 <h3>By <%= @generator.display_name %> & <%= @buddy.display_name %></h3>
 
