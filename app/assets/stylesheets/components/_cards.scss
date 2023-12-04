@@ -13,6 +13,8 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   padding-left: 10px;
+  padding-bottom: 30px;
+  height: 200px;
 
   .card-small {
     margin-right: 10px;
@@ -20,7 +22,6 @@
     flex: 0 0 auto;
   }
 }
-
 
 .card-small {
   width: 130px;
@@ -44,7 +45,7 @@
   color: white;
 
   width: 120px;
-  height: 20px;
+  height: 36px;
 
   font-family: Exo 2;
   font-size: 12px;
@@ -68,7 +69,6 @@
   justify-content: center;
   align-items: center;
 }
-
 
 // --------card medium ----------
 // note: your card title should not go over 2 lines

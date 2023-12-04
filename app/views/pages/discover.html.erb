@@ -1,4 +1,3 @@
-
 <div data-controller="search-bar">
   <%= simple_form_for :search, url: discover_path, method: 'GET', html: { class: 'form-inline' }, data: { search_bar_target: 'form' } do |f| %>
     <%= f.input :query, input_html: {value: ""} %>

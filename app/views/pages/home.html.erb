@@ -13,20 +13,20 @@
   <% end %>
 <% else %>
   <div data-controller="switch-button">
-  <%= render "shared/bar_4btn_filter" %>
+    <%= render "shared/bar_4btn_filter" %>
 
-    <%# ------Render INFO or STATS--------- %>
-    <div data-switch-button-target="albums">
-      <%= render "top_albums" %>
-    </div>
-    <div data-switch-button-target="artists" style="display: none;">
-      <%= render "top_artists" %>
-    </div>
-    <div data-switch-button-target="songs" style="display: none;">
-      <%= render "top_songs" %>
-    </div>
-    <div data-switch-button-target="all" style="display: none;">
-      <%= render "all_items" %>
-    </div>
+      <%# ------Render INFO or STATS--------- %>
+      <div data-switch-button-target="albums">
+        <%= render "top_albums" %>
+      </div>
+      <div data-switch-button-target="artists" style="display: none;">
+        <%= render "top_artists" %>
+      </div>
+      <div data-switch-button-target="songs" style="display: none;">
+        <%= render "top_songs" %>
+      </div>
+      <div data-switch-button-target="all" style="display: none;">
+        <%= render "all_items" %>
+      </div>
   </div>
 <% end %>
