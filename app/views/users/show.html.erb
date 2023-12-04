@@ -55,10 +55,6 @@
     <% end %>
 </div>
 
-<h1>Total All-Time Minutes Listened: <%= @total_duration_minutes %> minutes</h1>
-
-<h1>Total liked songs: <%= @total_liked_songs %>+</h1>
-
 <h2>Saved songs</h2>
 
 <div class="scrolling-wrapper-flexbox">
@@ -79,8 +75,31 @@
   <% end %>
 </div>
 
-<%# <div class="qr-code-wrapper">
-  <div class="qr-code">
-    <%= raw @user.generate_qr_code %>
-  <%# </div> %>
-<%# </div> %>
+<h2><%= @user_name %>'s Playlists</h2>
+
+<div class="scrolling-wrapper-flexbox">
+    <% @playlists.each do |playlist| %>
+      <%# We call it with @artist_id[1]%>
+      <%= link_to "https://open.spotify.com/playlist/#{playlist.id}", style: "text-decoration: none;" do %>
+        <div class= "card-small">
+          <div class= "card-small-image"><%= image_tag(playlist.images[0]['url'], alt: playlist.name, class: "card-small-image") %></div>
+          <div class= "card-small-text"><p><%= playlist.name %></p></div>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+
+<h2><%= @user_name %>'s Recently Played Tracks</h2>
+
+<div class="scrolling-wrapper-flexbox">
+    <% @recently_played.each do |track| %>
+      <%# We call it with @artist_id[1]%>
+      <%= link_to track_path(id: track.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do%>
+        <div class= "card-small">
+          <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
+          <div class= card-small-text><p><%= track.name %></p></div>
+          <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
+        </div>
+      <% end %>
+    <% end %>
+</div>
