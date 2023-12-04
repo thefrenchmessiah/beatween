@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 
   end
 
-
   def show
     @user = User.find(params[:id])
     # Pass this whenever we need to access the user's spotify account
