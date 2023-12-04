@@ -6,10 +6,15 @@ export default class extends Controller {
 
   connect() {
     console.log("search bar connected");
+    this.formTarget.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        this.search();
+      }
+    });
   }
 
   search(event) {
-    event.preventDefault();
+    if (event) event.preventDefault();
 
     const url = new URL(this.formTarget.action);
     const params = new URLSearchParams(new FormData(this.formTarget));
@@ -21,7 +26,6 @@ export default class extends Controller {
     })
     .then(response => response.text())
     .then(data => {
-      console.log(data);
       this.mainContentTarget.innerHTML = data;
     });
   }
