@@ -37,7 +37,7 @@ export default class extends Controller {
     this.artistsTarget.style.display = "none";
     this.songsTarget.style.display = "none";
     this.allTarget.style.display = "none";
-    if (this.playlistsTarget){
+    if (this.hasPlaylistsTarget){
       this.playlistsTarget.style.display = "none";
     }
   }
@@ -45,23 +45,23 @@ export default class extends Controller {
   switchToArtists() {
     console.log("Switching to Artist");
     this.albumsTarget.style.display = "none";
-    this.artistsTarget.style.display = "block";
     this.songsTarget.style.display = "none";
     this.allTarget.style.display = "none";
-    if (this.playlistsTarget){
+    if (this.hasPlaylistsTarget){
       this.playlistsTarget.style.display = "none";
     }
+    this.artistsTarget.style.display = "block";
   }
 
   switchToSongs() {
     console.log("Switching to Songs");
     this.albumsTarget.style.display = "none";
     this.artistsTarget.style.display = "none";
-    this.songsTarget.style.display = "block";
     this.allTarget.style.display = "none";
-    if (this.playlistsTarget){
+    if (this.hasPlaylistsTarget){
       this.playlistsTarget.style.display = "none";
     }
+    this.songsTarget.style.display = "block";
   }
 
   switchToPlaylists() {
@@ -70,7 +70,7 @@ export default class extends Controller {
     this.artistsTarget.style.display = "none";
     this.songsTarget.style.display = "none";
     this.allTarget.style.display = "none";
-    if (this.playlistsTarget){
+    if (this.hasPlaylistsTarget){
       this.playlistsTarget.style.display = "block"; // Display the playlists
     }
   }
@@ -80,8 +80,18 @@ export default class extends Controller {
     this.albumsTarget.style.display = "none";
     this.artistsTarget.style.display = "none";
     this.songsTarget.style.display = "none";
-    if (this.playlistsTarget){
+    if (this.hasPlaylistsTarget){
       this.playlistsTarget.style.display = "none";
+    }
+    this.allTarget.style.display = "block";
+  }
+  switchToAllOfIt() {
+    console.log("Switching to All");
+    this.albumsTarget.style.display = "block";
+    this.artistsTarget.style.display = "block";
+    this.songsTarget.style.display = "block";
+    if (this.hasPlaylistsTarget){
+      this.playlistsTarget.style.display = "block";
     }
     this.allTarget.style.display = "block";
   }
