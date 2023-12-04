@@ -34,23 +34,22 @@
   <% end %>
 
   <% if album_results.present? %>
-  <div class="scrolling-wrapper-flexbox">
-    <% album_results.each do |album| %>
-      <!-- Display album... -->
-      <%= link_to album_path(id: album.uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do%>
-      <div class="card-small">
-        <% if album.images.present? && album.images[0].present? %>
-          <div class="card-small-image">
-            <%= image_tag(album.images[0]['url'], alt: album.name, class: "card-small-image") %>
+    <div class="scrolling-wrapper-flexbox">
+      <% album_results.each do |album| %>
+        <!-- Display album... -->
+        <%= link_to album_path(id: album.uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do%>
+          <div class="card-small">
+            <% if album.images.present? && album.images[0].present? %>
+              <div class="card-small-image">
+                <%= image_tag(album.images[0]['url'], alt: album.name, class: "card-small-image") %>
+              </div>
+            <% end %>
+            <div class="card-small-text"><p><%= album.name %></p></div>
+            <div class= card-small-text-small><p><%= album.artists.map { |artist| artist.name }.join(', ') %></p></div>
           </div>
-        <% else %>
         <% end %>
-        <div class="card-small-text"><p><%= album.name %></p></div>
-        <div class= card-small-text-small><p><%= album.artists.map { |artist| artist.name }.join(', ') %></p></div>
-      </div>
       <% end %>
-    <% end %>
-  </div>
+    </div>
   <% end %>
 
   <% if playlist_results.present? %>
