@@ -1,0 +1,4 @@
+<%= simple_form_for @chatroom do |f| %>
+  <%= f.input :buddy_id, collection: User.all, label: "Your buddy" %>
+  <%= f.button :submit, "Create Chatroom" %>
+<% end %>

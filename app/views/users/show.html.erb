@@ -3,16 +3,20 @@
   <div class= "show-image" style="position:relative">
     <%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%>
     <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-medium" if  !@user.image_url.present? %>
-
+      
+      <%= link_to "📨", user_chatrooms_path, class:"link-match" %>
+    
       <% if user_signed_in? %>
-        <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
+        <%= link_to destroy_user_session_path(@user), data: {turbo_method: :delete} do%>
           <i class="fa-solid fa-right-from-bracket fa-xl" id="logout-icon"></i>
         <% end %>
       <% else %>
         <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-      <% end %></div>
+      <% end %>
+      </div>
     </div>
   </div>
+
   <div class="divs-center margin-top-10">
     <div class="icon-profile"><%= link_to "💞", user_matches_path(@user), class:"link-match" %></div>
     <div><a href="https://open.spotify.com/user/<%= @user.spotify_id %>" class="link-spotify-user">@<%= @user.display_name %></a></div>

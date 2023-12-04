@@ -1,0 +1,12 @@
+<%= link_to "New chat", new_user_chatroom %>
+
+<% @chatrooms.each do |chatroom| %>
+  <div class="chatroom">
+    <div class="buddy-profile-photo">
+      <%= image_tag chatroom.buddy.profile_photo %>
+    </div>
+    <div class="chatroom-name">
+      <%= link_to "#{chatroom.name}", user_chatroom_path%>
+    </div>
+  </div>
+<% end %>
