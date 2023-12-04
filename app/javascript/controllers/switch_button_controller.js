@@ -24,8 +24,8 @@ export default class extends Controller {
     this.artistsTarget.style.display = "none";
     this.songsTarget.style.display = "none";
     this.allTarget.style.display = "none";
-    if (this.playlistTarget){
-      this.playlistTarget.style.display = "none";
+    if (this.playlistsTarget){
+      this.playlistsTarget.style.display = "none";
     }
   }
 
@@ -35,9 +35,10 @@ export default class extends Controller {
     this.artistsTarget.style.display = "block";
     this.songsTarget.style.display = "none";
     this.allTarget.style.display = "none";
-    if (this.playlistTarget){
-      this.playlistTarget.style.display = "none";
-    }  }
+    if (this.playlistsTarget){
+      this.playlistsTarget.style.display = "none";
+    }
+  }
 
   switchToSongs() {
     console.log("Switching to Songs");
@@ -45,17 +46,20 @@ export default class extends Controller {
     this.artistsTarget.style.display = "none";
     this.songsTarget.style.display = "block";
     this.allTarget.style.display = "none";
-    if (this.playlistTarget){
-      this.playlistTarget.style.display = "none";
-    }  }
+    if (this.playlistsTarget){
+      this.playlistsTarget.style.display = "none";
+    }
+  }
 
   switchToPlaylists() {
     console.log("Switching to Playlists");
-    this.albumsTarget.style.display = "block";
     this.albumsTarget.style.display = "none";
     this.artistsTarget.style.display = "none";
     this.songsTarget.style.display = "none";
     this.allTarget.style.display = "none";
+    if (this.playlistsTarget){
+      this.playlistsTarget.style.display = "block"; // Display the playlists
+    }
   }
 
   switchToAll() {
@@ -63,8 +67,9 @@ export default class extends Controller {
     this.albumsTarget.style.display = "none";
     this.artistsTarget.style.display = "none";
     this.songsTarget.style.display = "none";
-    if (this.playlistTarget){
-      this.playlistTarget.style.display = "none";
-    }    this.allTarget.style.display = "block";
+    if (this.playlistsTarget){
+      this.playlistsTarget.style.display = "none";
+    }
+    this.allTarget.style.display = "block";
   }
 }
