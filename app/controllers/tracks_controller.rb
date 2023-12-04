@@ -9,7 +9,6 @@ class TracksController < ApplicationController
   # https://api.spotify.com/v1/browse/categories/{category_id}/playlists
 
   def index
-
   end
 
   def show
@@ -26,7 +25,6 @@ class TracksController < ApplicationController
     @data1 = JSON.parse(endpoint1)
     @data2 = JSON.parse(endpoint2)
 
-
     # ---- song infos ----
     @song_name = @data1['name']
     @song_popularity = @data1['popularity']
@@ -38,8 +36,6 @@ class TracksController < ApplicationController
     @song_instrumentalness = @data2['instrumentalness']
     @song_acousticness = @data2['acousticness']
     @song_loudness = @data2['loudness']
-
-
     @artist_name = @data1['artists'][0]['name']
     # @album_name = @data1['album']['name']
     # @albun_link= @data1['album']['uri']
