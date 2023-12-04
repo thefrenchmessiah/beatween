@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources "users" do
     resources "matches", only: [:index, :show, :create]
+    resources "follows", only: [:index, :create, :destroy]
   end
 
   resources "tracks"
