@@ -6,13 +6,14 @@ class PagesController < ApplicationController
 
   def home
     @user = current_user
-    # Pass this whenever we need to access the user's spotify account
-    @spotify_user = RSpotify::User.new(@user.spotify_auth)
-    # Check if token is expired
-    if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
-      refresh_spotify_token(current_user)
-    end
     if current_user.nil? == false && current_user.spotify_auth.nil? == false
+      # Check if token is expired
+      if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
+        refresh_spotify_token(current_user)
+      end
+
+      # Pass this whenever we need to access the user's spotify account
+      @spotify_user = RSpotify::User.new(@user.spotify_auth)
       user_top_tracks
       buddies_top_tracks
     end
