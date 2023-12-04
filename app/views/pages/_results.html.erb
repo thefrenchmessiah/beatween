@@ -2,6 +2,7 @@
   <p>No results found.</p>
 <% else %>
   <% if artist_results.present? %>
+  <h2>Artists</h2>
   <div class="scrolling-wrapper-flexbox">
     <% artist_results.each do |artist| %>
       <!-- Display artist... -->
@@ -19,6 +20,7 @@
   <% end %>
 
   <% if track_results.present? %>
+  <h2>Tracks</h2>
   <div class="scrolling-wrapper-flexbox">
     <% track_results.each do |track| %>
       <!-- Display track... -->
@@ -34,6 +36,7 @@
   <% end %>
 
   <% if album_results.present? %>
+    <h2>Albums</h2>
     <div class="scrolling-wrapper-flexbox">
       <% album_results.each do |album| %>
         <!-- Display album... -->
@@ -53,16 +56,17 @@
   <% end %>
 
   <% if playlist_results.present? %>
+  <h2>Playlists</h2>
   <div class="scrolling-wrapper-flexbox">
     <% playlist_results.each do |playlist| %>
       <!-- Display playlist... -->
-      <%= link_to playlist_path(id: playlist.uri.match(/spotify:playlist:(.*)/)[1]), style: "text-decoration: none;" do%>
-      <div class="card-small">
-        <% if playlist.images.present? && playlist.images[0].present? %>
-          <div class="card-small-image">
-            <%= image_tag(playlist.images[0]['url'], alt: playlist.name, class: "card-small-image") %>
-          </div>
-        <% else %>
+      <%= link_to "https://open.spotify.com/playlist/#{playlist.id}", style: "text-decoration: none;" do %>
+        <div class="card-small">
+          <% if playlist.images.present? && playlist.images[0].present? %>
+            <div class="card-small-image">
+              <%= image_tag(playlist.images[0]['url'], alt: playlist.name, class: "card-small-image") %>
+            </div>
+          <% else %>
         <% end %>
         <div class="card-small-text"><p><%= playlist.name %></p></div>
         <div class= card-small-text-small><p>By <%= playlist.owner.display_name %></p></div>
