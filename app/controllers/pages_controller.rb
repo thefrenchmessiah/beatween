@@ -44,8 +44,13 @@ class PagesController < ApplicationController
     @user = current_user
     @new_releases = RSpotify::Album.new_releases(limit: 10)
     @trending_tracks = playlist = RSpotify::Playlist.find('Discover Weekly', '37i9dQZEVXcQ9COmYvdajy')
-    # Pass this whenever we need to access the user's spotify account
+    @recommendations = []
     @spotify_user = RSpotify::User.new(@user.spotify_auth)
+    recommended_tracks = [@spotify_user.top_tracks(limit: 5, time_range: 'medium_term')]
+    track_ids = recommended_tracks.flat_map do |tracks|
+      tracks.map(&:id)
+    end
+    @recommendations << RSpotify::Recommendations.generate(limit: 10, seed_tracks: track_ids)
     # Check if token is expired
     if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
       refresh_spotify_token(current_user)

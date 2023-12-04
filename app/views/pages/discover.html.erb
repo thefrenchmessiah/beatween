@@ -1,16 +1,21 @@
 <div data-controller="search-bar">
   <%= simple_form_for :search, url: discover_path, method: 'GET', html: { class: 'form-inline' }, data: { search_bar_target: 'form' } do |f| %>
-    <%= f.input :query, input_html: {value: ""} %>
-    <%= f.submit "Search", class: "btn btn-primary", data: {action: 'search-bar#search'} %>
+    <div class="search-group">
+      <%= f.text_field :query, value: "", placeholder:"Search", class: "field-search" %>
+      <button type="submit" class="btn-icon-search" data-action="search-bar#search">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
   <% end %>
 
   <div id="discover-main-content"  data-search-bar-target='mainContent'>
-    <%# Here goes all the content inside the discover page, aside from the search bar %>
     <h2>New Releases</h2>
     <%= render "shared/new_releases_carousel" %>
 
-    <h2>Trending songs</h2>
-    <%= render "shared/trending_tracks_carousel" %>
-    <br>
+  <h2>Trending songs</h2>
+  <%= render "shared/trending_tracks_carousel" %>
+  <br>
+  <h2>Based on your listens</h2>
+  <%= render "shared/because_you_liked_carousel" %>
   </div>
 </div>

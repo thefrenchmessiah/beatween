@@ -1,8 +1,17 @@
-<h1><%= @artist_name %></h1>
-
+<h1 class="div-center"><%= @artist_name %></h1>
+<div>
   <div class= "show-image">
-    <%= image_tag @artist_image_url, alt: @artist_name,  class: "img-circle-large" %>
+    <%= image_tag @artist_image_url, alt: @artist_name,  class: "img-circle-large", style:"width: 250px;" %>
   </div>
+
+  <div class="divs-center margin-top-10">
+    <button class="spotify-button">
+      <a href="https://open.spotify.com/artist/<%= @artist_id %>", style="text-decoration: none; color: #0E0000;">
+        <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %><span> Open on Spotify</span>
+      </a>
+    </button>
+  </div>
+</div>
   <%# ---------div for buttons--------- %>
 <div data-controller="switch-button">
   <%= render "shared/bar_2btn_sorting" %>

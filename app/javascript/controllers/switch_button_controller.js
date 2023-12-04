@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="switch-button"
 export default class extends Controller {
-  static targets = ["info", "stats", "albums", "artists", "songs", "all"]
+  static targets = ["info", "stats", "albums", "artists", "songs", "all", "playlists"]
   connect() {
     console.log("Switch Button Controller connected!");
   }
@@ -24,6 +24,9 @@ export default class extends Controller {
     this.artistsTarget.style.display = "none";
     this.songsTarget.style.display = "none";
     this.allTarget.style.display = "none";
+    if (this.playlistsTarget){
+      this.playlistsTarget.style.display = "none";
+    }
   }
 
   switchToArtists() {
@@ -32,6 +35,9 @@ export default class extends Controller {
     this.artistsTarget.style.display = "block";
     this.songsTarget.style.display = "none";
     this.allTarget.style.display = "none";
+    if (this.playlistsTarget){
+      this.playlistsTarget.style.display = "none";
+    }
   }
 
   switchToSongs() {
@@ -40,6 +46,20 @@ export default class extends Controller {
     this.artistsTarget.style.display = "none";
     this.songsTarget.style.display = "block";
     this.allTarget.style.display = "none";
+    if (this.playlistsTarget){
+      this.playlistsTarget.style.display = "none";
+    }
+  }
+
+  switchToPlaylists() {
+    console.log("Switching to Playlists");
+    this.albumsTarget.style.display = "none";
+    this.artistsTarget.style.display = "none";
+    this.songsTarget.style.display = "none";
+    this.allTarget.style.display = "none";
+    if (this.playlistsTarget){
+      this.playlistsTarget.style.display = "block"; // Display the playlists
+    }
   }
 
   switchToAll() {
@@ -47,6 +67,9 @@ export default class extends Controller {
     this.albumsTarget.style.display = "none";
     this.artistsTarget.style.display = "none";
     this.songsTarget.style.display = "none";
+    if (this.playlistsTarget){
+      this.playlistsTarget.style.display = "none";
+    }
     this.allTarget.style.display = "block";
   }
 }

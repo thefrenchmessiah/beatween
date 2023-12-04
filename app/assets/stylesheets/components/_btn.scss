@@ -101,3 +101,40 @@
     border: none;
   }
 }
+
+// ---------- for filter 5 btns ----------
+.show-filter-5btn{
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid $grey-7;
+  border-bottom: 2px solid $grey-7;
+  padding: $unit $unit $unit 1.5*$unit;
+  margin-top: 2*$unit;
+  margin-bottom: 2*$unit;
+}
+.btn-small-5{
+  padding: $unit;
+  height: 6*$unit;
+  width: 15*$unit;
+  margin-right: $unit;
+  font-size: 3*$unit;
+  border-radius: 2*$unit;
+  color: $grey-7;
+  background-color: $buttons-color;
+  border: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $grey-3;
+    border: 1px solid $grey-3;
+  }
+  &:active {
+    background-color: $pink-5;
+    border: 1px solid $grey-3;
+  }
+  &:disabled {
+    background-color: $grey-3;
+    border: none;
+  }
+}
