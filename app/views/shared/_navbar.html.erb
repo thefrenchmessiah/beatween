@@ -4,15 +4,15 @@
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "beatween-logo.png" %>
     <% end %>
-    
+
     <div class="beatween-name">
       <H1>Beatween</H1>
     </div>
 
-
+  <%= link_to qr_page_path, id: "qr-code" do %>
     <div id="qr-code">
       <i class="fa-solid fa-qrcode"></i>
     </div>
+  <% end %>
   </div>
-</div>
 </div>
