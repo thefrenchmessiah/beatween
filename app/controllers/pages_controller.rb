@@ -82,7 +82,7 @@ class PagesController < ApplicationController
       @qr_code.save
     end
 
-    @qr_code.generate_qr_code
+    @qr_code.generate_qr_code(current_user)
   end
 
   private

@@ -1,7 +1,7 @@
 class QrCode < ApplicationRecord
   belongs_to :user
 
-  def generate_qr_code
+  def generate_qr_code(current_user)
     data = Rails.application.routes.url_helpers.user_url(current_user.id, host: 'https://beatween-e1ae66294d65.herokuapp.com')
     qr = RQRCode::QRCode.new(data, size: 10, level: :h)
 
