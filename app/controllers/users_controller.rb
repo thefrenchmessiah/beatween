@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 
   end
 
-
   def show
     @user = User.find(params[:id])
     # Pass this whenever we need to access the user's spotify account
@@ -68,7 +67,7 @@ class UsersController < ApplicationController
       saved_tracks = @spotify_user.saved_tracks(limit: limit, offset: offset)
       total_count += saved_tracks.count
 
-      break if saved_tracks.count < limit
+      break if saved_tracks.count < limit || total_count >= 500
 
       offset += limit
     end
