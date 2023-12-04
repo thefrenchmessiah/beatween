@@ -7,13 +7,15 @@
       </button>
     </div>
   <% end %>
-  <div id="discover-main-content"  data-search-bar-target='mainContent' data-controller="switch-button">
-    <%# Here goes all the content inside the discover page, aside from the search bar %>
+
+  <div id="discover-main-content"  data-search-bar-target='mainContent'>
     <h2>New Releases</h2>
     <%= render "shared/new_releases_carousel" %>
 
-    <h2>Trending songs</h2>
-    <%= render "shared/trending_tracks_carousel" %>
-    <br>
+  <h2>Trending songs</h2>
+  <%= render "shared/trending_tracks_carousel" %>
+  <br>
+  <h2>Based on your listens</h2>
+  <%= render "shared/because_you_liked_carousel" %>
   </div>
 </div>

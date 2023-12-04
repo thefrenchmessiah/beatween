@@ -1,0 +1,15 @@
+<div class="scrolling-wrapper-flexbox">
+  <% if @recommendations.present? %>
+    <% @recommendations[0].tracks.each do |track| %>
+      <%= link_to track_path(id: track.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do %>
+        <div class= "card-small">
+          <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
+          <div class= card-small-text><p><%= track.name %></p></div>
+          <div class="card-small-text-small"><%= track.artists[0].name %></div>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>No recommendations available.</p>
+  <% end %>
+</div>
