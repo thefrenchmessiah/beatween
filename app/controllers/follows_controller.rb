@@ -1,14 +1,14 @@
 class FollowsController < ApplicationController
 
   def index
+    @user = User.find(params[:user_id]) # pag que se visita
     @follows = Follow.all
-    @user = User.find(params[:user_id])
   end
 
   def create
     @follow = Follow.new
     @follow.follower = current_user
-    @follow.followed = User.find(params[:user_id])
+    @follow.followed = User.find(params[:user_id]) # pagina del usuario que se quiere seguir
     if @follow.save
       redirect_to user_path(:user_id)
     else
