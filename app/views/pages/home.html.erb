@@ -1,32 +1,34 @@
-<%= render "shared/navbar" %>
-
-<% if current_user.nil? || current_user.spotify_auth.nil?%>
-  <% if current_user.nil? %>
-    <%= link_to "login", new_user_session_path, class: "nav-link" %>
-  <% else %>
-    <%= link_to '/auth/spotify', method: :post, style: "text-decoration: none;" do%>
+<% if user_signed_in? && current_user.spotify_auth.nil? %>
+  <%= render "shared/navbar" %>
+  <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 95vh;">
+    <div class="divs-center margin-bottom-10"><%= image_tag "beatween-logo.png", style:"width: 300px; height: 300px;"%></div>
+    <div><%= link_to '/auth/spotify', method: :post, style: "text-decoration: none;" do %>
       <div class="spotify-button">
-        <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %>
+        <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class: "spotify-icon" %>
         <span>Sign in with Spotify</span>
       </div>
-    <% end %>
-  <% end %>
+    <% end %></div>
+  </div>
+<% elsif current_user.nil? %>
+  <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 95vh;">
+    <div class="divs-center margin-bottom-10"><%= image_tag "beatween-logo.png", style:"width: 300px; height: 300px;"%></div>
+    <div class="divs-center"><button class="spotify-button", style="box-shadow: 0 0 5px #F6A7F3;"><%= link_to "Sign In", new_user_session_path, class:"spotify-button", style:"text-decoration: none; color: #1D1D1D; font-weight: 500;" %></button></div>
+  </div>
 <% else %>
+  <%= render "shared/navbar" %>
   <div data-controller="switch-button">
     <%= render "shared/bar_4btn_filter" %>
-
-      <%# ------Render INFO or STATS--------- %>
-      <div data-switch-button-target="albums">
-        <%= render "top_albums" %>
-      </div>
-      <div data-switch-button-target="artists" style="display: none;">
-        <%= render "top_artists" %>
-      </div>
-      <div data-switch-button-target="songs" style="display: none;">
-        <%= render "top_songs" %>
-      </div>
-      <div data-switch-button-target="all" style="display: none;">
-        <%= render "all_items" %>
-      </div>
+    <div data-switch-button-target="albums">
+      <%= render "top_albums" %>
+    </div>
+    <div data-switch-button-target="artists" style="display: none;">
+      <%= render "top_artists" %>
+    </div>
+    <div data-switch-button-target="songs" style="display: none;">
+      <%= render "top_songs" %>
+    </div>
+    <div data-switch-button-target="all" style="display: none;">
+      <%= render "all_items" %>
+    </div>
   </div>
 <% end %>
