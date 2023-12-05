@@ -3,10 +3,12 @@ class PagesController < ApplicationController
   # before_action :get_key
   require 'rspotify/oauth'
   require 'rest-client'
+  require 'base64'
+  require 'uri'
 
   def home
     @user = current_user
-    if current_user.nil? == false && current_user.spotify_auth.nil? == false
+    if @user && @user.spotify_auth && @user.spotify_auth['credentials'] && @user.spotify_auth['credentials']['token']
       # Check if token is expired
       if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
         refresh_spotify_token(current_user)
@@ -89,17 +91,24 @@ class PagesController < ApplicationController
   private
 
   def refresh_spotify_token(user)
-    body = {
+    body = URI.encode_www_form({
       grant_type: 'refresh_token',
-      refresh_token: user.spotify_auth['credentials']['refresh_token'],
-      client_id: ENV['CLIENT_ID'] ,
-      client_secret: ENV['CLIENT_SECRET']
-    }
-    response = RestClient.post('https://accounts.spotify.com/api/token', body)
-    auth_params = JSON.parse(response.body)
-    user.spotify_auth['credentials'].update(
-      'token'=> auth_params['access_token'],
-      'expires_at'=> Time.current + auth_params['expires_in'].seconds
-    )
+      refresh_token: user.spotify_auth['credentials']['refresh_token']
+    })
+
+    auth_header = "Basic " + Base64.strict_encode64("#{ENV['CLIENT_ID']}:#{ENV['CLIENT_SECRET']}")
+
+    begin
+      response = RestClient.post('https://accounts.spotify.com/api/token', body, {Authorization: auth_header, content_type: 'application/x-www-form-urlencoded'})
+      auth_params = JSON.parse(response.body)
+
+      user.spotify_auth['credentials'].update(
+        'token'=> auth_params['access_token'],
+        'expires_at'=> Time.current + auth_params['expires_in'].seconds
+      )
+    rescue RestClient::BadRequest => e
+      puts "Bad request error: #{e.message}"
+      puts "Response body: #{e.response.body}"
+    end
   end
 end
