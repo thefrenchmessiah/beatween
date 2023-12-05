@@ -8,8 +8,8 @@
     <% end %>
   </div>
 
-  <%= simple_form_for [@user, @chatroom, @message],  html: {class: "d-flex"} do |f| %>
-  <%= f.input :content, placeholder: "Type your Message",  wrapper_html: {class: "flex-grow-1"} %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <%= simple_form_for [@user, @chatroom, @message] do |f| %>
+  <%= f.input :content, placeholder: "Type your Message" %>
+  <%= f.submit "Send", class: "btn-medium-pink" %>
 <% end %>
 </div>

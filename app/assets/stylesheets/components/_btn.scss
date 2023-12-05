@@ -101,3 +101,27 @@
     border: none;
   }
 }
+
+.btn-medium-pink{
+  padding: $unit;
+  height: 6*$unit;
+  width: 100%;
+  margin: 0;
+  font-size: 3*$unit;
+  border-radius: $unit;
+  color: $grey-7;
+  background-color: $pink-3;
+
+  &:hover {
+    background-color: $grey-3;
+    border: 1px solid $grey-3;
+  }
+  &:active {
+    background-color: $pink-5;
+    border: 1px solid $grey-3;
+  }
+  &:disabled {
+    background-color: $grey-3;
+    border: none;
+  }
+}
