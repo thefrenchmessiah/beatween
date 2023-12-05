@@ -9,6 +9,10 @@
     <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
       <i class="fa-solid fa-right-from-bracket fa-xl" id="logout-icon"></i>
     <% end %>
+    <%= link_to user_matches_path(@user), style:"text-align: center; text-decoration: none; margin: 0 10px;" do %>
+        <%= image_tag 'compatibility_icon_pink.png', alt: 'Compatibility Icon', class: "icon-profile", id: "match-icon" %>
+    <% end %>
+
   <% else %>
     <%= link_to "Login", new_user_session_path, class: "nav-link" %>
   <% end %>
@@ -24,7 +28,6 @@
 </div>
 <%# ---------Match - @User - Follow-btn --------- %>
   <div class="divs-center margin-top-10">
-    <div class="icon-profile"><%= link_to image_tag("compatibility_icon_pink.svg", style:"width: 60px; height: 60px;"), user_matches_path(@user), style:"text-align: center; text-decoration: none; margin: 0 10px;" %></div>
     <div><a href="https://open.spotify.com/user/<%= @user.spotify_id %>" class="link-spotify-user">@<%= @user.display_name %></a></div>
     <div class="icon-profile">
       <% if current_user.following_users.include?(@user) %>

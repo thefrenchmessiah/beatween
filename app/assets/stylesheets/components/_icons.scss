@@ -16,6 +16,23 @@
     color: $grey-3;
   }
 }
+#match-icon{
+  position: absolute;
+  top: 2%;
+  left: 18%;
+  border: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: $pink-5;
+  }
+  &:active {
+    color: $pink-5;
+  }
+  &:disabled {
+    color: $grey-3;
+  }
+}
 .spotify-button{
   padding: $unit;
   height: 6*$unit;
