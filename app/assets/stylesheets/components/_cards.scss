@@ -81,11 +81,8 @@
   color: $pink-3;
 }
 .card-medium {
-  background-color: $grey-7;
   color: $font-color;
-  border: 1px solid $pink-6;
-  border-radius: 5px;
-  width: 40*$unit;
+  padding: 2*$unit $unit;
   margin: 3*$unit $unit;
   display: flex;
   flex-direction: column;
@@ -95,21 +92,15 @@
   padding: 2*$unit;
 }
 
-.card-medium hr {
-  width:  75%;
-  margin: 2*$unit auto;
-  border: 0.5px solid $pink-5;
+.card-medium h2 {
+  text-align: center;
+  text-decoration: underline;
 }
 
 // ----- card big -------
 
 .card-big {
-  background-color: $grey-7;
   color: $font-color;
-  border: 1px solid $pink-6;
-  border-radius: $unit;
-  width: 83*$unit;
-  height: 50*$unit;
   margin: 0 auto;
   padding: 2*$unit $unit;
   display: flex;
@@ -117,14 +108,10 @@
   justify-content: center;
   align-items: center;
   text-align: justify;
+  opacity: 0.5;
 }
 
 .card-big h2 {
   text-align: center;
-}
-
-.card-big hr {
-  width:  75%;
-  margin: 3.5*$unit auto;
-  border: 0.5px solid $pink-5;
+  text-decoration: underline;
 }
