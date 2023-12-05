@@ -80,6 +80,24 @@
   font-weight: 400;
   color: $pink-3;
 }
+
+.album-title {
+  text-align: center;
+  margin: 0;
+  margin-bottom: -4*$unit;
+  font-size: 4*$unit;
+  font-weight: 400;
+  color: $pink-3;
+}
+
+.artist-title {
+  text-align: center;
+  margin: 0;
+  margin-bottom: -4*$unit;
+  font-size: 4*$unit;
+  font-weight: 400;
+  color: $pink-3;
+}
 .card-medium {
   color: $font-color;
   padding: 2*$unit $unit;
@@ -89,12 +107,12 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 2*$unit;
 }
 
 .card-medium h2 {
   text-align: center;
   text-decoration: underline;
+  padding: 10*$unit $unit;
 }
 
 // ----- card big -------

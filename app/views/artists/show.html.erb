@@ -1,4 +1,4 @@
-<h1 class="div-center"><%= @artist_name %></h1>
+<%= render "shared/navbar" %>
 <div>
   <div class= "show-image">
     <%= image_tag @artist_image_url, alt: @artist_name,  class: "img-circle-large", style:"width: 250px;" %>
@@ -15,6 +15,7 @@
   <%# ---------div for buttons--------- %>
 <div data-controller="switch-button">
   <%= render "shared/bar_2btn_sorting" %>
+  <p class="div-center artist-title"><%= @artist_name %></p>
   <%# ------Render INFO or STATS--------- %>
   <div data-switch-button-target="info">
     <%= render "artist-info" %>

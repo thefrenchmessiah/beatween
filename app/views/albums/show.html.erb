@@ -1,3 +1,4 @@
+<%= render "shared/navbar" %>
 <%# ---------div for image--------- %>
 <div>
   <div class= "show-image">
@@ -24,6 +25,7 @@
     </div>
   </div>
 
+  <p class="album-title"><%= @album_name %></p>
   <div data-switch-button-target="info">
     <%= render "shared/card_medium_info" %>
 

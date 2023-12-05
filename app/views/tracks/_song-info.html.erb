@@ -5,13 +5,11 @@
 <div class="container-cards-medium">
   <div class="card-medium">
     <h2> Popularity: </h2>
-    <hr>
     <p><%= @song_popularity %>/100</p>
   </div>
-  
+
   <div class="card-medium">
     <h2> Duration: </h2>
-    <hr>
     <p><%= @song_length.to_f %>min</p>
   </div>
 </div>
@@ -19,7 +17,6 @@
 <%# ------div for audio features----- %>
 <div class= "card-big">
   <h2>Audio Features</h2>
-  <hr>
   <div class="value-wrap">
     <%# <div class="scrolling-wrapper-flexbox"> %>
       <div class= "value">
@@ -39,7 +36,7 @@
         <p> Acoustic: </p>
         <h3><%= @song_acousticness %></h3>
       </div>
-      
+
       <div class="value">
         <h2><i class="fa-regular fa-comment"></i></h2>
         <p> Instrumental: </p>
