@@ -6,8 +6,6 @@ class TracksController < ApplicationController
 
   before_action :get_key
 
-  # https://api.spotify.com/v1/browse/categories/{category_id}/playlists
-
   def index
   end
 
