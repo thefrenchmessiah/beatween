@@ -35,7 +35,40 @@
       </div>
     </div>
   </div>
+  <% if user_signed_in? %>
+    <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
+      <i class="fa-solid fa-right-from-bracket fa-xl" id="logout-icon"></i>
+    <% end %>
+    <%= link_to user_matches_path(@user), style:"text-align: center; text-decoration: none; margin: 0 10px;" do %>
+        <%= image_tag 'compatibility_icon_pink.png', alt: 'Compatibility Icon', class: "icon-profile", id: "match-icon" %>
+    <% end %>
+
+  <% else %>
+    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+  <% end %>
 </div>
+
+<%# ---------Match - @User - Follow-btn --------- %>
+  <div class="divs-center margin-top-10">
+    <div><a href="https://open.spotify.com/user/<%= @user.spotify_id %>" class="link-spotify-user">@<%= @user.display_name %></a></div>
+    <div class="icon-profile">
+      <% if current_user.following_users.include?(@user) %>
+        <button style="background-color: transparent; width: 50px; height: 50px; border: none; border-radius: 10px">
+          <%= link_to '-',
+            user_follow_path(@user, params[:id]), style:"text-decoration: none; font-weight: 700; font-size: 30px; color: #F064E9;",
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"
+            }
+          %>
+        </button>
+      <% else %>
+        <%= simple_form_for [@user, @follow] do |f| %>
+          <%= f.submit "+" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%# ---------div for follow/ing--------- %>
 
 <div class="show-sorting">
   <div>
