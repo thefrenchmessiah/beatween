@@ -6,6 +6,25 @@
       <%= render "shared/bar_5btn_filter" %>
     </div>
    <div class="search-results-container">
+
+        <% if track_results.present? %>
+      <div  data-switch-button-target="songs">
+        <h2>Tracks</h2>
+        <div class="scrolling-wrapper-flexbox">
+          <% track_results.each do |track| %>
+            <!-- Display track... -->
+            <%= link_to track_path(id: track.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do%>
+              <div class= "card-small">
+                <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
+                <div class= card-small-text><p><%= track.name %></p></div>
+                <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
     <div data-switch-button-target="artists">
       <h2>Artists</h2>
       <div class="scrolling-wrapper-flexbox">
@@ -25,23 +44,6 @@
     </div>
     <% end %>
 
-    <% if track_results.present? %>
-      <div  data-switch-button-target="songs">
-        <h2>Tracks</h2>
-        <div class="scrolling-wrapper-flexbox">
-          <% track_results.each do |track| %>
-            <!-- Display track... -->
-            <%= link_to track_path(id: track.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do%>
-              <div class= "card-small">
-                <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
-                <div class= card-small-text><p><%= track.name %></p></div>
-                <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
 
     <% if album_results.present? %>
       <div data-switch-button-target="albums">
