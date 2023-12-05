@@ -2,92 +2,92 @@
   <p>No results found.</p>
 <% else %>
   <div data-controller="switch-button">
-    <div>
-      <%= render "shared/bar_5btn_filter" %>
-    </div>
-    <div class="search-results-container">
-      <% if artist_results.present? %>
-        <div data-switch-button-target="artists">
-          <h2>Artists</h2>
-          <div class="scrolling-wrapper-flexbox">
-            <% artist_results.each do |artist| %>
-              <!-- Display artist... -->
-              <%= link_to artist_path(id: artist.uri.match(/spotify:artist:(.*)/)[1]), style: "text-decoration: none;" do%>
-                <div class= "card-small">
-                  <% if artist.images.present? && artist.images[0].present? %>
-                    <%= image_tag(artist.images[0]['url'], alt: artist.name, class: "card-small-image") %>
-                  <% else %>
-                    <%= image_tag('https://placekitten.com/200/200', alt: 'Placeholder Image', class: "card-small-image") %>
-                  <% end %>          <div class= card-small-text><p><%= artist.name %></p></div>
-                </div>
-              <% end %>
+  <div>
+    <%= render "shared/bar_5btn_filter" %>
+  </div>
+  <div class="search-results-container">
+    <% if track_results.present? %>
+      <div  data-switch-button-target="songs">
+        <h2>Tracks</h2>
+        <div class="scrolling-wrapper-flexbox">
+          <% track_results.each do |track| %>
+            <!-- Display track... -->
+            <%= link_to track_path(id: track.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do%>
+              <div class= "card-small">
+                <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
+                <div class= card-small-text><p><%= track.name %></p></div>
+                <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
+              </div>
             <% end %>
-          </div>
+          <% end %>
         </div>
-      <% end %>
-
-      <% if track_results.present? %>
-        <div data-switch-button-target="songs">
-          <h2>Tracks</h2>
-          <div class="scrolling-wrapper-flexbox">
-            <% track_results.each do |track| %>
-              <!-- Display track... -->
-              <%= link_to track_path(id: track.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do%>
-                <div class= "card-small">
-                  <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
-                  <div class= card-small-text><p><%= track.name %></p></div>
-                  <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-
-      <% if album_results.present? %>
-        <div data-switch-button-target="albums">
-          <h2>Albums</h2>
-          <div class="scrolling-wrapper-flexbox">
-            <% album_results.each do |album| %>
-              <!-- Display album... -->
-              <%= link_to album_path(id: album.uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do%>
-                <div class="card-small">
-                  <% if album.images.present? && album.images[0].present? %>
-                    <div class="card-small-image">
-                      <%= image_tag(album.images[0]['url'], alt: album.name, class: "card-small-image") %>
-                    </div>
-                  <% end %>
-                  <div class="card-small-text"><p><%= album.name %></p></div>
-                  <div class= card-small-text-small><p><%= album.artists.map { |artist| artist.name }.join(', ') %></p></div>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-
-      <% if playlist_results.present? %>
-        <div data-switch-button-target="playlists">
-          <h2>Playlists</h2>
-          <div class="scrolling-wrapper-flexbox" data-switch-button-target="playlists">
-            <% playlist_results.each do |playlist| %>
-              <!-- Display playlist... -->
-              <%= link_to "https://open.spotify.com/playlist/#{playlist.id}", style: "text-decoration: none;" do %>
-                <div class="card-small">
-                  <% if playlist.images.present? && playlist.images[0].present? %>
-                    <div class="card-small-image">
-                      <%= image_tag(playlist.images[0]['url'], alt: playlist.name, class: "card-small-image") %>
-                    </div>
-                  <% end %>
-                  <div class="card-small-text"><p><%= playlist.name %></p></div>
-                  <div class= card-small-text-small><p>By <%= playlist.owner.display_name %></p></div>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-      <div data-switch-button-target="all">
+      </div>
+    <% end %>
+    
+  <% if artist_results.present? %>
+    <div data-switch-button-target="artists">
+      <h2>Artists</h2>
+      <div class="scrolling-wrapper-flexbox">
+        <% artist_results.each do |artist| %>
+          <!-- Display artist... -->
+          <%= link_to artist_path(id: artist.uri.match(/spotify:artist:(.*)/)[1]), style: "text-decoration: none;" do%>
+            <div class= "card-small">
+            <% if artist.images.present? && artist.images[0].present? %>
+              <%= image_tag(artist.images[0]['url'], alt: artist.name, class: "card-small-image") %>
+            <% else %>
+              <%= image_tag('https://placekitten.com/200/200', alt: 'Placeholder Image', class: "card-small-image") %>
+            <% end %>          <div class= card-small-text><p><%= artist.name %></p></div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
+  <% end %>
+
+    <% if album_results.present? %>
+      <div data-switch-button-target="albums">
+        <h2>Albums</h2>
+        <div class="scrolling-wrapper-flexbox">
+          <% album_results.each do |album| %>
+            <!-- Display album... -->
+            <%= link_to album_path(id: album.uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do%>
+              <div class="card-small">
+                <% if album.images.present? && album.images[0].present? %>
+                  <div class="card-small-image">
+                    <%= image_tag(album.images[0]['url'], alt: album.name, class: "card-small-image") %>
+                  </div>
+                <% end %>
+                <div class="card-small-text"><p><%= album.name %></p></div>
+                <div class= card-small-text-small><p><%= album.artists.map { |artist| artist.name }.join(', ') %></p></div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+    <% end %>
+
+    <% if playlist_results.present? %>
+      <div data-switch-button-target="playlists">
+        <h2>Playlists</h2>
+        <div class="scrolling-wrapper-flexbox" data-switch-button-target="playlists">
+          <% playlist_results.each do |playlist| %>
+            <!-- Display playlist... -->
+            <%= link_to "https://open.spotify.com/playlist/#{playlist.id}", style: "text-decoration: none;" do %>
+              <div class="card-small">
+                <% if playlist.images.present? && playlist.images[0].present? %>
+                  <div class="card-small-image">
+                    <%= image_tag(playlist.images[0]['url'], alt: playlist.name, class: "card-small-image") %>
+                  </div>
+                <% end %>
+                  <div class="card-small-text"><p><%= playlist.name %></p></div>
+                  <div class= card-small-text-small><p>By <%= playlist.owner.display_name %></p></div>
+                  </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div data-switch-button-target="all">
+    </div>
+  </div>
 <% end %>

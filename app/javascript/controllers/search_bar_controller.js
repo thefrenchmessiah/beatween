@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = [ "form", "mainContent" ]
 
   connect() {
-    console.log("search bar connected");
+    // console.log("search bar connected");
     this.formTarget.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
         this.search();
