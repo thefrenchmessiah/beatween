@@ -3,7 +3,7 @@ class AlbumsController < ApplicationController
   require 'json'
   require 'rspotify/oauth'
 
-  before_action :get_key, :get_user
+  before_action :get_user
 
   def show
     @album_id = params[:id]
