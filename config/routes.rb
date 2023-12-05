@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/auth/spotify/callback', to: 'users#spotify'
   get '/users/spotify', as: 'spotify_login'
   get 'discover', to: 'pages#discover'
-
+  get 'qr_page', to: 'pages#qr_page', as: :qr_page
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
@@ -13,15 +13,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources "users" do
-    resources "matches", only: [:index, :show, :create] do
-    end 
-  end
+  post '/chatrooms/:id', to: 'chatrooms#create', as: 'create_chatroom'
 
   resources "users", only: :show do
     resources "chatrooms" do 
       resources "messages"
     end
+    resources "matches", only: [:index, :show, :create]
+    resources "follows", only: [:index, :create, :destroy]
   end
 
   resources "tracks"

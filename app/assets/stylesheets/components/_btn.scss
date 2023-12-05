@@ -111,6 +111,20 @@
   border-radius: $unit;
   color: $grey-7;
   background-color: $pink-3;
+}
+// ---------- for filter 5 btns ----------
+
+.btn-small-5{
+  padding: $unit;
+  height: 6*$unit;
+  width: 15*$unit;
+  margin-right: $unit;
+  font-size: 3*$unit;
+  border-radius: 2*$unit;
+  color: $grey-7;
+  background-color: $buttons-color;
+  border: none;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
     background-color: $grey-3;
@@ -124,4 +138,23 @@
     background-color: $grey-3;
     border: none;
   }
+}
+
+.button-pink-beatween {
+  background-color: $pink-3;
+  color: $grey-8;
+  width: 50%;
+  margin: 16px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  &:hover {
+    background-color: $purple-8;
+    color: $font-color;
+    box-shadow: 2px 2px 3px 1px $pink-5;
+  }
+}
+.button-active {
+  background-color: $pink-5;
 }

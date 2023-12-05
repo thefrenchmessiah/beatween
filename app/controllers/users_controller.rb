@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   require 'rspotify/oauth'
   require 'rest-client'
+  require 'base64'
+  require 'uri'
 
   def spotify
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
@@ -11,22 +13,20 @@ class UsersController < ApplicationController
     @user = current_user.link_to_spotify(spotify_user, spotify_auth)
     # Redirects, even if not successfull jsut testingg
     redirect_to user_path(@user)
-
   end
 
-
   def show
+
+    if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
+      refresh_spotify_token(current_user)
+    end
+
     @user = User.find(params[:id])
     # Pass this whenever we need to access the user's spotify account
     @spotify_user = RSpotify::User.new(@user.spotify_auth)
     # matches = Match.where(generator: @user)
     # buddies = Match.where(buddy: @user)
     # Check if token is expired
-
-    if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
-      refresh_spotify_token(current_user)
-    end
-
     @top_artists = @spotify_user.top_artists
     @top_tracks = @spotify_user.top_tracks
 
@@ -39,24 +39,40 @@ class UsersController < ApplicationController
 
     # users saved tracks
     @saved_tracks = @spotify_user.saved_tracks(limit: 10)
+
+    # users playlists
+    @playlists = @spotify_user.playlists(limit: 10)
+
+    # users recently played
+    @recently_played = @spotify_user.recently_played(limit: 10)
+
+    # follows
+    @follow = Follow.new
   end
 
   private
 
 
   def refresh_spotify_token(user)
-    body = {
+    body = URI.encode_www_form({
       grant_type: 'refresh_token',
-      refresh_token: user.spotify_auth['credentials']['refresh_token'],
-      client_id: ENV['CLIENT_ID'] ,
-      client_secret: ENV['CLIENT_SECRET']
-    }
-    response = RestClient.post('https://accounts.spotify.com/api/token', body)
-    auth_params = JSON.parse(response.body)
-    user.spotify_auth['credentials'].update(
-      'token'=> auth_params['access_token'],
-      'expires_at'=> Time.current + auth_params['expires_in'].seconds
-    )
+      refresh_token: user.spotify_auth['credentials']['refresh_token']
+    })
+
+    auth_header = "Basic " + Base64.strict_encode64("#{ENV['CLIENT_ID']}:#{ENV['CLIENT_SECRET']}")
+
+    begin
+      response = RestClient.post('https://accounts.spotify.com/api/token', body, {Authorization: auth_header, content_type: 'application/x-www-form-urlencoded'})
+      auth_params = JSON.parse(response.body)
+
+      user.spotify_auth['credentials'].update(
+        'token'=> auth_params['access_token'],
+        'expires_at'=> Time.current + auth_params['expires_in'].seconds
+      )
+    rescue RestClient::BadRequest => e
+      puts "Bad request error: #{e.message}"
+      puts "Response body: #{e.response.body}"
+    end
   end
 
   def total_saved_tracks
@@ -68,11 +84,10 @@ class UsersController < ApplicationController
       saved_tracks = @spotify_user.saved_tracks(limit: limit, offset: offset)
       total_count += saved_tracks.count
 
-      break if saved_tracks.count < limit
+      break if saved_tracks.count < limit || total_count >= 100
 
       offset += limit
     end
     total_count
-
   end
 end

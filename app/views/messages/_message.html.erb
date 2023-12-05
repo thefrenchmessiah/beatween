@@ -1,7 +1,20 @@
-<div id="message-<%= message.id %>">
+
+<% if message.user.id == @user.id %>
+<div id="message-user">
   <small>
     <strong><%= message.user.display_name %></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
   </small>
   <p><%= message.content %></p>
 </div>
+
+<% else %>
+<h1>BUDDY MESSAGE</h1>
+<div id="message-buddy">
+  <small>
+    <strong><%= message.user.display_name %></strong>
+    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  </small>
+  <p><%= message.content %></p>
+</div>
+<% end %>

@@ -1,0 +1,12 @@
+<%= render "shared/navbar" %>
+<div class="qr-code-page-wrapper">
+
+  <div class="qr-code-wrapper">
+    <div class="qr-code">
+      <%= raw @qr_code.generate_qr_code(@user) %>
+      <%= image_tag "beatween-logo.png", class: "qr-code-logo" %>
+    </div>
+  </div>
+
+  <div><a href="https://open.spotify.com/user/<%= @user.spotify_id %>" class="link-spotify-user">@<%= @user.display_name %></a></div>
+</div>

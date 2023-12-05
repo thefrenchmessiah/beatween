@@ -1,5 +1,12 @@
 class User < ApplicationRecord
   require "rqrcode"
+
+  has_many :follows, foreign_key: :follower_id, class_name: "Follow"
+  has_many :following_users, through: :follows, source: :followed
+
+  has_many :followed_by, foreign_key: :followed_id, class_name: "Follow"
+  has_many :followers, through: :followed_by, source: :follower
+
   has_one :qr_code
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

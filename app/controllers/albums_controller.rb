@@ -3,7 +3,7 @@ class AlbumsController < ApplicationController
   require 'json'
   require 'rspotify/oauth'
 
-  before_action :get_key, :get_user
+  before_action :get_user
 
   def show
     @album_id = params[:id]
@@ -58,5 +58,14 @@ class AlbumsController < ApplicationController
       'token'=> auth_params['access_token'],
       'expires_at'=> Time.current + auth_params['expires_in'].seconds
     )
+  end
+  def get_key
+    response = RestClient.post 'https://accounts.spotify.com/api/token',
+    { grant_type: 'client_credentials',
+      client_id: ENV['CLIENT_ID'],
+      client_secret: ENV['CLIENT_SECRET'] },
+    { content_type: :json, accept: :json }
+
+    @access_token = JSON.parse(response.body)['access_token']
   end
 end
