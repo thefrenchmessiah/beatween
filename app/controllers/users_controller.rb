@@ -16,8 +16,6 @@ class UsersController < ApplicationController
   end
 
   def show
-
-
     if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
       refresh_spotify_token(current_user)
     end

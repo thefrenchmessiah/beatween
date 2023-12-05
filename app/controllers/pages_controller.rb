@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 
   def home
     @user = current_user
-    if current_user.nil? == false && current_user.spotify_auth.nil? == false
+    if @user && @user.spotify_auth && @user.spotify_auth['credentials'] && @user.spotify_auth['credentials']['token']
       # Check if token is expired
       if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
         refresh_spotify_token(current_user)
