@@ -12,6 +12,16 @@
       <% end %></div>
     </div>
   </div>
+<%# ---------div for follow/ing--------- %>
+<div class="show-sorting">
+  <div>
+    <%= button_to "#{@user.followed_by.count} Followers", user_follows_path(@user), class: "btn-flat-long", style: "text-decoration: none;", method: :get %>
+  </div>
+  <div>
+    <%= button_to "#{@user.following_users.count} Following", user_follows_path(@user), class: "btn-flat-long", style: "text-decoration: none;", method: :get %>
+  </div>
+</div>
+<%# ---------Match - @User - Follow-btn --------- %>
   <div class="divs-center margin-top-10">
     <div class="icon-profile"><%= link_to image_tag("compatibility_icon_pink.svg", style:"width: 60px; height: 60px;"), user_matches_path(@user), style:"text-align: center; text-decoration: none; margin: 0 10px;" %></div>
     <div><a href="https://open.spotify.com/user/<%= @user.spotify_id %>" class="link-spotify-user">@<%= @user.display_name %></a></div>
@@ -33,14 +43,6 @@
   </div>
 </div>
 
-<div style="display: flex">
-  <div>
-    <button class="btn-flat-long"><%= @current_user.followed_by.count %> Followers</button>
-  </div>
-  <div>
-    <button class="btn-flat-long"><%= @current_user.following_users.count %> Following</button>
-  </div>
-</div>
 <%# ---------div for buttons--------- %>
 <div data-controller="switch-button">
   <%= render "shared/bar_2btn_sorting" %>
