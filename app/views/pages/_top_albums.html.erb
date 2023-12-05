@@ -3,7 +3,7 @@
   <div class="scrolling-wrapper-flexbox">
       <% @top_fifty_tracks.each do |play| %>
       <%# We call it with @track_id[1]  TODO: will do albums first%>
-        <%= link_to track_path(id: play.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do %>
+        <%= link_to album_path(id: play.album.uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do %>
           <div class= "card-small">
             <div class= card-small-image"><%= image_tag(play.album.images[0]['url'], alt: play.name, class: "card-small-image")%></div>
             <div class= card-small-text><p><%= play.album.name%></p></div>
@@ -16,13 +16,13 @@
   <div class="trends margin-top-20">
     <h2 style="color: #FFB9FC; font-weight: 500; margin-bottom: 10px; margin-left: 10px;">Your friends are playing</h2>
     <div class="scrolling-wrapper-flexbox">
-      <% @buddies_top_tracks.each do |play| %>
+      <% @friends_top_albums.each do |play| %>
       <%# We call it with @track_id[1]  TODO: will do albums first%>
-        <%= link_to track_path(id: play.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do %>
+        <%= link_to album_path(id: play[0].uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do %>
           <div class= "card-small">
-            <div class= card-small-image><%= image_tag(play.album.images[0]['url'], alt: play.name, class: "card-small-image")%></div>
-            <div class= card-small-text><p><%= play.album.name %></p></div>
-            <div class= card-small-text-small><p><%= play.album.artists.map { |artist| artist.name }.join(', ')%></p></div>
+            <div class= card-small-image><%= image_tag(play[0].images[0]['url'], alt: play[0].name, class: "card-small-image")%></div>
+            <div class= card-small-text><p><%= play[0].name %></p></div>
+            <div class= card-small-text-small><p><%= @friend_spotify.display_name %></p></div>
           </div>
         <% end %>
       <% end %>
@@ -32,13 +32,13 @@
   <div class="trends margin-top-20">
     <h2 style="color: #FFB9FC; font-weight: 500; margin-bottom: 10px; margin-left: 10px;">Your vinyl records recently</h2>
     <div class="scrolling-wrapper-flexbox">
-      <% @user_top_tracks.each do |play| %>
+      <% @user_top_albums.each do |play| %>
       <%# We call it with @track_id[1]  TODO: will do albums first%>
-        <%= link_to track_path(id: play.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do %>
+        <%= link_to album_path(id: play.uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do %>
           <div class= "card-small">
-            <div class= card-small-image><%= image_tag(play.album.images[0]['url'], alt: play.name, class: "card-small-image")%></div>
-            <div class= card-small-text><p><%= play.album.name %></p></div>
-            <div class= card-small-text-small><p><%= play.album.artists.map { |artist| artist.name }.join(', ')%></p></div>
+            <div class= card-small-image><%= image_tag(play.images[0]['url'], alt: play.name, class: "card-small-image")%></div>
+            <div class= card-small-text><p><%= play.name %></p></div>
+            <div class= card-small-text-small><p><%= play.artists.map { |artist| artist.name }.join(', ')%></p></div>
           </div>
         <% end %>
       <% end %>

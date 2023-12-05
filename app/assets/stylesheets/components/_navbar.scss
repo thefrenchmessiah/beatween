@@ -10,13 +10,15 @@
 }
 
 .container-navbar {
+  position: fixed; // this sticks the navbar to the top of the page
+  top: 0; // this makes sure the navbar is at the top of the page
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: center;
   width: 100%;
-  height: 12*$unit;
-  padding: 0 2*$unit;
+  height: 81px;
+  padding: 0 2* $unit;
   background: $background-color;
 }
 

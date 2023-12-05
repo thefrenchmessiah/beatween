@@ -16,29 +16,40 @@ class PagesController < ApplicationController
 
       # Pass this whenever we need to access the user's spotify account
       @spotify_user = RSpotify::User.new(@user.spotify_auth)
-      user_top_tracks
-      buddies_top_tracks
+      user_top_listens
+      friends_top_listens
     end
     top_fifty = RSpotify::Playlist.find("spotifycharts", "37i9dQZEVXbMDoHDwVN2tF")
     @top_fifty_tracks = top_fifty.tracks(limit: 10)
   end
 
-  def user_top_tracks
+  def user_top_listens
     @user = current_user
     if !@user.nil?
       if @user.spotify_auth &&
         @user_spot = RSpotify::User.new(@user.spotify_auth)
         @user_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'short_term')
+        @user_top_artists = @user_spot.top_artists(limit: 10, time_range: 'short_term')
+        @user_top_albums = @user_spot.saved_albums(limit: 10)
       end
     end
   end
 
-  def buddies_top_tracks
+  def friends_top_listens
     @user = current_user
     if !@user.nil?
       if @user.spotify_auth
-        @user_spot = RSpotify::User.new(@user.spotify_auth)
-        @buddies_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'long_term')
+        @user = current_user
+        @followed_users = @user.following_users
+        @friends_top_tracks = []
+        @friends_top_artists = []
+        @friends_top_albums = []
+        @followed_users.each do |user|
+          @friend_spotify = RSpotify::User.find(user.spotify_id)
+          @friends_top_tracks << @friend_spotify.top_tracks(limit: 1, time_range: 'short_term')
+          @friends_top_artists << @friend_spotify.top_artists(limit: 1, time_range: 'short_term')
+          @friends_top_albums << @friend_spotify.saved_albums(limit: 1)
+        end
       end
     end
   end
