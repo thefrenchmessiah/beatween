@@ -1,18 +1,43 @@
 .new-chat{
-  margin: 2*$unit auto;
-  width:100%;
-  border-radius: $unit;
-  border: 1px solid $pink-3;
-  text-align: center;
-  padding: $unit;
-  margin-bottom: 1.5*$unit;
-  background-color: transparent;
+//   margin: 2*$unit auto;
+//   width:100%;
+//   border-radius: $unit;
+//   border: 1px solid $pink-3;
+//   text-align: center;
+//   padding: $unit;
+//   margin-bottom: 1.5*$unit;
+//   background-color: transparent;
+  // .fa-regular{
+  //   position: fixed;
+  //   text-align: right;
+  //   margin-right: 5*$unit;
+  //   bottom: 0;
+  //   height: 100px;
+  //   width: 100px;
+  //   font-weight: 600;
+  //   font-size: 5*$unit;
+  //   background: transparent;
+  //   padding-bottom: 100px;  
+  // }
 
   a{
     text-decoration: none;
     color: $pink-3;
-    font-size: 4*$unit;
-    font-weight: bold;
+  //   font-size: 4*$unit;
+  //   font-weight: bold;
+  width:100%;
+  position: fixed;
+  text-align: right;
+  margin-right: 5*$unit;
+  bottom: 0;
+  padding-bottom: 100px;
+  .fa-message{
+    height: 300px;
+    width: 300px;
+    font-weight: 600;
+    font-size: 5*$unit;
+    background: transparent;
+  }
   }
 }
 // this is for the index page to list all the existing chatrooms
@@ -82,6 +107,15 @@
     font-size: 5*$unit;
     
   }
+
+  .not-found{
+    display: block;
+    align-items: center;
+    text-align: center;
+    margin-top: 10*$unit;
+    font-size: 5*$unit;
+    color: $pink-3;
+  }
 }
 
 // this is for the search bar on the new chatroom page
@@ -117,6 +151,7 @@
   width: 100%;
   padding: $unit;
   margin: $unit auto;
+  color: $pink-3;
   p {
     color: $pink-5;
     font-size: 4*$unit;
@@ -135,14 +170,13 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: transparent; /* or any color you prefer */
-  padding-bottom: 100px;
+  background: transparent;
+  padding-bottom: 100px;  
 
     #new_message{
       background-color: transparent;
       border: none;
       padding: $unit;
-      margin: auto 2*$unit;
       font-size: 3*$unit;
       color: $grey-3;
     }
@@ -167,9 +201,13 @@
 
   .message-user{
     justify-content: right;
+    width: 70%;
+    border: 1px solid $pink-3;
+
   }
 
   .message-buddy{
     justify-content: left;
+    width: 70%;
   }
 }

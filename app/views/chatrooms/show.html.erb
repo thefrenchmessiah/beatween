@@ -10,6 +10,7 @@
       <%= render "messages/message", message: message %>
     <% end %>
   </div>
+</div>
 
   <div class="sticky-form">
     <%= simple_form_for [@user, @chatroom, @message] do |f| %>
@@ -17,4 +18,3 @@
       <%= f.submit "Send", class: "btn-medium-pink" %>
     <% end %>
   </div>
-</div>

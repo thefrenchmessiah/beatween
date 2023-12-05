@@ -1,7 +1,4 @@
 <%= render "shared/navbar" %>
-  <div class= "new-chat">
-    <%= link_to "New chat", new_user_chatroom_path %>
-  </div>
 
   <div class="chatroom-list-container">
     <% @chatrooms.each do |chatroom| %>
@@ -14,6 +11,12 @@
           <%= link_to "#{chatroom.name}", user_chatroom_path(@user.id, chatroom.id)%>
         </div>
       </div>
+    <% end %>
+  </div>
+
+  <div class= "new-chat">    
+    <%= link_to new_user_chatroom_path do %>
+    <i class="fa-regular fa-message"></i>
     <% end %>
   </div>
 

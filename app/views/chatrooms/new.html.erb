@@ -11,18 +11,27 @@
 <% end %>
 
 
-<div class="buddy-list-container">
-  <% @users.each do |following| %>
-  <div class="buddy-list">
-    <div class= "buddy-profile-photo">
-      <%= button_to user_chatrooms_path(chatroom: { owner_id: current_user.id, buddy_id: following.id }), method: :post, class:"chatroom-following" do %>
-      <%= image_tag following.image_url, class:"img-circle-small" if following.image_url.present?%>
-      <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-small" if  !following.image_url.present? %>
-    </div>
-    <div class="buddy-name">
-      <%= following.display_name %>
-    </div>
+  <div class="buddy-list-container">
+    <% if @users.empty? %>
+      <div class="not-found">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <%= "No buddy found with that name"  %>
+      </div>
+    <% else %>
+      <% @users.each do |following| %>
+      <div class="buddy-list">
+        <div class= "buddy-profile-photo">
+        <%= button_to user_chatrooms_path(chatroom: { owner_id: current_user.id, buddy_id: following.id }), method: :post, class:"chatroom-following" do %>
+          <%= image_tag following.image_url, class:"img-circle-small" if following.image_url.present?%>
+          <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-small" if  !following.image_url.present? %>
+        </div>
+        <div class="buddy-name">
+        <%= button_to user_chatrooms_path(chatroom: { owner_id: current_user.id, buddy_id: following.id }), method: :post, class:"chatroom-following" do %>
+          <%= following.display_name %>
+        <% end %>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
     <% end %>
   </div>
-  <% end %>
-</div>

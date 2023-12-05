@@ -8,14 +8,15 @@ class ChatroomsController < ApplicationController
   end
 
   def new
-    @user = current_user
-    if params[:query].present?
-      @users = @user.following_users.where('display_name ILIKE ?', "%#{params[:query]}%")
+  @user = current_user
+  query = params[:search].present? ? params[:search][:query] : ""
+    if query.present?
+      @users = @user.following_users.where('display_name ILIKE ?', "%#{query}%")
     else
       @users = @user.following_users
     end
-    @chatroom = Chatroom.new
-  end
+  @chatroom = Chatroom.new
+end
 
   def create
     @user = current_user
