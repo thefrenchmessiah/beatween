@@ -41,9 +41,8 @@
     <button class="btn-flat-long"><%= @current_user.following_users.count %> Following</button>
   </div>
 </div>
-<%# ---------div for buttons--------- %>
-<div data-controller="switch-button">
-  <%= render "shared/bar_2btn_sorting" %>
+
+<div>
   <div style="margin-bottom: 70px; padding: 10px 0px;" data-switch-button-target="info">
     <h2>Top Tracks</h2>
 
@@ -127,36 +126,5 @@
         <% end %>
     </div>
   </div>
-  <div data-switch-button-target="stats" style="display: none;">
-    <div class="container-cards-medium">
-      <div class="card-medium">
-        <div>
-          <h2>Total liked songs:</h2>
-        </div>
-        <hr>
-        <div>
-          <%= @total_liked_songs %>
-        </div>
-      </div>
-      <div class="card-medium">
-        <div>
-          <h2>Total All-Time Minutes Listened:</h2>
-        </div>
-        <hr>
-        <div>
-          <%= number_with_delimiter(@total_duration_minutes) %> minutes    </div>
-      </div>
-    </div>
-    <div class="card-big">
-      <div>
-        <h2>In Depth Data</h2>
-      </div>
-      <hr>
-      <div>
-        <ul>
-          <li>IDK</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+
 </div>
