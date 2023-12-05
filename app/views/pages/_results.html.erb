@@ -1,13 +1,12 @@
 <% if artist_results.blank? && track_results.blank? && album_results.blank? && playlist_results.blank? %>
   <p>No results found.</p>
 <% else %>
-  <% if artist_results.present? %>
-    <div>
-      <%= render "shared/bar_5btn_filter" %>
-    </div>
-   <div class="search-results-container">
-
-        <% if track_results.present? %>
+  <div data-controller="switch-button">
+  <div>
+    <%= render "shared/bar_5btn_filter" %>
+  </div>
+  <div class="search-results-container">
+    <% if track_results.present? %>
       <div  data-switch-button-target="songs">
         <h2>Tracks</h2>
         <div class="scrolling-wrapper-flexbox">
@@ -24,7 +23,8 @@
         </div>
       </div>
     <% end %>
-
+    
+  <% if artist_results.present? %>
     <div data-switch-button-target="artists">
       <h2>Artists</h2>
       <div class="scrolling-wrapper-flexbox">
@@ -42,8 +42,7 @@
         <% end %>
       </div>
     </div>
-    <% end %>
-
+  <% end %>
 
     <% if album_results.present? %>
       <div data-switch-button-target="albums">
@@ -68,26 +67,27 @@
     <% end %>
 
     <% if playlist_results.present? %>
-    <div data-switch-button-target="playlists">
-      <h2>Playlists</h2>
-      <div class="scrolling-wrapper-flexbox" data-switch-button-target="playlists">
-        <% playlist_results.each do |playlist| %>
-          <!-- Display playlist... -->
-          <%= link_to "https://open.spotify.com/playlist/#{playlist.id}", style: "text-decoration: none;" do %>
-            <div class="card-small">
-              <% if playlist.images.present? && playlist.images[0].present? %>
-                <div class="card-small-image">
-                  <%= image_tag(playlist.images[0]['url'], alt: playlist.name, class: "card-small-image") %>
-                </div>
-              <% else %>
+      <div data-switch-button-target="playlists">
+        <h2>Playlists</h2>
+        <div class="scrolling-wrapper-flexbox" data-switch-button-target="playlists">
+          <% playlist_results.each do |playlist| %>
+            <!-- Display playlist... -->
+            <%= link_to "https://open.spotify.com/playlist/#{playlist.id}", style: "text-decoration: none;" do %>
+              <div class="card-small">
+                <% if playlist.images.present? && playlist.images[0].present? %>
+                  <div class="card-small-image">
+                    <%= image_tag(playlist.images[0]['url'], alt: playlist.name, class: "card-small-image") %>
+                  </div>
+                <% end %>
+                  <div class="card-small-text"><p><%= playlist.name %></p></div>
+                  <div class= card-small-text-small><p>By <%= playlist.owner.display_name %></p></div>
+                  </div>
             <% end %>
-            <div class="card-small-text"><p><%= playlist.name %></p></div>
-            <div class= card-small-text-small><p>By <%= playlist.owner.display_name %></p></div>
-          </div>
           <% end %>
-        <% end %>
-      <% end %>
+        </div>
       </div>
+    <% end %>
+    <div data-switch-button-target="all">
     </div>
   </div>
 <% end %>
