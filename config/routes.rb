@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   post '/chatrooms/:id', to: 'chatrooms#create', as: 'create_chatroom'
 
-  resources "users", only: :show do
+  resources "users" do
     resources "chatrooms" do 
       resources "messages"
     end

@@ -5,14 +5,14 @@
       <%= image_tag "beatween-logo.png" %>
     <% end %>
 
-    <div class="beatween-name">
-      <H1>Beatween</H1>
-    </div>
+    <%= link_to qr_page_path, id: "qr-code" do %>
+      <div id="qr-code">
+        <i class="fa-solid fa-qrcode"></i>
+      </div>
+    <% end %>
+  </div>
 
-  <%= link_to qr_page_path, id: "qr-code" do %>
-    <div id="qr-code">
-      <i class="fa-solid fa-qrcode"></i>
-    </div>
-  <% end %>
+  <div class="divs-center" style="position: relative;">
+      <h1 style="position: absolute; font-size: 36px; font-weight: 700; left: 50%; transform: translate(-50%, -65%); margin: 0;">Beatween</h1>
   </div>
 </div>

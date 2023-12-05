@@ -14,8 +14,8 @@
 
 
 .card-small {
-  width: 110px;
-  height: 150px;
+  width: 164px;
+  height: 100%;
   flex-direction: column;
   p {
     margin: 0;
@@ -24,8 +24,7 @@
 }
 
 .card-small-image {
-  width: 110px;
-  height: auto;
+  width: 100%;
   border-radius: 5px;
   background-size: cover;
   background-position: center;
@@ -33,9 +32,8 @@
 
 .card-small-text {
   color: black;
-
-  width: 110px;
-  height: 24px;
+  width: 100%;
+  height: 18px;
 
   font-family: Exo 2;
   font-size: 10px;
