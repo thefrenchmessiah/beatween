@@ -14,20 +14,23 @@
 
 <div data-controller="switch-button">
   <%= render "shared/bar_2btn_sorting" %>
-  <div data-switch-button-target="followers">
+  <div data-switch-button-target="info">
     <div style="padding: 0px 10px;">
       <% @follows.each do |follow| %>
         <hr>
-        <%= image_tag follow.follower.image_url %>
+        <%= image_tag follow.follower.image_url if follow.follower.image_url.present?%>
+        <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-medium" if  !follow.follower.image_url.present? %>
         <%= link_to follow.follower.display_name, user_path(follow.follower), style:"text-decoration: none; color: #FFFFFF"; %>
       <% end %>
     </div>
   </div>
-  <div data-switch-button-target="following" style="display: none;">
+  <div data-switch-button-target="stats" style="display: none;">
     <div style="padding: 0px 10px;">
       <% @follows.each do |follow| %>
+      <h1>he</h1>
         <hr>
-        <%= image_tag follow.followed.image_url %>
+        <%= image_tag follow.follower.image_url if follow.follower.image_url.present?%>
+        <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-medium" if  !follow.follower.image_url.present? %>
         <%= link_to follow.followed.display_name, user_path(follow.followed), style:"text-decoration: none; color: #FFFFFF"; %>
       <% end %>
     </div>
