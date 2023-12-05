@@ -5,6 +5,9 @@
     <div class= "show-image margin-top-20" style="position:relative">
       <%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%>
       <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-medium" if  !@user.image_url.present? %>
+      <%# matching icon that i moved %>
+      <div class="icon-profile"><%= link_to image_tag("compatibility_icon_pink.svg", style:"width: 60px; height: 60px;"), user_matches_path(@user), style:"text-align: center; text-decoration: none; margin: 0 10px;" %></div>
+      <%# matching icon that i moved %>
         <% if user_signed_in? %>
           <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
             <i class="fa-solid fa-right-from-bracket fa-xl" id="logout-icon"></i>
@@ -16,9 +19,10 @@
     </div>
 
     <div class="divs-center margin-top-10">
-      <div class="icon-profile"><%= link_to image_tag("compatibility_icon_pink.svg", style:"width: 60px; height: 60px;"), user_matches_path(@user), style:"text-align: center; text-decoration: none; margin: 0 10px;" %></div>
+      <%# here was the matching icon %>
       <div><a href="https://open.spotify.com/user/<%= @user.spotify_id %>" class="link-spotify-user">@<%= @user.display_name %></a></div>
       <div class="icon-profile">
+
         <% if current_user.following_users.include?(@user) %>
           <button style="background-color: transparent; width: 50px; height: 50px; border: none; border-radius: 10px">
             <%= link_to '-',
