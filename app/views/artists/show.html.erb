@@ -1,26 +1,95 @@
-<%= render "shared/navbar" %>
-<div>
-  <div class= "show-image">
-    <%= image_tag @artist_image_url, alt: @artist_name,  class: "img-circle-large", style:"width: 250px;" %>
+<div style="max-height: 100%;">
+  <%= render "shared/navbar" %>
+  <div>
+    <div class= "show-image">
+      <%= image_tag @artist_image_url, alt: @artist_name,  class: "img-circle-large", style:"width: 250px;" %>
+    </div>
+
+    <div class="divs-center margin-top-10">
+      <button class="spotify-button">
+        <a href="https://open.spotify.com/artist/<%= @artist_id %>", style="text-decoration: none; color: #0E0000;">
+          <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %><span> Open on Spotify</span>
+        </a>
+      </button>
+    </div>
   </div>
 
-  <div class="divs-center margin-top-10">
-    <button class="spotify-button">
-      <a href="https://open.spotify.com/artist/<%= @artist_id %>", style="text-decoration: none; color: #0E0000;">
-        <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %><span> Open on Spotify</span>
-      </a>
-    </button>
+  <div style="border-top: 3px solid #FFB9FC;">
+    <div class="song_title margin-top-20" style="margin-bottom: 10px;">
+      <h2 style="font-size: 32px;"><%= @artist_name %></h2>
+    </div>
+
+    <div class="container-cards-medium">
+      <div class="card-medium" style="background-color: transparent; border: none; margin: 10px 5px;">
+        <h3 style="color: #BDBDBD; font-size: 20px;"> Popularity </h3>
+        <p style="color: #BDBDBD; font-size: 18px;"><%= @artist_popularity %>/100</p>
+      </div>
+      <div class="card-medium" style="background-color: transparent; border: none; margin: 10px 5px;">
+          <h3 style="color: #BDBDBD; font-size: 20px;"> Followers </h3>
+          <p style="color: #BDBDBD; font-size: 18px;"><%= @artist_followers %></p>
+      </div>
+    </div>
+
+    <div class= "card-big" style="background-color: transparent; border: none; margin-top: 5px;">
+      <div>
+        <h2 style="color: #FFB9FC; font-size: 24px; font-weight: 600;">Top Tracks</h2>
+      </div>
+
+      <%# REPLACE WITH PLAYLIST LAYOUT FOR TOP TRACKS%>
+
+      <div style="display: flex; flex-direction: column;" style="padding-bottom: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-regular fa-face-smile" style="font-size: 32px; color: #FFB9FC"></i> </h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Positiveness</p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= %>%</h3>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-person-walking" style="font-size: 32px; color: #FFB9FC"></i></h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Danceability</p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= %>%</h3>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-guitar" style="font-size: 32px; color: #FFB9FC"></i></h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Acoustic</p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= %>%</h3>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-regular fa-comment" style="font-size: 32px; color: #FFB9FC"></i></h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Instrumental</p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= %>%</h3>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-volume-high" style="font-size: 32px; color: #FFB9FC"></i></h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Loudness</p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= %> dB</h3>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-  <%# ---------div for buttons--------- %>
-<div data-controller="switch-button">
-  <%= render "shared/bar_2btn_sorting" %>
-  <p class="div-center artist-title"><%= @artist_name %></p>
-  <%# ------Render INFO or STATS--------- %>
-  <div data-switch-button-target="info">
-    <%= render "artist-info" %>
-  </div>
-  <div data-switch-button-target="stats" style="display: none;">
-    <%= render "artist-stats" %>
-  </div>
-</div>
+
+<%# <h2>Top Tracks</h2>
+    <div class="scrolling-wrapper-flexbox">
+      <% @top_tracks.each do |track| %>
+        <%# <%= link_to track_path(id: track[:uri][1]), style: "text-decoration: none;" do %>
+          <%# <div class= "card-small">
+            <div class= card-small-image><%= image_tag(track[:image], alt: track[:name], class: "card-small-image") %>
+            <%# <div class= card-small-text><p><%= track[:name] %>
+          <%# </div> %>
+        <%# <% end %>
+      <%# <% end %>
+    <%# </div> %>

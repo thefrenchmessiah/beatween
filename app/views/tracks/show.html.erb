@@ -1,7 +1,7 @@
- <div style="max-height: 100%;">
+<div style="max-height: 100%;">
   <%= render "shared/navbar" %>
   <%# ---------div for image & link--------- %>
-  <div>
+  <div class="margin-bottom-10 margin-top-20">
     <div class= "show-image">
       <img class="img-square-large" src="<%= @album_image %>" alt="" style="width: 250px;">
     </div>
@@ -14,11 +14,68 @@
       </button>
     </div>
   </div>
-  <%# ---------div for buttons--------- %>
 
-  <div>
+  <div style="border-top: 3px solid #FFB9FC;">
+    <div class="song_title margin-top-20" style="margin-bottom: 10px;">
+      <h2 style="font-size: 32px;"><%= @song_name %></h2>
+    </div>
 
-    <%# ------Render INFO or STATS--------- %>
-      <%= render "song-info" %>
+    <div class="container-cards-medium">
+      <div class="card-medium" style="background-color: transparent; border: none; margin: 10px 5px;">
+        <h3 style="color: #BDBDBD; font-size: 20px;"> Popularity </h3>
+        <p style="color: #BDBDBD; font-size: 18px;"><%= @song_popularity %>/100</p>
+      </div>
+      <div class="card-medium" style="background-color: transparent; border: none; margin: 10px 5px;">
+          <h3 style="color: #BDBDBD; font-size: 20px;"> Duration </h3>
+          <p style="color: #BDBDBD; font-size: 18px;"><%= @song_length.to_f %>min</p>
+      </div>
+    </div>
+
+    <div class= "card-big" style="background-color: transparent; border: none; margin-top: 5px;">
+      <div>
+        <h2 style="color: #FFB9FC; font-size: 24px; font-weight: 600;">Audio Features</h2>
+      </div>
+      <div style="display: flex; flex-direction: column;" style="padding-bottom: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-regular fa-face-smile" style="font-size: 32px; color: #FFB9FC"></i> </h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Positiveness</p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= @song_valence * 100 %>%</h3>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-person-walking" style="font-size: 32px; color: #FFB9FC"></i></h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Danceability</p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= @song_danceability * 100 %>%</h3>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-guitar" style="font-size: 32px; color: #FFB9FC"></i></h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Acoustic</p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= @song_acousticness * 100 %>%</h3>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-regular fa-comment" style="font-size: 32px; color: #FFB9FC"></i></h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Instrumental</p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= @song_instrumentalness * 100 %>%</h3>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-volume-high" style="font-size: 32px; color: #FFB9FC"></i></h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Loudness</p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= @song_loudness %> dB</h3>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
