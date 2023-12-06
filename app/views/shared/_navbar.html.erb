@@ -1,32 +1,35 @@
 <%# ------ Navbar ------- %>
 <div class="navbar-beatween">
-  <div class="container-navbar">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "beatween-logo.png" %>
-    <% end %>
+  <div class="container-navbar-main">
+    <div class="navbar-brand">
+      <%= link_to root_path do %>
+        <%= image_tag "beatween-logo.png" %>
+      <% end %>
+    </div>
+    <div class="divs-center">
+        <h1>Beatween</h1>
+    </div>
+    <div class="right-side-navbar">
+      <% if current_page?(user_chatrooms_path(current_user)) %>
+        <%= link_to new_user_chatroom_path(current_user) do %>
+          <div class="divs-center-1">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </div>
+        <% end %>
+      <% else %>
+        <%= link_to user_chatrooms_path(current_user) do %>
+          <div class="divs-center-1">
+            <i class="fa-solid fa-inbox"></i>
+          </div>
+        <% end %>
+      <% end %>
 
-    <%= link_to qr_page_path, id: "qr-code" do %>
-      <div id="qr-code" style="height: none; width: none;">
-        <i class="fa-solid fa-qrcode" style="padding-right: 3px;"></i>
-      </div>
-    <% end %>
+      <%= link_to qr_page_path, id: "qr-code" do %>
+        <div id="qr-code">
+          <i class="fa-solid fa-qrcode"></i>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <div class="divs-center" style="position: relative;">
-      <h1 style="position: absolute; font-size: 36px; font-weight: 700; left: 50%; transform: translate(-50%, -65%); margin: 0;">Beatween</h1>
-  </div>
-
-  <% if current_page?(user_chatrooms_path(current_user)) %>
-    <%= link_to new_user_chatroom_path(current_user) do %>
-      <div class="divs-center" style="position: relative;">
-        <i class="fa-solid fa-pen-to-square" style="position: absolute; font-size: 32px; left: 82%; color: white; transform: translate(-27%, -85%); margin: 0;"></i>
-      </div>
-    <% end %>
-  <% else %>
-    <%= link_to user_chatrooms_path(current_user) do %>
-      <div class="divs-center" style="position: relative;">
-        <i class="fa-solid fa-inbox" style="position: absolute; font-size: 32px; left: 82%; color: white; transform: translate(-27%, -85%); margin: 0;"></i>
-      </div>
-    <% end %>
-  <% end %>
 </div>
