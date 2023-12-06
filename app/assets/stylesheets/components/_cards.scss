@@ -75,8 +75,9 @@
 .song_title {
   text-align: center;
   margin: 0;
-  margin-bottom: -4*$unit;
-  font-size: 4*$unit;
+  margin-top: 16px;
+  margin-bottom: -4$unit;
+  font-size: 32px;
   font-weight: 400;
   color: $pink-3;
 }
@@ -101,7 +102,7 @@
 .card-medium {
   color: $font-color;
   padding: 2*$unit $unit;
-  margin: 3*$unit $unit;
+  margin: $unit $unit;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -112,7 +113,7 @@
 .card-medium h2 {
   text-align: center;
   text-decoration: underline;
-  padding: 10*$unit $unit;
+  padding: 2*$unit $unit;
 }
 
 // ----- card big -------

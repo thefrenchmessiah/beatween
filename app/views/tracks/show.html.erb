@@ -1,27 +1,24 @@
-<%= render "shared/navbar" %>
-<%# ---------div for image & link--------- %>
-<div>
-  <div class= "show-image">
-    <img class="img-square-large" src="<%= @album_image %>" alt="" style="width: 250px;">
-  </div>
+ <div style="max-height: 100%;">
+  <%= render "shared/navbar" %>
+  <%# ---------div for image & link--------- %>
+  <div>
+    <div class= "show-image">
+      <img class="img-square-large" src="<%= @album_image %>" alt="" style="width: 250px;">
+    </div>
 
-  <div class="divs-center margin-top-10">
-    <button class="spotify-button">
-      <a href="https://open.spotify.com/track/<%= @track %>", style="text-decoration: none; color: #0E0000;">
-        <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %><span> Open on Spotify</span>
-      </a>
-    </button>
+    <div class="divs-center margin-top-10">
+      <button class="spotify-button">
+        <a href="https://open.spotify.com/track/<%= @track %>", style="text-decoration: none; color: #0E0000;">
+          <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %><span> Open on Spotify</span>
+        </a>
+      </button>
+    </div>
   </div>
-</div>
-<%# ---------div for buttons--------- %>
-<div data-controller="switch-button">
-  <%= render "shared/bar_2btn_sorting" %>
+  <%# ---------div for buttons--------- %>
 
-  <%# ------Render INFO or STATS--------- %>
-  <div data-switch-button-target="info">
-    <%= render "song-info" %>
-  </div>
-  <div data-switch-button-target="stats" style="display: none;">
-    <%= render "song-stats" %>
+  <div>
+
+    <%# ------Render INFO or STATS--------- %>
+      <%= render "song-info" %>
   </div>
 </div>
