@@ -91,6 +91,7 @@
             <div class= "card-small" style="width: 164px; height: 120%;">
               <div class= card-small-image style="width: 164px; height: 164px;"><%= image_tag(artist.images[0]['url'], alt: artist.name, class: "card-small-image", style:"width: 164px; height: 164px;") %></div>
               <div class= card-small-text style="height: 18px;"><p><%= artist.name %></p></div>
+              <div class="card-small-text-small"></div>
             </div>
           <% end %>
         <% end %>
@@ -110,6 +111,7 @@
             <% end %>
             <div class="card-small-text" style="height: 18px;"><p><%= track.name %></p></div>
             <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
+            <div class="card-small-text-small"></div>
           </div>
         <% end %>
       <% end %>
@@ -124,6 +126,7 @@
             <div class="card-small" style="width: 164px; height: 120%;">
               <div class="card-small-image" style="width: 164px; height: 164px;"><%= image_tag(playlist.images[0]['url'], alt: playlist.name, class: "card-small-image", style:"width: 164px; height: 164px;") %></div>
               <div class="card-small-text" style="height: 18px;"><p><%= playlist.name %></p></div>
+              <div class="card-small-text-small"></div>
             </div>
           <% end %>
         <% end %>
