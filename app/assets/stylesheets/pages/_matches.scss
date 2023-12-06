@@ -1,0 +1,134 @@
+// All matches things go here
+.container-matches-1 {
+  display: flex;
+  background: linear-gradient(to bottom, $pink-8 0%, $pink-11 80%);
+  padding-top: 30px;
+}
+.container-matches-15, .container-matches-16 {
+  flex: 1;
+}
+
+.container-matches-15 {
+  display: grid;
+  margin-left: 3%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add shadow to the block */
+}
+
+.square {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  margin: 0; /* Remove margin between squares */
+}
+.container-matches-16 {
+  padding-left: 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  p {
+    margin: 0;
+    font-size: 12px;
+  }
+}
+
+#matches-time{
+  color: $grey-3;
+}
+
+.container-matches-2 {
+  // Add your styles here
+}
+
+.container-matches-25 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6px;
+  background: linear-gradient(to bottom, $pink-11 10%, $background-color 100%);
+
+}
+#show-match-icon{
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.container-matches-26 {
+  //
+}
+#container-matches-26-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 12.1* $unit;
+  border-bottom: 1px solid $grey-3;
+  margin-bottom: 0px;
+  overflow: auto;
+  border-collapse: separate;
+  span, i {
+    flex: 1;
+    text-align: center;
+    color: $grey-3;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+
+  }
+  span{
+    margin-left: -25px;
+    margin-right: 170px;
+  }
+  i{
+
+  }
+}
+.container-matches-26-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.container-matches-26-item-image,
+.container-matches-26-item-text,
+.container-matches-26-item-time {
+  flex: 1;
+  text-align: center;
+}
+.container-matches-26-item-image{
+  img{
+    border-radius: 4px;
+    width: 40%;
+    height: 40%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+.container-matches-26-item-text{
+  flex: 2.5;
+  text-align: left;
+  h4{
+    margin: 0;
+    font-size: 12px;
+    overflow-x: hidden;
+  }
+  p{
+    margin: 0;
+    font-size: 10px;
+    color: $grey-3;
+  }
+
+}
+
+.container-matches-26-item-time{
+  color: $grey-3;
+  font-size: 14px;
+}
