@@ -1,10 +1,10 @@
-<div class="scrolling-wrapper-flexbox">
+<div class="scrolling-wrapper-flexbox" style="height: 100%; padding-bottom: 10px; overflow-y: hidden;">
   <% @new_releases.each do |album| %>
     <%= link_to album_path(id: album.uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do%>
 
-    <div class= "card-small">
-      <div class= card-small-image><%= image_tag(album.images[0]['url'], alt: album.name, class: "card-small-image") %></div>
-      <div class= card-small-text><p><%= album.name %></p></div>
+    <div class="card-small" style="width: 164px; height: 120%;">
+      <div class="card-small-image" style="width: 164px; height: 164px;"><%= image_tag(album.images[0]['url'], alt: album.name, class: "card-small-image", style:"width: 164px; height: 164px;") %></div>
+      <div class="card-small-text" style="height: 18px;"><p><%= album.name %></p></div>
       <div class="card-small-text-small"><%= album.artists[0].name %></div>
     </div>
     <% end %>
