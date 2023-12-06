@@ -1,18 +1,35 @@
 <%# ------ Navbar ------- %>
 <div class="navbar-beatween">
-  <div class="container-navbar">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "beatween-logo.png" %>
-    <% end %>
-
-    <div class="beatween-name">
-      <H1>Beatween</H1>
+  <div class="container-navbar-main">
+    <div class="navbar-brand">
+      <%= link_to root_path do %>
+        <%= image_tag "beatween-logo.png" %>
+      <% end %>
     </div>
-
-  <%= link_to qr_page_path, id: "qr-code" do %>
-    <div id="qr-code">
-      <i class="fa-solid fa-qrcode"></i>
+    <div class="divs-center">
+        <h1>Beatween</h1>
     </div>
-  <% end %>
+    <div class="right-side-navbar">
+      <% if current_page?(user_chatrooms_path(current_user)) %>
+        <%= link_to new_user_chatroom_path(current_user) do %>
+          <div class="divs-center-1">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </div>
+        <% end %>
+      <% else %>
+        <%= link_to user_chatrooms_path(current_user) do %>
+          <div class="divs-center-1">
+            <i class="fa-solid fa-inbox"></i>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%= link_to qr_page_path, id: "qr-code" do %>
+        <div id="qr-code">
+          <i class="fa-solid fa-qrcode"></i>
+        </div>
+      <% end %>
+    </div>
   </div>
+
 </div>

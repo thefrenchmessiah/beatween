@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  mount ActionCable.server => '/cable'
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/auth/spotify/callback', to: 'users#spotify'
@@ -13,9 +14,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  post '/chatrooms/:id', to: 'chatrooms#create', as: 'create_chatroom'
+
   resources "users" do
-    resources "matches", only: %i[index show create]
-    resources "follows", only: %i[index create destroy]
+    resources "chatrooms" do 
+      resources "messages"
+    end
+    resources "matches", only: [:index, :show, :create]
+    resources "follows", only: [:index, :create, :destroy]
   end
 
   resources "tracks"

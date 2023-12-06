@@ -1,27 +1,25 @@
 <div class="trends">
-  <h2>Artists trending this week: </h2>
-  <div class="scrolling-wrapper-flexbox">
-      <% @top_fifty_tracks.each do |play| %>
-        <%= link_to artist_path(id: play.album.artists[0].uri.match(/spotify:artist:(.*)/)[1]), style: "text-decoration: none;" do %>
-          <div class= "card-small">
-            <div class= card-small-image><%= image_tag(play.album.artists[0].images[0]['url'], alt: play.album.artists[0].name, class: "card-small-image")%></div>
-            <div class= card-small-text><p><%= play.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
-          </div>
-        <% end %>
+  <h2 style="color: #FFB9FC; font-weight: 500; margin-bottom: 10px; margin-left: 10px;">Famous this week</h2>
+  <div class="scrolling-wrapper-flexbox" style="height: 100%; padding-bottom: 10px; overflow-y: hidden;">
+    <% @top_fifty_tracks.each do |play| %>
+      <%= link_to artist_path(id: play.album.artists[0].uri.match(/spotify:artist:(.*)/)[1]), style: "text-decoration: none;" do %>
+        <div class="card-small" style="width: 164px; height: 100%;">
+          <div class="card-small-image" style="width: 164px; height: 164px;"><%= image_tag(play.album.artists[0].images[0]['url'], alt: play.album.artists[0].name, class: "card-small-image", style:"width: 164px; height: 164px;") %></div>
+          <div class="card-small-text" style="height: 18px;"><p><%= play.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
+        </div>
       <% end %>
+    <% end %>
   </div>
-</div>
 
   <div class="trends margin-top-20">
-    <h2>Your friends top artists this month: </h2>
-    <div class="scrolling-wrapper-flexbox">
+    <h2 style="color: #FFB9FC; font-weight: 500; margin-bottom: 10px; margin-left: 10px;">Your friends are listening to</h2>
+    <div class="scrolling-wrapper-flexbox" style="height: 100%">
       <% @friends_top_artists.each do |artist| %>
-          <%# We call it with @artist_id[1]%>
           <%= link_to artist_path(id: artist[0].uri.match(/spotify:artist:(.*)/)[1]), style: "text-decoration: none;" do%>
-            <div class= "card-small">
-              <div class= card-small-image><%= image_tag(artist[0].images[0]['url'], alt: artist[0].name, class: "card-small-image") %></div>
-              <div class= card-small-text><p><%= artist[0].name %></p></div>
-              <div class= card-small-text-small><p><%= @friend_spotify.display_name %></p></div>
+            <div class= "card-small" style="width: 164px; height: 120%;">
+              <div class="card-small-image" style="width: 164px; height: 164px;"><%= image_tag(artist[0].images[0]['url'], alt: artist[0].name, class: "card-small-image", style:"width: 164px; height: 164px;") %></div>
+              <div class="card-small-text" style="height: 18px;"><p><%= artist[0].name %></p></div>
+              <div class="card-small-text-small"><p><%= @friend_spotify.display_name %></p></div>
             </div>
           <% end %>
         <% end %>
@@ -29,16 +27,17 @@
   </div>
 
   <div class="trends margin-top-20">
-    <h2>Your top artists this month: </h2>
-    <div class="scrolling-wrapper-flexbox">
+    <h2 style="color: #FFB9FC; font-weight: 500; margin-bottom: 10px; margin-left: 10px;">Your top artists</h2>
+    <div class="scrolling-wrapper-flexbox" style="height: 100%; padding-bottom: 10px; overflow-y: hidden;">
       <% @user_top_artists.each do |artist| %>
           <%# We call it with @artist_id[1]%>
           <%= link_to artist_path(id: artist.uri.match(/spotify:artist:(.*)/)[1]), style: "text-decoration: none;" do%>
-            <div class= "card-small">
-              <div class= card-small-image><%= image_tag(artist.images[0]['url'], alt: artist.name, class: "card-small-image") %></div>
-              <div class= card-small-text><p><%= artist.name %></p></div>
+            <div class= "card-small" style="width: 164px; height: 100%;">
+              <div class="card-small-image" style="width: 164px; height: 164px;"><%= image_tag(artist.images[0]['url'], alt: artist.name, class: "card-small-image", style:"width: 164px; height: 164px;") %></div>
+              <div class="card-small-text" style="height: 18px;"><p><%= artist.name %></p></div>
             </div>
           <% end %>
         <% end %>
     </div>
   </div>
+</div>
