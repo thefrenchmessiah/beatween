@@ -170,7 +170,7 @@
   bottom: 0;
   width: 100%;
   background: transparent;
-  padding-bottom: 100px;  
+  padding-bottom: 65px;  
 
     #new_message{
       background-color: transparent;
@@ -186,7 +186,7 @@
 .container-chatroom {
   align-items: center;
   width: 100%;
-  margin-left: 3*$unit;
+  padding-bottom: 100px;
 
   .chat-name{ 
     margin: 2*$unit auto;
