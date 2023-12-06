@@ -8,14 +8,14 @@
   <div class="search-results-container">
     <% if track_results.present? %>
       <div  data-switch-button-target="songs">
-        <h2>Tracks</h2>
-        <div class="scrolling-wrapper-flexbox">
+        <h2 style="color: #FFB9FC; font-weight: 500; margin-bottom: 10px; margin-left: 10px;">Tracks</h2>
+        <div class="scrolling-wrapper-flexbox" style="height: 100%; padding-bottom: 10px; overflow-y: hidden;">
           <% track_results.each do |track| %>
             <!-- Display track... -->
             <%= link_to track_path(id: track.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do%>
-              <div class= "card-small">
-                <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image") %></div>
-                <div class= card-small-text><p><%= track.name %></p></div>
+              <div class= "card-small" style="width: 164px; height: 120%;">
+                <div class= card-small-image><%= image_tag(track.album.images[0]['url'], alt: track.name, class: "card-small-image", style:"width: 164px; height: 164px;") %></div>
+                <div class= card-small-text style="height: 18px;"><p><%= track.name %></p></div>
                 <div class= card-small-text-small><p><%= track.album.artists.map { |artist| artist.name }.join(', ') %></p></div>
               </div>
             <% end %>
@@ -23,20 +23,21 @@
         </div>
       </div>
     <% end %>
-    
+
   <% if artist_results.present? %>
     <div data-switch-button-target="artists">
-      <h2>Artists</h2>
-      <div class="scrolling-wrapper-flexbox">
+      <h2 style="color: #FFB9FC; font-weight: 500; margin-bottom: 10px; margin-left: 10px;">Artists</h2>
+      <div class="scrolling-wrapper-flexbox" style="height: 100%; padding-bottom: 10px; overflow-y: hidden;">
         <% artist_results.each do |artist| %>
           <!-- Display artist... -->
           <%= link_to artist_path(id: artist.uri.match(/spotify:artist:(.*)/)[1]), style: "text-decoration: none;" do%>
-            <div class= "card-small">
+            <div class= "card-small" style="width: 164px; height: 120%;">
             <% if artist.images.present? && artist.images[0].present? %>
-              <%= image_tag(artist.images[0]['url'], alt: artist.name, class: "card-small-image") %>
+              <%= image_tag(artist.images[0]['url'], alt: artist.name, class: "card-small-image", style:"width: 164px; height: 164px;") %>
             <% else %>
-              <%= image_tag('https://placekitten.com/200/200', alt: 'Placeholder Image', class: "card-small-image") %>
-            <% end %>          <div class= card-small-text><p><%= artist.name %></p></div>
+              <%= image_tag('https://placekitten.com/200/200', alt: 'Placeholder Image', class: "card-small-image", style:"width: 164px; height: 164px;") %>
+            <% end %>
+            <div class="card-small-text" style="height: 18px;"><p><%= artist.name %></p></div>
             </div>
           <% end %>
         <% end %>
@@ -46,19 +47,19 @@
 
     <% if album_results.present? %>
       <div data-switch-button-target="albums">
-        <h2>Albums</h2>
-        <div class="scrolling-wrapper-flexbox">
+        <h2 style="color: #FFB9FC; font-weight: 500; margin-bottom: 10px; margin-left: 10px;">Albums</h2>
+        <div class="scrolling-wrapper-flexbox" style="height: 100%; padding-bottom: 10px; overflow-y: hidden;">
           <% album_results.each do |album| %>
             <!-- Display album... -->
             <%= link_to album_path(id: album.uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do%>
-              <div class="card-small">
+              <div class="card-small" style="width: 164px; height: 120%;">
                 <% if album.images.present? && album.images[0].present? %>
                   <div class="card-small-image">
-                    <%= image_tag(album.images[0]['url'], alt: album.name, class: "card-small-image") %>
+                    <%= image_tag(album.images[0]['url'], alt: album.name, class: "card-small-image", style:"width: 164px; height: 164px;") %>
                   </div>
                 <% end %>
-                <div class="card-small-text"><p><%= album.name %></p></div>
-                <div class= card-small-text-small><p><%= album.artists.map { |artist| artist.name }.join(', ') %></p></div>
+                <div class="card-small-text" style="height: 18px;"><p><%= album.name %></p></div>
+                <div class="card-small-text-small"><p><%= album.artists.map { |artist| artist.name }.join(', ') %></p></div>
               </div>
             <% end %>
           <% end %>
@@ -67,20 +68,20 @@
     <% end %>
 
     <% if playlist_results.present? %>
-      <div data-switch-button-target="playlists">
-        <h2>Playlists</h2>
+      <div data-switch-button-target="playlists" style="height: 100%; padding-bottom: 10px; overflow-y: hidden;">
+        <h2 style="color: #FFB9FC; font-weight: 500; margin-bottom: 10px; margin-left: 10px;">Playlists</h2>
         <div class="scrolling-wrapper-flexbox" data-switch-button-target="playlists">
           <% playlist_results.each do |playlist| %>
             <!-- Display playlist... -->
             <%= link_to "https://open.spotify.com/playlist/#{playlist.id}", style: "text-decoration: none;" do %>
-              <div class="card-small">
+              <div class="card-small" style="width: 164px; height: 120%;">
                 <% if playlist.images.present? && playlist.images[0].present? %>
                   <div class="card-small-image">
-                    <%= image_tag(playlist.images[0]['url'], alt: playlist.name, class: "card-small-image") %>
+                    <%= image_tag(playlist.images[0]['url'], alt: playlist.name, class: "card-small-image", style:"width: 164px; height: 164px;") %>
                   </div>
                 <% end %>
-                  <div class="card-small-text"><p><%= playlist.name %></p></div>
-                  <div class= card-small-text-small><p>By <%= playlist.owner.display_name %></p></div>
+                  <div class="card-small-text" style="height: 18px;"><p><%= playlist.name %></p></div>
+                  <div class="card-small-text-small"><p>By <%= playlist.owner.display_name %></p></div>
                   </div>
             <% end %>
           <% end %>
