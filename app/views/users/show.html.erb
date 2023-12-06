@@ -7,6 +7,7 @@
       <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-medium" if  !@user.image_url.present? %>
       <%# matching icon that i moved %>
       <%# matching icon that i moved %>
+      <%= link_to "📨", user_chatrooms_path(@user), class:"link-match" %>
         <% if user_signed_in? %>
           <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
             <i class="fa-solid fa-right-from-bracket fa-xl" id="logout-icon"></i>

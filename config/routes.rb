@@ -13,9 +13,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  post '/chatrooms/:id', to: 'chatrooms#create', as: 'create_chatroom'
+
   resources "users" do
-    resources "matches", only: %i[index show create]
-    resources "follows", only: %i[index create destroy]
+    resources "chatrooms" do 
+      resources "messages"
+    end
+    resources "matches", only: [:index, :show, :create]
+    resources "follows", only: [:index, :create, :destroy]
   end
 
   resources "tracks"
