@@ -95,11 +95,13 @@
 <div class="scrolling-wrapper-flexbox">
   <% if @shared_artists && @shared_artists.any? %>
     <% @shared_artists.each do |artist| %>
-      <div class= "card-small">
-        <div class= card-small-image><%= image_tag(artist[:image_url], alt: artist[:name], class: "card-small-image") %></div>
-        <div class= card-small-text><p><%= artist[:name] %></p></div>
-      </div>
+      <%= link_to artist_path(id: artist.album.artists[0].uri.match(/spotify:artist:(.*)/)[1]), style: "text-decoration: none;" do %>
+        <div class= "card-small">
+          <div class= card-small-image><%= image_tag(artist[:image_url], alt: artist[:name], class: "card-small-image") %></div>
+          <div class= card-small-text><p><%= artist[:name] %></p></div>
+        </div>
       <% end %>
+    <% end %>
   <% else %>
     <p>You have no shared artists</p>
   <% end %>
@@ -110,10 +112,12 @@
 <div class="scrolling-wrapper-flexbox">
   <% if @shared_tracks && @shared_tracks.any? %>
     <% @shared_tracks.each do |track| %>
-    <div class= "card-small">
-      <div class= card-small-image><%= image_tag(track[:image_url], alt: track[:name], class: "card-small-image") %></div>
-      <div class= card-small-text><p><%= track[:name] %></p></div>
-    </div>
+      <%= link_to track_path(id: track.uri.match(/spotify:track:(.*)/)[1]), style: "text-decoration: none;" do %>
+        <div class= "card-small">
+          <div class= card-small-image><%= image_tag(track[:image_url], alt: track[:name], class: "card-small-image") %></div>
+          <div class= card-small-text><p><%= track[:name] %></p></div>
+        </div>
+      <% end %>
     <% end %>
   <% else %>
     <p>You have no shared tracks</p>
