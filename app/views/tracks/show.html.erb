@@ -17,7 +17,7 @@
 
   <div style="border-top: 3px solid #FFB9FC;">
     <div class="song_title margin-top-20" style="margin-bottom: 10px;">
-      <h2 style="font-size: 32px;"><%= @song_name %></h2>
+      <h2 style="color: #FFB9FC; font-size: 32px;"><%= @song_name %></h2>
     </div>
 
     <div class="container-cards-medium">
@@ -40,7 +40,7 @@
           <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-regular fa-face-smile" style="font-size: 32px; color: #FFB9FC"></i> </h2></div>
           <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
             <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Positiveness</p>
-            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= @song_valence * 100 %>%</h3>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= (@song_valence).round(2) * 100 %>%</h3>
           </div>
         </div>
 
@@ -48,7 +48,7 @@
           <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-person-walking" style="font-size: 32px; color: #FFB9FC"></i></h2></div>
           <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
             <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Danceability</p>
-            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= @song_danceability * 100 %>%</h3>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= (@song_danceability * 100).round(2) %>%</h3>
           </div>
         </div>
 
@@ -56,7 +56,7 @@
           <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-guitar" style="font-size: 32px; color: #FFB9FC"></i></h2></div>
           <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
             <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Acoustic</p>
-            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= @song_acousticness * 100 %>%</h3>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= (@song_acousticness * 100).round(2) %>%</h3>
           </div>
         </div>
 
@@ -64,7 +64,7 @@
           <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-regular fa-comment" style="font-size: 32px; color: #FFB9FC"></i></h2></div>
           <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
             <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Instrumental</p>
-            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= @song_instrumentalness * 100 %>%</h3>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= (@song_instrumentalness * 100).round(2) %>%</h3>
           </div>
         </div>
 
@@ -72,7 +72,7 @@
           <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-volume-high" style="font-size: 32px; color: #FFB9FC"></i></h2></div>
           <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
             <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Loudness</p>
-            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= @song_loudness %> dB</h3>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= (@song_loudness).round(2) %> dB</h3>
           </div>
         </div>
       </div>
