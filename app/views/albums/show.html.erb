@@ -1,39 +1,34 @@
-<%= render "shared/navbar" %>
-<%# ---------div for image--------- %>
-<div>
-  <div class= "show-image">
-    <img class= "img-circle-large" src="<%= @album_image %>" alt="" style="width: 250px;"></p>
-  </div>
-
-  <div class="divs-center margin-top-10">
-    <button class="spotify-button">
-      <a href="https://open.spotify.com/album/<%= @album_id %>", style="text-decoration: none; color: #0E0000;">
-        <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %><span> Open on Spotify</span>
-      </a>
-    </button>
-  </div>
-</div>
-<%# ---------div for buttons--------- %>
-<div data-controller="switch-button">
-  <%# ---------div handles all cuz i need to control all the elements--------- %>
-  <div class="show-sorting">
-    <div class= "show-infos">
-      <button class= "btn-flat-long" data-action="click->switch-button#switchToInfo">Info</button>
+  
+  <%= render "shared/navbar" %>
+  <%# ---------div for image--------- %>
+  <div>
+    <div class= "show-image">
+      <img class= "img-circle-large" src="<%= @album_image %>" alt="" style="width: 250px;"></p>
     </div>
-    <div class= "show-stats" data-action="click->switch-button#switchToStats">
-      <button class= "btn-flat-long">Stats</button>
+
+    <div class="divs-center margin-top-10">
+      <button class="spotify-button">
+        <a href="https://open.spotify.com/album/<%= @album_id %>", style="text-decoration: none; color: #0E0000;">
+          <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %><span> Open on Spotify</span>
+        </a>
+      </button>
     </div>
   </div>
+  <%# ---------div for buttons--------- %>
+  <div data-controller="switch-button">
+    <%# ---------div handles all cuz i need to control all the elements--------- %>
+    <div class="show-sorting">
+      <div class= "show-infos">
+        <button class= "btn-flat-long" data-action="click->switch-button#switchToInfo">Info</button>
+      </div>
+      <div class= "show-stats" data-action="click->switch-button#switchToStats">
+        <button class= "btn-flat-long">Stats</button>
+      </div>
+    </div>
 
-  <p class="album-title"><%= @album_name %></p>
-  <div data-switch-button-target="info">
-    <%= render "shared/card_medium_info" %>
+    <p class="album-title"><%= @album_name %></p>
+    <div>
+      <%= render "shared/card_medium_stats" %>
 
-    <%= render "shared/card_big_info" %>
+    </div>
   </div>
-  <div data-switch-button-target="stats" style="display: none;">
-    <%= render "shared/card_medium_stats" %>
-
-    <%= render "shared/card_big_stats" %>
-  </div>
-</div>
