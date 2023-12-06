@@ -18,13 +18,13 @@
   <%= render "shared/navbar" %>
   <div data-controller="switch-button">
     <%= render "shared/bar_4btn_filter" %>
-    <div data-switch-button-target="albums">
+    <div data-switch-button-target="albums" style="display: none;">
       <%= render "top_albums" %>
     </div>
     <div data-switch-button-target="artists" style="display: none;">
       <%= render "top_artists" %>
     </div>
-    <div data-switch-button-target="songs" style="display: none;">
+    <div data-switch-button-target="songs">
       <%= render "top_songs" %>
     </div>
     <div data-switch-button-target="all" style="display: none;">
