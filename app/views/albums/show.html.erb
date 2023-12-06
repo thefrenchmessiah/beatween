@@ -1,9 +1,9 @@
 <div style="max-height: 100%;">
   <%= render "shared/navbar" %>
 
-  <div>
-    <div class= "show-image">
-      <img class= "img-circle-large" src="<%= @album_image %>" alt="" style="width: 250px;"></p>
+  <div class="margin-bottom-10 margin-top-20">
+    <div class="show-image">
+      <img class="img-square-large" src="<%= @album_image %>" alt="" style="width: 250px;">
     </div>
 
     <div class="divs-center margin-top-10">
@@ -37,23 +37,39 @@
       </div>
       <div style="display: flex; flex-direction: column;" style="padding-bottom: 10px;">
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
-          <% if @parsed_release_date %>
-            <div>Release date: <%= @parsed_release_date.strftime("%B %d, %Y") %></div>
-          <% else %>
-            <div>Release date: Not available</div>
-          <% end %>
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-calendar-day" style="font-size: 32px; color: #FFB9FC"></i> </h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Release date </p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;">
+              <% if @parsed_release_date %>
+                <%= @parsed_release_date.strftime("%B %d, %Y") %>
+              <% else %>
+                N/A
+              <% end %>
+            </h3>
+          </div>
         </div>
 
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
-          <div style="display: flex; width: 40px; justify-content: center; align-items: center;">Number of tracks: <%= @total_tracks %></div>
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-music" style="font-size: 32px; color: #FFB9FC"></i> </h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Number of tracks </p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= @total_tracks %></h3>
+          </div>
         </div>
 
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
-          <% if @genre.nil? || @genre.empty? %>
-            <div>Genre: No genre to be displayed right now </div>
-          <% else %>
-            <div>Genre: <%= @genre %></div>
-          <% end %>
+        <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-compact-disc" style="font-size: 32px; color: #FFB9FC"></i> </h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Genres </p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;">
+              <% if @genre.nil? || @genre.empty? %>
+                N/A
+              <% else %>
+                <%= @genre %>
+              <% end %>
+            </h3>
+          </div>
         </div>
       </div>
     </div>
