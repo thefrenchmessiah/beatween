@@ -8,6 +8,8 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= asset_path 'beatween_logo_32px.png' %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= asset_path 'beatween_logo_16px.png' %>">
   </head>
 
   <body style="<%= 'background: linear-gradient(to bottom, #FFB9FC, #1D1D1D); height: 100vh;' if current_user.nil? || current_user.spotify_auth.nil? %>">
