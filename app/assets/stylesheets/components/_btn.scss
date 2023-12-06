@@ -1,12 +1,30 @@
 // ---------- for bar-2btn--flat-long ----------
 // put both btns within a div with class show-sorting
 .show-filter {
-  display: flex;
-  align-items: center;
   border-top: 2px solid $grey-7;
   border-bottom: 2px solid $grey-7;
   margin-top: 2*$unit;
   margin-bottom: 2*$unit;
+}
+.show-filter {
+  display: flex;
+  flex-direction: row; // for horizontal layout
+  justify-content: space-between; // distributes items evenly
+  align-items: stretch; // makes items take full available vertical space
+  flex-wrap: nowrap; // prevents items from wrapping onto next line
+  width: 100%;
+  button{
+    font-size: inherit;
+  }
+
+  .show-albums,
+  .show-artists,
+  .show-tracks,
+  .show-playlists,
+  .show-all {
+    flex: 1; // makes items take up equal width
+    overflow: hidden; // prevents overflow
+  }
 }
 
 .show-sorting{
@@ -108,14 +126,21 @@
 // ---------- for filter 5 btns ----------
 
 .btn-small-5{
-  padding: $unit;
-  height: 6*$unit;
-  width: 15*$unit;
-  margin-right: $unit;
-  font-size: 3*$unit;
-  border-radius: 2*$unit;
-  color: $grey-7;
-  background-color: $buttons-color;
+  // padding: $unit;
+  // height: 6*$unit;
+  // width: 15*$unit;
+  // margin-right: $unit;
+  // font-size: 3*$unit;
+  // border-radius: 2*$unit;
+  // color: $grey-7;
+  // background-color: $buttons-color;
+  // border: none;
+  // transition: all 0.2s ease-in-out;
+  padding: 10px 28px;
+  font-size: 18px;
+  border-radius: 3px;
+  color: white;
+  background-color: transparent;
   border: none;
   transition: all 0.2s ease-in-out;
 
@@ -149,5 +174,5 @@
   }
 }
 .button-active {
-  background-color: $pink-5;
+  background-color: $pink-5 !important;
 }

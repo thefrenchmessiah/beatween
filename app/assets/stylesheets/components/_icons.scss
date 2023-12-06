@@ -34,34 +34,35 @@
   }
 }
 .spotify-button{
-  padding: $unit;
-  height: 6*$unit;
-  width: 39*$unit;
+  padding: 3%;
   font-size: 3*$unit;
   border-radius: 2*$unit;
-  color: $gray;
-  background-color: $buttons-color;
-  border: none;
+  background-color: lighten($background-color, 10%);
+  border: solid 1px $pink-5;
   transition: all 0.2s ease-in-out;
   // formatting position
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: nowrap;
   // Text on the thingy
 
+
   &:hover {
-    background-color: $pink-5;
-    border: 1px solid $grey-3;
-  }
-  &:active {
-    background-color: $pink-5;
-    border: 1px solid $grey-3;
-  }
-  &:disabled {
-    background-color: $grey-3;
-    border: none;
+    background-color: darken($background-color, 10%);
+    border: 1px solid $pink-5;
+    span{
+      color: $font-color;
+    }
   }
 
+  span{
+    padding-left: 6px;
+    flex-grow: 1; // This will make the span take up any remaining space
+    white-space: nowrap;
+    color: $font-color;
+  }
   .spotify-icon{
     width: 20px;
     height: 20px;
