@@ -22,6 +22,7 @@
   height: 81px;
   padding: 0 2* $unit;
   background: $background-color;
+  z-index: 1000;
   a{
     color: white;
     font-size: 32px;
