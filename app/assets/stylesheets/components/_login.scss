@@ -1,39 +1,31 @@
-form {
-  text-align: center;
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 200px;
 }
 
+/* Style for the form inputs */
 .form-inputs {
   margin-bottom: 20px;
-
-  input {
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-    box-sizing: border-box;
-  }
 }
 
-.form-actions {
-  display: flex;
-  justify-content: center;
-  button {
-
-    border-radius: 10px;
-    padding: 10px 20px;
-    background-color: #ff69b4;
-    color: black;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: $pink-4;
-    }
-  }
+/* Style for the remember me checkbox */
+.remember-me {
+  margin-top: 10px;
 }
 
-a {
-  text-decoration: none;
-  color: black;
+/* Style for the links (e.g., forgot password) */
+.login-links {
+  text-align: right;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-actions button-pink-beatween {
+  margin-left: 85px;
 }

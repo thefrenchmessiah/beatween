@@ -22,11 +22,11 @@
 
 
   &:hover {
-    background-color: $pink-5;
+    background-color: #FFB9FC;
     border: 1px solid $grey-3;
   }
   &:active {
-    background-color: $pink-5;
+    background-color: #FFB9FC;
     border: 1px solid $grey-3;
   }
   &:disabled {
@@ -137,6 +137,7 @@
   display: flex;
   justify-content: center;
   align-self: center;
+  margin-left: 85px;
   &:hover {
     background-color: $purple-8;
     color: $font-color;
