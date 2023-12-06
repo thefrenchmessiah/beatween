@@ -1,0 +1,17 @@
+
+<% if message.user.id == @user.id %>
+<div id="message-user" >
+  <small>
+    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  </small>
+  <p><%= message.content %></p>
+</div>
+
+<% else %>
+<div id="message-buddy">
+  <small>
+    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  </small>
+  <p><%= message.content %></p>
+</div>
+<% end %>

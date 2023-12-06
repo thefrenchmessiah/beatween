@@ -1,39 +1,81 @@
 #clock-space{
   height: $unit;
   background: $background-color;
+  flex: 1;
 }
 
 .navbar-beatween {
   justify-content: space-between;
-  background: white;
+  background: $background-color;
   height: 12* $unit;
 }
 
-.container-navbar {
+.container-navbar-main {
   position: fixed; // this sticks the navbar to the top of the page
   top: 0; // this makes sure the navbar is at the top of the page
   display: flex;
+  // flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   width: 100%;
   height: 81px;
   padding: 0 2* $unit;
   background: $background-color;
+  a{
+    color: white;
+    font-size: 32px;
+  }
 }
 
 #qr-code {
-  height: 6*$unit;
-  width: 6*$unit;
+  height: none;
+  width: none;
   color: $font-color;
   object-fit: cover;
   object-position: center;
 
   .fa-qrcode{
-    font-size: 6*$unit;
+    font-size: 36px;
+  }
+}
+.navbar-brand{
+  flex: 0.9;
+}
+.navbar-brand img {
+
+  width: 10* $unit;
+  height: 10* $unit;
+}
+
+// Transformation from inline
+.divs-center {
+  flex: 3;
+  h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+
   }
 }
 
-.navbar-brand img {
-  width: 10* $unit;
-  height: 10* $unit;
+.divs-center-1 {
+  height: none;
+  width: none;
+  color: $font-color;
+  object-fit: cover;
+  object-position: center;
+
+  .fa-pen-tp-square{
+    font-size: 36px;
+  }
+  .fa-inbox{
+    font-size: 36px;
+  }
+}
+.right-side-navbar{
+  display: flex;
+  flex: 1;
+  justify-content: inherit;
+  padding-right: inherit;
 }

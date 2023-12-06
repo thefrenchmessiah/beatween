@@ -1,0 +1,240 @@
+.new-chat{
+//   margin: 2*$unit auto;
+//   width:100%;
+//   border-radius: $unit;
+//   border: 1px solid $pink-3;
+//   text-align: center;
+//   padding: $unit;
+//   margin-bottom: 1.5*$unit;
+//   background-color: transparent;
+  // .fa-regular{
+  //   position: fixed;
+  //   text-align: right;
+  //   margin-right: 5*$unit;
+  //   bottom: 0;
+  //   height: 100px;
+  //   width: 100px;
+  //   font-weight: 600;
+  //   font-size: 5*$unit;
+  //   background: transparent;
+  //   padding-bottom: 100px;  
+  // }
+
+  a{
+    text-decoration: none;
+    color: $pink-3;
+  //   font-size: 4*$unit;
+  //   font-weight: bold;
+  width:100%;
+  position: fixed;
+  text-align: right;
+  margin-right: 5*$unit;
+  bottom: 0;
+  padding-bottom: 100px;
+  .fa-message{
+    height: 300px;
+    width: 300px;
+    font-weight: 600;
+    font-size: 5*$unit;
+    background: transparent;
+  }
+  }
+}
+// this is for the index page to list all the existing chatrooms
+.chatroom-list-container{
+  margin: 2*$unit auto;
+  width: 100%;
+
+  .chatroom-list{
+    display: flex;
+    height: 100px;
+    width: 100%;
+    justify-self: center;
+    align-items: center;
+    border-bottom: 1px solid $grey-3;
+  }
+
+  .buddy-profile-photo{
+    .img-circle-chat{
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin: 0 6*$unit;
+    }
+  }
+
+  .chatroom-name{
+    width: 100%;
+    padding: $unit;
+    margin: $unit auto;
+    font-size: 5*$unit;
+
+    a{
+      text-decoration: none;
+      color: $grey-3;
+      font-size: 4*$unit;
+      font-weight: bold;
+    };
+    
+  }
+}
+
+// this is for the new page to list all the existing buddies
+.buddy-list-container{
+  margin: 2*$unit auto;
+  width: 100%;
+
+  .buddy-list{
+    display: flex;
+    height: 100px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .buddy-profile-photo{
+    .img-circle-small{
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin: 0 6*$unit;
+    }
+  }
+
+  .buddy-name{
+    width: 100%;
+    padding: $unit;
+    margin: $unit auto;
+    font-size: 5*$unit;
+  }
+
+  .not-found{
+    display: block;
+    align-items: center;
+    text-align: center;
+    margin-top: 10*$unit;
+    font-size: 5*$unit;
+    color: $pink-3;
+  }
+}
+
+// this is for the search bar on the new chatroom page
+.search-bar-friends{
+  width: 100%;
+  display: flex;
+
+  .buddy-input{
+    width: 80%;
+    border: none;
+    padding: $unit;
+    margin-top: 2*$unit;
+    margin-left: 2*$unit;
+    font-size: 5*$unit;
+    background-color: transparent;
+  }
+  .press-button{
+    width: 20%;
+    border: none;
+    background-color: transparent;
+    margin-top: 2*$unit;
+    margin-right: 2*$unit;
+    padding: $unit;
+  }
+}
+
+// this is for the profile photo of the buddies list
+.chatroom-following{
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  padding: $unit;
+  margin: $unit auto;
+  color: $pink-3;
+  p {
+    color: $pink-5;
+    font-size: 4*$unit;
+  };
+}
+
+.chatroom-container{
+  .button_to{
+    background-color: transparent;
+    border: none;
+  }
+}
+
+// this is for the message form to be at the bottom of the page
+.sticky-form {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: transparent;
+  padding-bottom: 100px;  
+
+    #new_message{
+      background-color: transparent;
+      border: none;
+      padding: $unit;
+      font-size: 3*$unit;
+      color: $grey-3;
+    }
+
+}
+
+// this is for the chatroom page with messages
+.container-chatroom {
+  align-items: center;
+  width: 100%;
+  margin-left: 3*$unit;
+
+  .chat-name{ 
+    margin: 2*$unit auto;
+    width: 100%;
+  
+    h1 {
+    font-size: 5*$unit;
+    color: $pink-3;
+    text-align: center;
+    }
+  }
+  .messages{
+    #message-user{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      margin-right: 2*$unit;
+        p{
+          margin-top: 2*$unit;
+          display: inline-block;
+          color: $grey-7;
+          background-color: $grey-2;
+          font-size: 3*$unit;
+          border: 1px solid $grey-2;
+          border-radius: $unit;
+          padding: 2*$unit;
+        }
+    }
+
+    #message-buddy{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      margin-left: 2*$unit;
+
+      p{
+        max-width: 60%;
+        margin-top: 2*$unit;
+        display: inline-block;
+        color: $grey-7;
+        font-size: 3*$unit;
+        background-color: $pink-3;
+        border: 1px solid $pink-3;
+        border-radius: $unit;
+        padding: 2*$unit;
+      }
+    }
+  }
+}

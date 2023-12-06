@@ -6,18 +6,16 @@
   // flex-wrap: nowrap;
   overflow-x: auto;
   width: 100%;
-  padding-left: 3*$unit;  
-  
-  
+  padding-left: 3*$unit;
+
+
   .value{
     height: 30*$unit;
-    border-radius: 3*$unit;
-    border: 1px solid $grey-3;
     padding: $unit;
-    margin-right: 2*$unit;
+    margin-right: 4px;
 
     h2{
-      font-size: 10*$unit;
+      font-size: 6*$unit;
       font-weight: 700;
       color: $grey-3;
       text-align: center;
@@ -25,7 +23,7 @@
     }
 
     h3{
-      font-size: 4*$unit;
+      font-size: 3*$unit;
       font-weight: 700;
       color: $grey-3;
       text-align: center;
@@ -54,7 +52,7 @@
     text-align: center;
     font-size: 3*$unit;
   }
-  
+
   .stats{
     display: flex;
     // flex-wrap: wrap;
@@ -66,7 +64,7 @@
     border-top: 1px solid $pink-5;
     border-bottom: 1px solid $pink-5;
     margin-bottom: 2*$unit;
-    
+
     .stat{
       display: flex;
       flex-direction: column;
@@ -74,7 +72,7 @@
       align-items: center;
       width: 100%;
       padding-top: 0;
-     
+
       h3{
         font-size: 3*$unit;
         font-weight: 700;

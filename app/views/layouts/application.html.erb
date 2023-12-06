@@ -10,6 +10,8 @@
     <%= javascript_importmap_tags %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iUNeBUpQEEnnTOHWBfNl5Z+EXDxP5Nq4e9FqFjcHScz4FF+5p1OJ4meSa" crossorigin="anonymous">
 
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= asset_path 'beatween_logo_32px.png' %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= asset_path 'beatween_logo_16px.png' %>">
   </head>
 
   <body style="<%= 'background: linear-gradient(to bottom, #FFB9FC, #1D1D1D); height: 100vh;' if current_user.nil? || current_user.spotify_auth.nil? %>">
