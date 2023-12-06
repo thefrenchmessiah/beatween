@@ -17,7 +17,7 @@
     <div class="scrolling-wrapper-flexbox" style="height: 100%; padding-bottom: 10px; overflow-y: hidden;">
       <% @friends_top_albums.each do |play| %>
         <%= link_to album_path(id: play[0].uri.match(/spotify:album:(.*)/)[1]), style: "text-decoration: none;" do %>
-          <div class= "card-small" style="width: 164px; height: 120%;">
+          <div class="card-small" style="width: 164px; height: 120%;">
             <div class="card-small-image" style="width: 164px; height: 164px;"><%= image_tag(play[0].images[0]['url'], alt: play[0].name, class: "card-small-image", style:"width: 164px; height: 164px;")%></div>
             <div class="card-small-text" style="height: 18px;"><p><%= play[0].name %></p></div>
             <div class="card-small-text-small"><p><%= @friend_spotify.display_name %></p></div>

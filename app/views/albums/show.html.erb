@@ -1,37 +1,77 @@
-<%# ---------div for image--------- %>
-<div>
-  <div class= "show-image">
-    <img class= "img-circle-large" src="<%= @album_image %>" alt="" style="width: 250px;"></p>
-  </div>
+<div style="max-height: 100%;">
+  <%= render "shared/navbar" %>
 
-  <div class="divs-center margin-top-10">
-    <button class="spotify-button">
-      <a href="https://open.spotify.com/album/<%= @album_id %>", style="text-decoration: none; color: #0E0000;">
-        <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %><span> Open on Spotify</span>
-      </a>
-    </button>
-  </div>
-</div>
-<%# ---------div for buttons--------- %>
-<div data-controller="switch-button">
-  <%# ---------div handles all cuz i need to control all the elements--------- %>
-  <div class="show-sorting">
-    <div class= "show-infos">
-      <button class= "btn-flat-long" data-action="click->switch-button#switchToInfo">Info</button>
+  <div class="margin-bottom-10 margin-top-20">
+    <div class="show-image">
+      <img class="img-square-large" src="<%= @album_image %>" alt="" style="width: 250px;">
     </div>
-    <div class= "show-stats" data-action="click->switch-button#switchToStats">
-      <button class= "btn-flat-long">Stats</button>
+
+    <div class="divs-center margin-top-10">
+      <button class="spotify-button">
+        <a href="https://open.spotify.com/album/<%= @album_id %>", style="text-decoration: none; color: #0E0000;">
+          <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %><span> Open on Spotify</span>
+        </a>
+      </button>
     </div>
   </div>
 
-  <div data-switch-button-target="info">
-    <%= render "shared/card_medium_info" %>
+  <div style="border-top: 3px solid #FFB9FC;">
+    <div class="song_title margin-top-20" style="margin-bottom: 10px;">
+      <h2 style="font-size: 32px;"><%= @album_name %></h2>
+    </div>
 
-    <%= render "shared/card_big_info" %>
-  </div>
-  <div data-switch-button-target="stats" style="display: none;">
-    <%= render "shared/card_medium_stats" %>
+    <div class="container-cards-medium">
+      <div class="card-medium" style="background-color: transparent; border: none; margin: 10px 5px;">
+        <h3 style="color: #BDBDBD; font-size: 20px;"> Popularity </h3>
+        <p style="color: #BDBDBD; font-size: 18px;"><%= @popularity %>/100</p>
+      </div>
+      <div class="card-medium" style="background-color: transparent; border: none; margin: 10px 5px;">
+          <h3 style="color: #BDBDBD; font-size: 20px;"> Duration </h3>
+          <p style="color: #BDBDBD; font-size: 18px;"><%= @formatted_duration %>min</p>
+      </div>
+    </div>
 
-    <%= render "shared/card_big_stats" %>
+    <div class= "card-big" style="background-color: transparent; border: none; margin-top: 5px;">
+      <div>
+        <h2 style="color: #FFB9FC; font-size: 24px; font-weight: 600;">Album Info</h2>
+      </div>
+      <div style="display: flex; flex-direction: column;" style="padding-bottom: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-calendar-day" style="font-size: 32px; color: #FFB9FC"></i> </h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Release date </p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;">
+              <% if @parsed_release_date %>
+                <%= @parsed_release_date.strftime("%B %d, %Y") %>
+              <% else %>
+                N/A
+              <% end %>
+            </h3>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
+          <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-music" style="font-size: 32px; color: #FFB9FC"></i> </h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Number of tracks </p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;"><%= @total_tracks %></h3>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 15px; border-radius: 10px; width: 350px; margin: 5px 0px;">
+        <div style="display: flex; width: 40px; justify-content: center; align-items: center;"><h2 style="margin-bottom: 0;"><i class="fa-solid fa-compact-disc" style="font-size: 32px; color: #FFB9FC"></i> </h2></div>
+          <div style="display: flex; justify-content: space-between; width: 250px; align-items: center; margin-left: 30px;">
+            <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Genres </p>
+            <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;">
+              <% if @genre.nil? || @genre.empty? %>
+                N/A
+              <% else %>
+                <%= @genre %>
+              <% end %>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
