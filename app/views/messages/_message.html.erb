@@ -1,6 +1,6 @@
 
 <% if message.user.id == @user.id %>
-<div id="message-user">
+<div id="message-user" data-chatroom-subscription-target="messages" data-action="chatroom->subscription#appendMessage">
   <small>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
   </small>
@@ -9,7 +9,7 @@
 
 <% else %>
 <h1>BUDDY MESSAGE</h1>
-<div id="message-buddy">
+<div id="message-buddy" data-chatroom-subscription-target="messages" data-action="chatroom->subscription#appendMessage">
   <small>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
   </small>
