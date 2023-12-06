@@ -6,18 +6,36 @@ export default class extends Controller {
   static values = { chatroomId: Number }
   static targets = ["messages", "newMessage"]
 
+  // connect() {
+  //   console.log(this.chatroomIdValue)
+  //   this.channel = createConsumer().subscriptions.create(
+  //     { channel: "ChatroomChannel", chatroom_id: this.chatroomIdValue },
+  //     { received: data => {
+  //       console.log('received callback called') 
+  //       console.log("hello")
+  //       console.log(data);
+  //       this.#insertMessageAndScrollDown(data); 
+  //       }
+  //     },
+  //   )
+  // console.log(`Subscribed to the chatroom with the id ${this.chatroomIdValue}.`)
+  // }
   connect() {
-    this.channel = createConsumer().subscriptions.create(
-      { channel: "ChatroomChannel", id: this.chatroomIdValue },
-      { received: data => {
-        console.log("hello")
-        console.log(data);
-        this.#insertMessageAndScrollDown(data); 
-        }
+  console.log(this.chatroomIdValue);
+  this.channel = createConsumer().subscriptions.create(
+    { channel: "ChatroomChannel", chatroom_id: this.chatroomIdValue },
+    { 
+      connected: () => {
+        console.log('Successfully connected to the server'); // log when successfully connected to the server
       },
-    )
+      received: (data) => {
+        console.log('received callback called')
+        this.messagesTarget.insertAdjacentHTML("beforeend", data); 
+      }
+    },
+  )
   console.log(`Subscribed to the chatroom with the id ${this.chatroomIdValue}.`)
-  }
+}
 
   #insertMessageAndScrollDown(data) {
     console.log('insertMessageAndScrollDown called')
