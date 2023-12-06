@@ -30,6 +30,9 @@ class MatchesController < ApplicationController
   def show
     @match = Match.find(params[:id])
     @playlist = RSpotify::Playlist.find(current_user.spotify_auth[:id], @match.playlist_id)
+    @images = @playlist.tracks.sample(4).map { |track| track.album.images[0]['url'] }
+    total_duration_ms = @playlist.tracks.sum(&:duration_ms)
+    @playlist_length = (total_duration_ms / (1000.0 * 60 * 60)).ceil # Convert milliseconds to hours
   end
 
   def create

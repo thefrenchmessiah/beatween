@@ -1,41 +1,55 @@
 <%= render "shared/navbar" %>
-
-<div>
-  <div class= "show-image">
-  <div class="profile-pic-left">
-    <img class= "img-circle-small" src="<%= @generator_image %>" alt="">
-  </div>
-
-  <div class="comp-icon">
-    <%= image_tag "compatibility_icon_pink.png" %>
-    <h2> <%= @comp_percentage %> %</h2>
-
-  </div>
-
-  <div class="profile-pic-right">
-    <img class= "img-circle-small" src="<%= @buddy_image %>" alt="">
-  </div>
-  </div>
-</div>
-
-<h1><%= @playlist.name %></h2>
-<h3>By <%= @generator.display_name %> & <%= @buddy.display_name %></h3>
-
-<div class="scrolling-wrapper-flexbox">
-  <% if @playlist && @playlist.tracks.any? %>
-    <% @playlist.tracks.each do |track| %>
-      <div class= "card-small">
-        <div class= card-small-image><%= image_tag(track.album.images.first["url"], alt: track.name, class: "card-small-image") %></div>
-        <div class= card-small-text><p><%= track.name %> by <%= track.artists.first.name %></p></div>
-      </div>
-    <% end %>
-  <% else %>
-    <p>No tracks in the playlist</p>
+<%# <-- Here goes Fede's code--> %>
+<div class="container-matches-1">
+  <%# <--The two sections of the main display container. Displayed one besides the other--> %>
+  <div class="container-matches-15">
+    <%# <--4 Random Playlist images, one big square with equal parts--> %>
+  <% @images.each do |image| %>
+    <div class="square" style="background-image: url(<%= image %>);"></div>
   <% end %>
-</div>
 
-<button class="spotify-button">
-  <a href="https://open.spotify.com/playlist/<%= @playlist.id%>">
-    <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %><span>Open on Spotify</span>
-  </a>
-</button>
+  </div>
+  <div class="container-matches-16">
+    <%# <-- Playlist names and info, at the bottom, cascade from the previous div. Start height around top img end--> %>
+    <p>Playlist</p>
+    <h4><%= @playlist.name.capitalize.upcase %></h3>
+    <p id="matches-grayed"><%= @playlist.tracks.size %> songs · <span id="matches-time"> <%= @playlist_length %> h aprox </span></p>
+  </div>
+</div>
+<div class="container-matches-2">
+    <%# <--This container has a gradient that goes through both divs. Displayed one of top of another--> %>
+    <div class="container-matches-25">
+      <%# <-- WIP: Icon, and Open on spotify below it--> %>
+      <%= image_tag "compatibility_icon_pink.png", id: "show-match-icon" %>
+      <button class="spotify-button">
+        <a href="https://open.spotify.com/playlist/<%= @playlist.id%>">
+          <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', class:"spotify-icon" %><span>Open on Spotify</span>
+        </a>
+      </button>
+
+    </div>
+    <div class="container-matches-26">
+      <%# <-- The actual list goes here --> %>
+      <%# <-- # (?) - Title - icon-Time. Followed by a small barely noticable division--> %>
+      <div id="container-matches-26-header">
+        <span>Title</span>
+        <i class="fa-regular fa-clock"></i>
+      </div>
+      <%# <-- Listed items. Little Square image. Name/author beside it, same size. Enough space between all--> %>
+      <% @playlist.tracks.each do |track| %>
+        <div class="container-matches-26-item">
+          <div class="container-matches-26-item-image">
+            <%= image_tag(track.album.images.first["url"], alt: track.name) %>
+          </div>
+          <div class="container-matches-26-item-text">
+            <h4><%= track.name %></h4>
+            <p><%= track.artists.first.name%></p>
+          </div>
+          <div class="container-matches-26-item-time">
+            <% minutes, seconds = (track.duration_ms / 1000).divmod(60) %>
+            <%= "%d:%02d" % [minutes, seconds] %> <!-- This is the time -->
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
