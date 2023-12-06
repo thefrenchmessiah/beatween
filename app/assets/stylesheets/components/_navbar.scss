@@ -5,11 +5,13 @@
 
 .navbar-beatween {
   justify-content: space-between;
-  background: white;
+  background: $background-color;
   height: 12* $unit;
 }
 
 .container-navbar {
+  position: fixed; // this sticks the navbar to the top of the page
+  top: 0; // this makes sure the navbar is at the top of the page
   display: flex;
   justify-content: space-between;
   align-items: center;
