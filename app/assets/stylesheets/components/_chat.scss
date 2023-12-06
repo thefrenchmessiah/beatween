@@ -105,7 +105,6 @@
     padding: $unit;
     margin: $unit auto;
     font-size: 5*$unit;
-    
   }
 
   .not-found{
@@ -196,18 +195,46 @@
     h1 {
     font-size: 5*$unit;
     color: $pink-3;
+    text-align: center;
     }
   }
+  .messages{
+    #message-user{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      margin-right: 2*$unit;
+        p{
+          margin-top: 2*$unit;
+          display: inline-block;
+          color: $grey-7;
+          background-color: $grey-2;
+          font-size: 3*$unit;
+          border: 1px solid $grey-2;
+          border-radius: $unit;
+          padding: 2*$unit;
+        }
+    }
 
-  .message-user{
-    justify-content: right;
-    width: 70%;
-    border: 1px solid $pink-3;
+    #message-buddy{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      margin-left: 2*$unit;
 
-  }
-
-  .message-buddy{
-    justify-content: left;
-    width: 70%;
+      p{
+        max-width: 60%;
+        margin-top: 2*$unit;
+        display: inline-block;
+        color: $grey-7;
+        font-size: 3*$unit;
+        background-color: $pink-3;
+        border: 1px solid $pink-3;
+        border-radius: $unit;
+        padding: 2*$unit;
+      }
+    }
   }
 }
