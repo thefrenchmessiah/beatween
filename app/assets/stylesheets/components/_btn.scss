@@ -95,6 +95,16 @@
   }
 }
 
+.btn-medium-pink{
+  padding: $unit;
+  height: 6*$unit;
+  width: 100%;
+  margin: 0;
+  font-size: 3*$unit;
+  border-radius: $unit;
+  color: $grey-7;
+  background-color: $pink-3;
+}
 // ---------- for filter 5 btns ----------
 
 .btn-small-5{
