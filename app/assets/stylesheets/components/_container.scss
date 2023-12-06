@@ -3,7 +3,17 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     background-color: $background-color;
+    width: 100%;
 
+}
+
+.container-show-all-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
 }
 
 .container-btn-md-users {
@@ -18,3 +28,5 @@
     text-decoration: none;
   }
 }
+
+
