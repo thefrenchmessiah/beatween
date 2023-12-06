@@ -11,25 +11,23 @@
 
 .show-sorting{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   border-top: 2px solid $grey-3;
   border-bottom: 2px solid $grey-3;
-  padding: 2*$unit;
   margin-top: 2*$unit;
   margin-bottom: 2*$unit;
 }
 
 .btn-flat-long {
-  padding: $unit;
-  height: 6*$unit;
-  width: 39*$unit;
+  width: 214px;
+  padding: 17px;
   font-size: 3*$unit;
-  border-radius: 2*$unit;
-  color: $gray;
-  background-color: $buttons-color;
+  color: white;
+  background-color: transparent;
   border: none;
   transition: all 0.2s ease-in-out;
+
 
   &:hover {
     background-color: $pink-5;
