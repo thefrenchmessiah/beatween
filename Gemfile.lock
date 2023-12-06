@@ -353,7 +353,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   error_highlight (>= 0.4.0)
-  font-awesome-sass (~> 6.1)
+  font-awesome-sass (~> 6.5.1)
   importmap-rails
   jbuilder
   omniauth-rails_csrf_protection
