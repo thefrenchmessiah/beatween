@@ -5,8 +5,7 @@
     <div class= "show-image margin-top-20" style="position:relative">
       <%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%>
       <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-medium" if  !@user.image_url.present? %>
-      <%# matching icon that i moved %>
-      <%# matching icon that i moved %>
+
       <%= link_to "📨", user_chatrooms_path(@user), class:"link-match" %>
         <% if user_signed_in? %>
           <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
@@ -26,6 +25,22 @@
         <%= image_tag 'compatibility_icon_pink.png', alt: 'Compatibility Icon', class: "icon-profile", id: "match-icon" %>
     <% end %>
 
+<%# follow +/- %>
+    <div class="icon-profile">
+
+      <% if current_user.following_users.include?(@user) %>
+        <button style="background-color: transparent; width: 50px; height: 50px; border: none; border-radius: 10px">
+          <%= link_to user_follow_path(@user, params[:id]), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <i class="fa-solid fa-user-minus" style="color: #FFB9FC; font-size: 20px;"></i>
+          <% end %>
+        </button>
+      <% else %>
+        <%= link_to user_follows_path(@user), method: :post, data: { 'turbo-method' => :post } do %>
+          <i class="fa-solid fa-user-plus" style="color: #FFB9FC; font-size: 20px;"></i>
+        <% end %>
+      <% end %>
+    </div>
+
   <% else %>
     <%= link_to "Login", new_user_session_path, class: "nav-link" %>
   <% end %>
@@ -34,21 +49,6 @@
 <%# ---------Match - @User - Follow-btn --------- %>
   <div class="divs-center margin-top-10">
     <div><a href="https://open.spotify.com/user/<%= @user.spotify_id %>" class="link-spotify-user">@<%= @user.display_name %></a></div>
-    <div class="icon-profile">
-      <% if current_user.following_users.include?(@user) %>
-        <button style="background-color: transparent; width: 50px; height: 50px; border: none; border-radius: 10px">
-          <%= link_to '-',
-            user_follow_path(@user, params[:id]), style:"text-decoration: none; font-weight: 700; font-size: 30px; color: #F064E9;",
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"
-            }
-          %>
-        </button>
-      <% else %>
-        <%= simple_form_for [@user, @follow] do |f| %>
-          <%= f.submit "+" %>
-        <% end %>
-      <% end %>
-    </div>
   </div>
 </div>
 <%# ---------div for follow/ing--------- %>

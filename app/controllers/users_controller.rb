@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     @recently_played = @spotify_user.recently_played(limit: 10)
 
     # follows
-    @follow = Follow.new
+    # @follow = Follow.new
   end
 
   private
