@@ -1,12 +1,12 @@
 <%= render "shared/navbar" %>
 
-<div class="divs-column" style="border-top: 1.5px solid #FDEBFC;">
+<div class="divs-column" style="border-top: 1.5px solid #FDEBFC; height: 330px;">
 <%# back button  %>
-<div style="padding-top: 20px">
-<%= link_to user_path(@user) do %>
-  <i class="fas fa-chevron-left back-icon"></i>
-<% end %>
-</div>
+  <div style="padding-top: 20px">
+    <%= link_to user_path(@user) do %>
+      <i class="fas fa-chevron-left back-icon"></i>
+    <% end %>
+  </div>
 
   <div class="margin-top-20">
     <div class= "show-image margin-top-20" style="position:relative">
