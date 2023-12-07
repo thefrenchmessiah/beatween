@@ -20,8 +20,8 @@ class PagesController < ApplicationController
       friends_top_listens
     end
     top_fifty = RSpotify::Playlist.find("spotifycharts", "37i9dQZEVXbMDoHDwVN2tF")
-    @top_fifty_tracks = top_fifty.tracks(limit: 10)
-    @top_fifty_artists = top_fifty.tracks(limit: 10).map(&:artists).flatten.uniq
+    @top_fifty_tracks = top_fifty.tracks(limit: 8)
+    @top_fifty_artists = top_fifty.tracks(limit: 8).map(&:artists).flatten.uniq
   end
 
   def user_top_listens
@@ -31,15 +31,15 @@ class PagesController < ApplicationController
         @user_spot = RSpotify::User.new(@user.spotify_auth)
 
         @user_top_tracks = Rails.cache.fetch("#{@user.id}/top_tracks", expires_in: 12.hours) do
-          @user_spot.top_tracks(limit: 10, time_range: 'short_term')
+          @user_spot.top_tracks(limit: 8, time_range: 'short_term')
         end
 
         @user_top_artists = Rails.cache.fetch("#{@user.id}/top_artists", expires_in: 12.hours) do
-          @user_spot.top_artists(limit: 10, time_range: 'short_term')
+          @user_spot.top_artists(limit: 8, time_range: 'short_term')
         end
 
         @user_top_albums = Rails.cache.fetch("#{@user.id}/top_albums", expires_in: 12.hours) do
-          @user_spot.saved_albums(limit: 10)
+          @user_spot.saved_albums(limit: 8)
         end
       end
     end
@@ -75,7 +75,7 @@ class PagesController < ApplicationController
 
   def discover
     @user = current_user
-    @new_releases = RSpotify::Album.new_releases(limit: 10)
+    @new_releases = RSpotify::Album.new_releases(limit: 8)
     @trending_tracks = playlist = RSpotify::Playlist.find('Discover Weekly', '37i9dQZEVXcQ9COmYvdajy')
     @recommendations = []
     @spotify_user = RSpotify::User.new(@user.spotify_auth)
@@ -91,10 +91,10 @@ class PagesController < ApplicationController
     ## Actual page functionality
     query = params[:search].present? ? params[:search][:query] : ""
     if query.present?
-      @artist_results = RSpotify::Artist.search(query, limit: 10)
-      @track_results = RSpotify::Track.search(query, limit: 10)
-      @album_results = RSpotify::Album.search(query, limit: 10)
-      @playlist_results = RSpotify::Playlist.search(query, limit: 10)
+      @artist_results = RSpotify::Artist.search(query, limit: 8)
+      @track_results = RSpotify::Track.search(query, limit: 8)
+      @album_results = RSpotify::Album.search(query, limit: 8)
+      @playlist_results = RSpotify::Playlist.search(query, limit: 8)
       ## passing params to the render partial
       render partial: 'results', locals: {
         artist_results: @artist_results,
