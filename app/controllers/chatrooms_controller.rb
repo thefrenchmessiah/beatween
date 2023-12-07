@@ -22,8 +22,8 @@ end
 
   def create
     @chatroom = Chatroom.new(chatroom_params)
-    @chatroom.generator_id = @generator.id
-    @chatroom.name = "with " + @buddy.display_name
+    @chatroom.generator_id = @user.id
+    @chatroom.name = @buddy.display_name
 
     if @chatroom.save
       redirect_to user_chatroom_path(@generator, @chatroom), notice: 'Chatroom was successfully created.'
