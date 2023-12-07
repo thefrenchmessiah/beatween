@@ -65,8 +65,11 @@ class PagesController < ApplicationController
             @friend_spotify.top_artists(limit: 1, time_range: 'short_term')
           end
 
-          @friends_top_albums << Rails.cache.fetch("#{user.id}/top_albums", expires_in: 12.hours) do
-            @friend_spotify.saved_albums(limit: 1)
+          albums = @friend_spotify.saved_albums(limit: 1)
+          if albums.present?
+            @friends_top_albums << Rails.cache.fetch("#{user.id}/top_albums", expires_in: 12.hours) do
+              albums
+            end
           end
         end
       end
