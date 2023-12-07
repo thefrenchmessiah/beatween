@@ -116,6 +116,6 @@ class MatchesController < ApplicationController
   end
 
   def comp_percentage
-    @comp_percentage = ((@shared_artists.to_i/20).to_f * 100).to_i
+    @comp_percentage = ((@shared_artists.count/50) * 100).round
   end
 end
