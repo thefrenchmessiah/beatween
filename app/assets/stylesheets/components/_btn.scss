@@ -23,7 +23,6 @@
   .show-playlists,
   .show-all {
     flex: 1; // makes items take up equal width
-    overflow: hidden; // prevents overflow
   }
 }
 
@@ -48,11 +47,11 @@
 
 
   &:hover {
-    background-color: $pink-5;
+    background-color: #FFB9FC;
     border: 1px solid $grey-3;
   }
   &:active {
-    background-color: $pink-5;
+    background-color: #FFB9FC;
     border: 1px solid $grey-3;
   }
   &:disabled {
@@ -126,35 +125,28 @@
 // ---------- for filter 5 btns ----------
 
 .btn-small-5{
-  // padding: $unit;
-  // height: 6*$unit;
-  // width: 15*$unit;
-  // margin-right: $unit;
-  // font-size: 3*$unit;
-  // border-radius: 2*$unit;
-  // color: $grey-7;
-  // background-color: $buttons-color;
-  // border: none;
-  // transition: all 0.2s ease-in-out;
-  padding: 10px 28px;
   font-size: 18px;
   border-radius: 3px;
   color: white;
   background-color: transparent;
   border: none;
   transition: all 0.2s ease-in-out;
+  width: 100%;
+}
+.show-filter-5 {
+  display: flex;
+  justify-content: space-between;
 
-  &:hover {
-    background-color: $grey-3;
-    border: 1px solid $grey-3;
-  }
-  &:active {
-    background-color: $pink-5;
-    border: 1px solid $grey-3;
-  }
-  &:disabled {
-    background-color: $grey-3;
-    border: none;
+  .show-albums,
+  .show-artists,
+  .show-tracks,
+  .show-playlists,
+  .show-all {
+    flex: 1; // makes items take up equal width
+
+    button.btn-small-5 {
+      width: 100%; // makes button take up full width of its parent div
+    }
   }
 }
 
@@ -167,6 +159,7 @@
   display: flex;
   justify-content: center;
   align-self: center;
+  margin-left: 85px;
   &:hover {
     background-color: $purple-8;
     color: $font-color;

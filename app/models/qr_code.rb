@@ -1,4 +1,6 @@
+
 class QrCode < ApplicationRecord
+
   belongs_to :user
 
   def generate_qr_code(current_user)

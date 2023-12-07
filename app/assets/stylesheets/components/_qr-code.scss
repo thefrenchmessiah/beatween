@@ -4,7 +4,9 @@
   align-items: center;
   height: 85vh;
   flex-direction: column;
-  background-color: $pink-2;
+  background: linear-gradient(to bottom, $pink-8 0%, $pink-11 80%);
+  padding: 15px 0px;
+  overflow: hidden;
 }
 
 .qr-code-wrapper {

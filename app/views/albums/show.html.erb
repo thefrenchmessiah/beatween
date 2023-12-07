@@ -17,7 +17,7 @@
 
   <div style="border-top: 3px solid #FFB9FC;">
     <div class="song_title margin-top-20" style="margin-bottom: 10px;">
-      <h2 style="font-size: 32px;"><%= @album_name %></h2>
+      <h2 style="color: #FFB9FC; font-size: 32px;"><%= @album_name %></h2>
     </div>
 
     <div class="container-cards-medium">
@@ -27,7 +27,7 @@
       </div>
       <div class="card-medium" style="background-color: transparent; border: none; margin: 10px 5px;">
           <h3 style="color: #BDBDBD; font-size: 20px;"> Duration </h3>
-          <p style="color: #BDBDBD; font-size: 18px;"><%= @formatted_duration %>min</p>
+          <p style="color: #BDBDBD; font-size: 18px;"><%= @formatted_duration %></p>
       </div>
     </div>
 
@@ -42,7 +42,7 @@
             <p style="font-size: 20px; margin-bottom: 0; color: #BDBDBD;"> Release date </p>
             <h3 style="margin-bottom: 0; color: #BDBDBD; font-size: 20px;">
               <% if @parsed_release_date %>
-                <%= @parsed_release_date.strftime("%B %d, %Y") %>
+                <%= @parsed_release_date.strftime('%d/%m/%y') %>
               <% else %>
                 N/A
               <% end %>
