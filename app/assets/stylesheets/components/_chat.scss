@@ -118,7 +118,12 @@
 }
 
 // this is for the search bar on the new chatroom page
-.search-bar-friends{
+.search{
+  display: flex;
+  margin-left: 2*$unit;
+  justify-content: center;
+
+  .search-bar-friends{
   width: 100%;
   display: flex;
 
@@ -138,6 +143,7 @@
     margin-top: 2*$unit;
     margin-right: 2*$unit;
     padding: $unit;
+  }
   }
 }
 
@@ -236,5 +242,17 @@
         padding: 2*$unit;
       }
     }
+  }
+}
+
+.delete-chat {
+  background-color: transparent;
+  border: none;
+  margin-right: 6*$unit;
+
+  a{
+    text-decoration: none;
+    color: $pink-3;
+    font-size: 4*$unit;
   }
 }
