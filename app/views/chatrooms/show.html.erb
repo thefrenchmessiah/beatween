@@ -5,7 +5,7 @@
   <h1><%= @chatroom.name %></h1>
   </div>
 
-  <div class="messages" data-chatroom-subscription-target="messages" data-action="chatroom-subscription#insertMessageAndScrollDown">
+  <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
       <%= render "messages/message", message: message %>
     <% end %>

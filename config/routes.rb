@@ -25,8 +25,10 @@ Rails.application.routes.draw do
     resources "follows", only: [:index, :create, :destroy]
   end
 
-  resources "tracks"
-  resources "albums"
-  resources "artists"
-  resources "playlists"
+  resources "tracks", only: [:show]
+  resources "albums", only: [:show]
+  resources "artists", only: [:show]
+
+  # for all not found routes
+  match "*path", to: "errors#not_found", via: :all
 end
