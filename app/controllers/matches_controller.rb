@@ -28,7 +28,8 @@ class MatchesController < ApplicationController
 
     shared_tracks
     shared_artists
-    @comp_percentage = ((@shared_artists.count/50) * 100).round
+    total_artists = (@spotify_generator.artists + @spotify_buddy.artists).uniq.length
+    @comp_percentage = (@shared_artists.length.to_f / total_artists * 100).round
 
     listening_stats
   end
