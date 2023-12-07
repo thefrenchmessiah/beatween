@@ -1,4 +1,5 @@
 <%= render "shared/navbar" %>
+<div class = "search">
 <%= simple_form_for :search, url: new_user_chatroom_path, method: :get, html: { class: 'search-friends' } do |f| %>
   <div class= "search-bar-friends">
     <div class="buddy-input">
@@ -9,7 +10,7 @@
     </div>
   </div>
 <% end %>
-
+</div>
 
   <div class="buddy-list-container">
     <% if @users.empty? %>

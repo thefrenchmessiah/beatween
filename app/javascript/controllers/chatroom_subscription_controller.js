@@ -30,7 +30,7 @@ export default class extends Controller {
       },
       received: (data) => {
         console.log('received callback called')
-        this.#insertMessageAndScrollDown(data) ; 
+        this.messagesTarget.insertAdjacentHTML("beforeend", data); 
       }
     },
   )
@@ -42,14 +42,16 @@ export default class extends Controller {
     console.log(data)
     console.log(this.messagesTarget)
     this.messagesTarget.insertAdjacentHTML("beforeend", data)
-    console.log(this.messagesTarget.scrollHeight)
-    window.scrollTo(0, document.body.scrollHeight)
-    // this.messagesTarget.scrollTo(0, -200)
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
   
   resetForm(event) {
     console.log('Form submitted');
     this.newMessageTarget.reset();
+  }
+
+  logSubmitEnd(event) {
+    console.log('turbo:submit-end event fired');
   }
 
   appendMessage(event) {
