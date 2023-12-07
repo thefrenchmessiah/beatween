@@ -89,6 +89,7 @@ GEM
       execjs (~> 2)
     base64 (0.2.0)
     bcrypt (3.1.20)
+    benchmark-ips (2.12.0)
     bigdecimal (3.1.4)
     bindex (0.8.1)
     bootsnap (1.17.0)
@@ -113,9 +114,24 @@ GEM
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
+    dead_end (4.0.0)
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    derailed (0.1.0)
+      derailed_benchmarks
+    derailed_benchmarks (2.1.2)
+      benchmark-ips (~> 2)
+      dead_end
+      get_process_mem (~> 0)
+      heapy (~> 0)
+      memory_profiler (>= 0, < 2)
+      mini_histogram (>= 0.3.0)
+      rack (>= 1)
+      rack-test
+      rake (> 10, < 14)
+      ruby-statistics (>= 2.1)
+      thor (>= 0.19, < 2)
     devise (4.9.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -140,9 +156,13 @@ GEM
     ffi (1.16.3)
     font-awesome-sass (6.5.1)
       sassc (~> 2.0)
+    get_process_mem (0.2.7)
+      ffi (~> 1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
+    heapy (0.2.0)
+      thor
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     i18n (1.14.1)
@@ -169,10 +189,12 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    memory_profiler (1.0.1)
     method_source (1.0.0)
     mime-types (3.5.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.1003)
+    mini_histogram (0.3.1)
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
@@ -290,6 +312,7 @@ GEM
       addressable (~> 2.8.0)
       omniauth-oauth2 (>= 1.6)
       rest-client (~> 2.0.2)
+    ruby-statistics (3.0.2)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sassc (2.4.0)
@@ -354,6 +377,7 @@ DEPENDENCIES
   bootstrap (~> 5.2)
   capybara
   debug
+  derailed
   devise
   dotenv-rails
   error_highlight (>= 0.4.0)
