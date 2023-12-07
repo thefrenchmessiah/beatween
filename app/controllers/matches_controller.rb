@@ -16,9 +16,14 @@ class MatchesController < ApplicationController
   def index
     unless @spotify_generator.images[0].nil?
       @generator_image = @spotify_generator.images[0]['url']
+    else
+      @generator_image = 'https://placekitten.com/200/200'
     end
+
     unless @spotify_buddy.images[0].nil?
       @buddy_image = @spotify_buddy.images[0]['url']
+    else
+      @buddy_image = 'https://placekitten.com/200/200'
     end
 
     listening_stats
