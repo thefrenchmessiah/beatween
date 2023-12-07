@@ -59,23 +59,26 @@ class PagesController < ApplicationController
 
           top_tracks = @friend_spotify.top_tracks(limit: 1, time_range: 'short_term')
           if top_tracks.present?
-            @friends_top_tracks << Rails.cache.fetch("#{user.id}/top_tracks", expires_in: 12.hours) do
+            cached_tracks = Rails.cache.fetch("#{user.id}/top_tracks", expires_in: 12.hours) do
               top_tracks
             end
+            @friends_top_tracks << cached_tracks if cached_tracks.present?
           end
 
           top_artists = @friend_spotify.top_artists(limit: 1, time_range: 'short_term')
           if top_artists.present?
-            @friends_top_artists << Rails.cache.fetch("#{user.id}/top_artists", expires_in: 12.hours) do
+            cached_artists = Rails.cache.fetch("#{user.id}/top_artists", expires_in: 12.hours) do
               top_artists
             end
+            @friends_top_artists << cached_artists if cached_artists.present?
           end
 
           albums = @friend_spotify.saved_albums(limit: 1)
           if albums.present?
-            @friends_top_albums << Rails.cache.fetch("#{user.id}/top_albums", expires_in: 12.hours) do
+            cached_albums = Rails.cache.fetch("#{user.id}/top_albums", expires_in: 12.hours) do
               albums
             end
+            @friends_top_albums << cached_albums if cached_albums.present?
           end
         end
       end
