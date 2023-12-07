@@ -1,43 +1,15 @@
 <%= render "shared/navbar" %>
- <div class= "search" >
-  <%= simple_form_for :search, url: user_chatrooms_path, method: :get, html: { class: 'search-friends' } do |f| %>
-    <div class= "search-bar-friends">
-      <div class="buddy-input">
-      <%= f.input :query, label: false, placeholder: "Your buddies" %>
-      </div>
-      <div class= "press-button">
-      <%= f.button :submit, "Search" %>
-      </div>
-    </div>
-  <% end %>
- </div>
 
-<div class="buddy-list-container">
-    <% if @chatrooms.empty? %>
-      <div class="not-found">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        <%= "No existing chatroom with that buddy"  %>
-      </div>
-    <% else %>
-      <div class="chatroom-list-container">
-        <% @chatrooms.each do |chatroom| %>
-          <div class="chatroom-list">
-            <div class="buddy-profile-photo">
-              <%= image_tag User.find(chatroom.buddy_id).image_url, class:"img-circle-chat" if User.find(chatroom.buddy_id).image_url.present?%>
-              <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-chat" if  !User.find(chatroom.buddy_id).image_url.present? %>
-            </div>
-            <div class="chatroom-name">
-              <%= link_to "#{chatroom.name}", user_chatroom_path(@user.id, chatroom.id)%>
-            </div>
-            <div>
-              <div class= "delete-chat">
-              <%= link_to delete_chatroom_path(@user.id, chatroom.id), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="fa-regular fa-trash-can"></i>
-              <% end %>
-              </div>
-            </div>
-          </div>
-        <% end %>
+  <div class="chatroom-list-container">
+    <% @chatrooms.each do |chatroom| %>
+      <div class="chatroom-list">
+        <div class="buddy-profile-photo">
+          <%= image_tag User.find(chatroom.buddy_id).image_url, class:"img-circle-chat" if User.find(chatroom.buddy_id).image_url.present?%>
+          <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-chat" if  !User.find(chatroom.buddy_id).image_url.present? %>
+        </div>
+        <div class="chatroom-name">
+          <%= link_to "#{chatroom.name}", user_chatroom_path(@user.id, chatroom.id)%>
+        </div>
       </div>
     <% end %>
-</div>
+  </div>

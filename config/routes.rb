@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get '/users/spotify', as: 'spotify_login'
   get 'discover', to: 'pages#discover'
   get 'qr_page', to: 'pages#qr_page', as: :qr_page
-  delete '/users/:user_id/chatrooms/:id/destroy', to: 'chatrooms#destroy', as: :delete_chatroom
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

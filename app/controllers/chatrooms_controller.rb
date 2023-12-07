@@ -3,12 +3,8 @@ class ChatroomsController < ApplicationController
 
   def index
     @user = current_user
-    query = params[:search].present? ? params[:search][:query] : ""
-      if query.present?
-        @chatrooms = Chatroom.where("generator_id = ? AND name ILIKE ?", @user.id, "%#{query}%")
-      else
-        @chatrooms = Chatroom.where(generator_id: @user.id)
-      end
+    @chatrooms = Chatroom.where(generator_id: @user.id)
+    # @buddy = User.find(@buddy_id)
   end
 
   def new
@@ -41,13 +37,6 @@ end
     @user = current_user
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
-  end
-
-  def destroy
-    @user = current_user
-    @chatroom = Chatroom.find(params[:id])
-    @chatroom.destroy
-    redirect_to user_chatrooms_path(@user), notice: 'Chatroom was successfully destroyed.'
   end
 
 
