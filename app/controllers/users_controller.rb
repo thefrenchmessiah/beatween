@@ -24,18 +24,22 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # Pass this whenever we need to access the user's spotify account
     @spotify_user = RSpotify::User.new(@user.spotify_auth)
-    # matches = Match.where(generator: @user)
-    # buddies = Match.where(buddy: @user)
-    # Check if token is expired
-    @top_artists = @spotify_user.top_artists
-    @top_tracks = @spotify_user.top_tracks
 
-    # users all time listents
-    @top_tracks = @spotify_user.top_tracks(time_range: 'long_term', limit: 50)
-    @total_duration_minutes = @top_tracks.sum { |track| track.duration_ms.to_i / 60000 } * 150
+    @top_artists = Rails.cache.fetch("#{@user.id}/top_artists", expires_in: 12.hours) do
+      @spotify_user.top_artists
+    end
 
-    # Users liked songs (without limiting count)
-    @total_liked_songs = total_saved_tracks
+    @top_tracks = Rails.cache.fetch("#{@user.id}/top_tracks", expires_in: 12.hours) do
+      @spotify_user.top_tracks(time_range: 'long_term', limit: 50)
+    end
+
+    @total_duration_minutes = Rails.cache.fetch("#{@user.id}/total_duration_minutes", expires_in: 12.hours) do
+      @top_tracks.sum { |track| track.duration_ms.to_i / 60000 } * 150
+    end
+
+    @total_liked_songs = Rails.cache.fetch("#{@user.id}/total_liked_songs", expires_in: 12.hours) do
+      total_saved_tracks
+    end
 
     # users saved tracks
     @saved_tracks = @spotify_user.saved_tracks(limit: 10)
