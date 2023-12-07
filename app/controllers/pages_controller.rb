@@ -21,6 +21,7 @@ class PagesController < ApplicationController
     end
     top_fifty = RSpotify::Playlist.find("spotifycharts", "37i9dQZEVXbMDoHDwVN2tF")
     @top_fifty_tracks = top_fifty.tracks(limit: 10)
+    @top_fifty_artists = top_fifty.tracks(limit: 10).map(&:artists).flatten.uniq
   end
 
   def user_top_listens
@@ -28,9 +29,18 @@ class PagesController < ApplicationController
     if !@user.nil?
       if @user.spotify_auth &&
         @user_spot = RSpotify::User.new(@user.spotify_auth)
-        @user_top_tracks = @user_spot.top_tracks(limit: 10, time_range: 'short_term')
-        @user_top_artists = @user_spot.top_artists(limit: 10, time_range: 'short_term')
-        @user_top_albums = @user_spot.saved_albums(limit: 10)
+
+        @user_top_tracks = Rails.cache.fetch("#{@user.id}/top_tracks", expires_in: 12.hours) do
+          @user_spot.top_tracks(limit: 10, time_range: 'short_term')
+        end
+
+        @user_top_artists = Rails.cache.fetch("#{@user.id}/top_artists", expires_in: 12.hours) do
+          @user_spot.top_artists(limit: 10, time_range: 'short_term')
+        end
+
+        @user_top_albums = Rails.cache.fetch("#{@user.id}/top_albums", expires_in: 12.hours) do
+          @user_spot.saved_albums(limit: 10)
+        end
       end
     end
   end
@@ -46,9 +56,18 @@ class PagesController < ApplicationController
         @friends_top_albums = []
         @followed_users.each do |user|
           @friend_spotify = RSpotify::User.find(user.spotify_id)
-          @friends_top_tracks << @friend_spotify.top_tracks(limit: 1, time_range: 'short_term')
-          @friends_top_artists << @friend_spotify.top_artists(limit: 1, time_range: 'short_term')
-          @friends_top_albums << @friend_spotify.saved_albums(limit: 1)
+
+          @friends_top_tracks << Rails.cache.fetch("#{user.id}/top_tracks", expires_in: 12.hours) do
+            @friend_spotify.top_tracks(limit: 1, time_range: 'short_term')
+          end
+
+          @friends_top_artists << Rails.cache.fetch("#{user.id}/top_artists", expires_in: 12.hours) do
+            @friend_spotify.top_artists(limit: 1, time_range: 'short_term')
+          end
+
+          @friends_top_albums << Rails.cache.fetch("#{user.id}/top_albums", expires_in: 12.hours) do
+            @friend_spotify.saved_albums(limit: 1)
+          end
         end
       end
     end
@@ -64,7 +83,7 @@ class PagesController < ApplicationController
     track_ids = recommended_tracks.flat_map do |tracks|
       tracks.map(&:id)
     end
-    @recommendations << RSpotify::Recommendations.generate(limit: 10, seed_tracks: track_ids)
+    @recommendations << RSpotify::Recommendations.generate(limit: 8, seed_tracks: track_ids)
     # Check if token is expired
     if Time.at(current_user.spotify_auth['credentials']['expires_at']) < Time.current
       refresh_spotify_token(current_user)
@@ -73,7 +92,7 @@ class PagesController < ApplicationController
     query = params[:search].present? ? params[:search][:query] : ""
     if query.present?
       @artist_results = RSpotify::Artist.search(query, limit: 10)
-      @track_results = RSpotify::Track.search(query, limit: 20)
+      @track_results = RSpotify::Track.search(query, limit: 10)
       @album_results = RSpotify::Album.search(query, limit: 10)
       @playlist_results = RSpotify::Playlist.search(query, limit: 10)
       ## passing params to the render partial

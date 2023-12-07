@@ -15,10 +15,10 @@ class TracksController < ApplicationController
       "https://api.spotify.com/v1/tracks/#{@track}",
       headers={ 'Authorization': "Bearer #{@access_token}" }
     )
-  endpoint2 = RestClient.get(
-    "https://api.spotify.com/v1/audio-features/#{@track}",
-      headers={ 'Authorization': "Bearer #{@access_token}" }
-  )
+    endpoint2 = RestClient.get(
+      "https://api.spotify.com/v1/audio-features/#{@track}",
+        headers={ 'Authorization': "Bearer #{@access_token}" }
+    )
 
     @data1 = JSON.parse(endpoint1)
     @data2 = JSON.parse(endpoint2)
