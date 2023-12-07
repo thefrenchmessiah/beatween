@@ -35,30 +35,33 @@
       <div>
         <h2 style="color: #FFB9FC; font-size: 24px; font-weight: 600;">Top Tracks</h2>
       </div>
+    </div>
 
-      <%# REPLACE WITH PLAYLIST LAYOUT FOR TOP TRACKS%>
-
-      <div class="container-matches-26">
-      <%# <-- The actual list goes here --> %>
-      <%# <-- # (?) - Title - icon-Time. Followed by a small barely noticable division--> %>
-      <div id="container-matches-26-header">
-        <span>Title</span>
-        <i class="fa-regular fa-clock"></i>
-      </div>
-      <%# <-- Listed items. Little Square image. Name/author beside it, same size. Enough space between all--> %>
-      <% @top_tracks.tracks.each do |track| %>
-        <div class="container-matches-26-item">
+<%# REPLACE WITH PLAYLIST LAYOUT FOR TOP TRACKS%>
+<div class="container-matches-2">
+  <div class="container-matches-26">
+  <%# <-- The actual list goes here --> %>
+  <%# <-- # (?) - Title - icon-Time. Followed by a small barely noticable division--> %>
+    <div id="container-matches-26-header">
+      <span>Title</span>
+      <i class="fa-regular fa-clock"></i>
+    </div>
+    <%# <-- Listed items. Little Square image. Name/author beside it, same size. Enough space between all--> %>
+    <% @top_tracks.each do |track| %>
+      <div class="container-matches-26-item">
+        <%= link_to track_path(id: track[:uri][1]), style: "text-decoration: none;", class:"container-matches-26-item" do %>
           <div class="container-matches-26-item-image">
-            <%= image_tag(track.album.images.first["url"], alt: track.name) %>
+            <%= image_tag(track[:image], alt: track[:name]) %>
           </div>
           <div class="container-matches-26-item-text">
-            <h4><%= track.name %></h4>
-            <p><%= track.artists.first.name%></p>
+            <h4><%= track[:name] %></h4>
           </div>
           <div class="container-matches-26-item-time">
-            <% minutes, seconds = (track.duration_ms / 1000).divmod(60) %>
+            <% minutes, seconds = (track[:duration_ms] / 1000).divmod(60) %>
             <%= "%d:%02d" % [minutes, seconds] %> <!-- This is the time -->
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
