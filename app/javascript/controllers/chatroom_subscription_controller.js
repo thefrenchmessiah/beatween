@@ -50,10 +50,6 @@ export default class extends Controller {
     this.newMessageTarget.reset();
   }
 
-  logSubmitEnd(event) {
-    console.log('turbo:submit-end event fired');
-  }
-
   appendMessage(event) {
     const html = event.detail[0].body.innerHTML
     this.messagesTarget.insertAdjacentHTML('beforeend', html)
