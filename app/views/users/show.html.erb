@@ -1,6 +1,6 @@
 <%= render "shared/navbar" %>
 
-<div class="divs-column" style="border-top: 1.5px solid #FDEBFC; height: 330px;">
+<div class="divs-column" style="border-top: 1.5px solid #FDEBFC;">
   <div class="margin-top-20">
     <div class= "show-image margin-top-20" style="position:relative">
       <%= image_tag @user.image_url, alt: @user_name,  class: "img-circle-medium"  if @user.image_url.present?%>
@@ -20,11 +20,12 @@
     <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
       <i class="fa-solid fa-right-from-bracket fa-xl" id="logout-icon"></i>
     <% end %>
+
     <%= link_to user_matches_path(@user), style:"text-align: center; text-decoration: none; margin: 0 10px;" do %>
         <%= image_tag 'compatibility_icon_pink.png', alt: 'Compatibility Icon', class: "icon-profile", id: "match-icon" %>
     <% end %>
 
-<%# follow +/- %>
+     <%# follow +/- %>
     <div class="icon-profile">
 
       <% if current_user.following_users.include?(@user) %>

@@ -42,13 +42,13 @@ class UsersController < ApplicationController
     end
 
     # users saved tracks
-    @saved_tracks = @spotify_user.saved_tracks(limit: 10)
+    @saved_tracks = @spotify_user.saved_tracks(limit: 8)
 
     # users playlists
-    @playlists = @spotify_user.playlists(limit: 10)
+    @playlists = @spotify_user.playlists(limit: 8)
 
     # users recently played
-    @recently_played = @spotify_user.recently_played(limit: 10)
+    @recently_played = @spotify_user.recently_played(limit: 8)
 
     # follows
     # @follow = Follow.new

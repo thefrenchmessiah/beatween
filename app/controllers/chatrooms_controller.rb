@@ -32,7 +32,6 @@ end
     end
   end
 
-
   def show
     @user = current_user
     @chatroom = Chatroom.find(params[:id])
