@@ -15,9 +15,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   post '/chatrooms/:id', to: 'chatrooms#create', as: 'create_chatroom'
+  delete '/users/:user_id/chatrooms/:id/destroy', to: 'chatrooms#destroy', as: :delete_chatroom
 
   resources "users" do
-    resources "chatrooms" do 
+    resources "chatrooms" do
       resources "messages"
     end
     resources "matches", only: [:index, :show, :create]
