@@ -57,12 +57,18 @@ class PagesController < ApplicationController
         @followed_users.each do |user|
           @friend_spotify = RSpotify::User.find(user.spotify_id)
 
-          @friends_top_tracks << Rails.cache.fetch("#{user.id}/top_tracks", expires_in: 12.hours) do
-            @friend_spotify.top_tracks(limit: 1, time_range: 'short_term')
+          top_tracks = @friend_spotify.top_tracks(limit: 1, time_range: 'short_term')
+          if top_tracks.present?
+            @friends_top_tracks << Rails.cache.fetch("#{user.id}/top_tracks", expires_in: 12.hours) do
+              top_tracks
+            end
           end
 
-          @friends_top_artists << Rails.cache.fetch("#{user.id}/top_artists", expires_in: 12.hours) do
-            @friend_spotify.top_artists(limit: 1, time_range: 'short_term')
+          top_artists = @friend_spotify.top_artists(limit: 1, time_range: 'short_term')
+          if top_artists.present?
+            @friends_top_artists << Rails.cache.fetch("#{user.id}/top_artists", expires_in: 12.hours) do
+              top_artists
+            end
           end
 
           albums = @friend_spotify.saved_albums(limit: 1)
