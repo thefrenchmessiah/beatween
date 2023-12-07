@@ -24,10 +24,9 @@ end
 
   def create
     @user = current_user
-    @buddy =  User.find(params[:chatroom][:buddy_id])
     @chatroom = Chatroom.new(chatroom_params)
     @chatroom.generator_id = @user.id
-    @chatroom.name = @buddy.display_name
+    @chatroom.name = "with " + @buddy.display_name
   
     if @chatroom.save
       redirect_to user_chatroom_path(@user, @chatroom), notice: 'Chatroom was successfully created.'
@@ -50,15 +49,15 @@ end
     redirect_to user_chatrooms_path(@user), notice: 'Chatroom was successfully destroyed.'
   end
 
-
   private
+  
   def set_users
     @generator = current_user
-    
+    @buddy = User.find(params[:user_id])
   end
 
   def chatroom_params
-    params.require(:chatroom).permit(:user_id, :buddy_id)
+    params.require(:chatroom).permit(:buddy_id)
   end
 
   # def msg_params

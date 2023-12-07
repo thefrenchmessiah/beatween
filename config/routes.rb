@@ -18,15 +18,17 @@ Rails.application.routes.draw do
   post '/chatrooms/:id', to: 'chatrooms#create', as: 'create_chatroom'
 
   resources "users" do
-    resources "chatrooms" do 
+    resources "chatrooms" do
       resources "messages"
     end
     resources "matches", only: [:index, :show, :create]
     resources "follows", only: [:index, :create, :destroy]
   end
 
-  resources "tracks"
-  resources "albums"
-  resources "artists"
-  resources "playlists"
+  resources "tracks", only: [:show]
+  resources "albums", only: [:show]
+  resources "artists", only: [:show]
+
+  # for all not found routes
+  match "*path", to: "errors#not_found", via: :all
 end

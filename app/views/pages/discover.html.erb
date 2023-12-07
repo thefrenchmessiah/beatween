@@ -1,6 +1,6 @@
 <%= render "shared/navbar" %>
 
-<div data-controller="search-bar">
+<div data-controller="search-bar" style="margin-top: 20px;">
   <%= simple_form_for :search, url: discover_path, method: 'GET', html: { class: 'form-inline' }, data: { search_bar_target: 'form' } do |f| %>
     <div class="search-group">
       <%= f.text_field :query, value: "", placeholder:"Search", class: "field-search" %>

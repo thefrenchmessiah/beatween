@@ -17,7 +17,7 @@
   //   font-weight: 600;
   //   font-size: 5*$unit;
   //   background: transparent;
-  //   padding-bottom: 100px;  
+  //   padding-bottom: 100px;
   // }
 
   a{
@@ -75,7 +75,7 @@
       font-size: 4*$unit;
       font-weight: bold;
     };
-    
+
   }
 }
 
@@ -175,8 +175,8 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: $background-color;
-  padding-bottom: 65px;  
+  background: transparent;
+  padding-bottom: 100px;
 
     #new_message{
       background-color: transparent;
@@ -192,12 +192,12 @@
 .container-chatroom {
   align-items: center;
   width: 100%;
-  padding-bottom: 100px;
+  margin-left: 3*$unit;
 
-  .chat-name{ 
+  .chat-name{
     margin: 2*$unit auto;
     width: 100%;
-  
+
     h1 {
     font-size: 5*$unit;
     color: $pink-3;
@@ -245,14 +245,3 @@
   }
 }
 
-.delete-chat {
-  background-color: transparent;
-  border: none;
-  margin-right: 6*$unit;
-
-  a{
-    text-decoration: none;
-    color: $pink-3;
-    font-size: 4*$unit;
-  }
-}
