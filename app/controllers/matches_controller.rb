@@ -26,10 +26,11 @@ class MatchesController < ApplicationController
       @buddy_image = 'https://placekitten.com/200/200'
     end
 
-    listening_stats
-    comp_percentage
-    shared_artists
     shared_tracks
+    shared_artists
+    @comp_percentage = ((@shared_artists.count/50) * 100).round
+
+    listening_stats
   end
 
   def show
@@ -113,9 +114,5 @@ class MatchesController < ApplicationController
     @this_year = ((Time.now - 365.days).to_f * 1000).to_i
     @played_this_year_gen = @spotify_generator.recently_played(after: @this_year)
     @played_this_year_bud = @spotify_buddy.recently_played(after: @this_year)
-  end
-
-  def comp_percentage
-    @comp_percentage = ((@shared_artists.count/50) * 100).round
   end
 end
