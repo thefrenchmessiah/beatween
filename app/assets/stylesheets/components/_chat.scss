@@ -245,3 +245,14 @@
   }
 }
 
+.delete-chat {
+  background-color: transparent;
+  border: none;
+  margin-right: 6*$unit;
+
+  a{
+    text-decoration: none;
+    color: $pink-3;
+    font-size: 4*$unit;
+  }
+}

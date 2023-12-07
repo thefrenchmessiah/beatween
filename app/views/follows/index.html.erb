@@ -36,7 +36,6 @@
     <div style="padding: 0px 10px;">
     <%# @user.follow_ids %>
       <% @user.following_users.each do |following| %>
-      <h1>he</h1>
         <hr>
         <%= image_tag following.image_url, class:"img-circle-small" if following.image_url.present?%>
         <%= image_tag 'https://placekitten.com/200/200', alt: @user_name, class: "img-circle-small" if  !following.image_url.present? %>
