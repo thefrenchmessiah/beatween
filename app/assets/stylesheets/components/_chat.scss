@@ -17,7 +17,7 @@
   //   font-weight: 600;
   //   font-size: 5*$unit;
   //   background: transparent;
-  //   padding-bottom: 100px;  
+  //   padding-bottom: 100px;
   // }
 
   a{
@@ -75,7 +75,7 @@
       font-size: 4*$unit;
       font-weight: bold;
     };
-    
+
   }
 }
 
@@ -118,7 +118,12 @@
 }
 
 // this is for the search bar on the new chatroom page
-.search-bar-friends{
+.search{
+  display: flex;
+  margin-left: 2*$unit;
+  justify-content: center;
+
+  .search-bar-friends{
   width: 100%;
   display: flex;
 
@@ -138,6 +143,7 @@
     margin-top: 2*$unit;
     margin-right: 2*$unit;
     padding: $unit;
+  }
   }
 }
 
@@ -169,8 +175,8 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: $background-color;
-  padding-bottom: 65px;  
+  background: transparent;
+  padding-bottom: 100px;
 
     #new_message{
       background-color: transparent;
@@ -186,12 +192,12 @@
 .container-chatroom {
   align-items: center;
   width: 100%;
-  padding-bottom: 100px;
+  margin-left: 3*$unit;
 
-  .chat-name{ 
+  .chat-name{
     margin: 2*$unit auto;
     width: 100%;
-  
+
     h1 {
     font-size: 5*$unit;
     color: $pink-3;
@@ -238,3 +244,4 @@
     }
   }
 }
+

@@ -41,12 +41,12 @@ class ArtistsController < ApplicationController
   def fetch_top_tracks(artist_spotify_id)
     artist = RSpotify::Artist.find(artist_spotify_id)
     top_tracks = artist.top_tracks('ES')
-
     top_tracks_info = top_tracks.map do |track|
       {
         name: track.name,
         image: track.album.images.any? ? track.album.images.first['url'] : nil,
-        uri: track.uri.match(/spotify:track:(.*)/)
+        uri: track.uri.match(/spotify:track:(.*)/),
+        duration_ms: track.duration_ms
       }
     end
     top_tracks_info
