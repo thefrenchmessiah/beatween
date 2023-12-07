@@ -21,8 +21,9 @@ class ChatroomsController < ApplicationController
 end
 
   def create
+    raise
     @chatroom = Chatroom.new(chatroom_params)
-    @chatroom.generator_id = @user.id
+    @chatroom.generator_id = params[:user_id]
     @chatroom.name = @buddy.display_name
 
     if @chatroom.save
