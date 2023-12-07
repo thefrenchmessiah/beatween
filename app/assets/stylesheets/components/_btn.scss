@@ -45,7 +45,7 @@
   background-color: transparent;
   border: none;
   transition: all 0.2s ease-in-out;
-
+  box-sizing: border-box;
 
   &:hover {
     background-color: #FFB9FC;
