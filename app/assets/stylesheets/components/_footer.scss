@@ -24,4 +24,16 @@
     font-size: 5*$unit;
     color: $font-color;
   }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    height: inherit;
+  }
+
+  .icon {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
