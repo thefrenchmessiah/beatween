@@ -12,9 +12,9 @@
   </div>
 </div>
 
-  <div class="sticky-form">
-    <%= simple_form_for [@user, @chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom_subscription#resetForm", chatroom_subscription_target: "newMessage" } } do |f| %>
-      <%= f.input :content, placeholder: "Type your Message" %>
-      <%= f.submit "Send", class: "btn-medium-pink", html: { data: { action: "click->chatroom_subscription#resetForm"}} %>
-    <% end %>
-  </div>
+<div class="sticky-form">
+  <%= simple_form_for [@user, @chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom_subscription#resetForm", chatroom_subscription_target: "newMessage" } } do |f| %>
+    <%= f.input :content, placeholder: "Type your Message" %>
+    <%= f.submit "Send", class: "btn-medium-pink", html: { data: { action: "click->chatroom_subscription#resetForm"}} %>
+  <% end %>
+</div>
