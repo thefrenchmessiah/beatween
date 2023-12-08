@@ -14,7 +14,7 @@ TODO: Added Screenshots
 
 ## Technologies Used
   ![Rails](https://img.shields.io/badge/Rails-CC0000.svg?logo=ruby-on-rails&logoColor=white)
-  ![Ruby](https://img.shields.io/badge/Ruby-v3.1.0-green.svg)
+  ![Ruby](https://img.shields.io/badge/Ruby-v3.1.0-green.svg?logo=ruby[s](url))
   ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?logo=javascript&logoColor=black)
   ![SCSS](https://img.shields.io/badge/SCSS-CC6699.svg?logo=sass&logoColor=white)
   ![Turbo](https://img.shields.io/badge/Turbo-CC4B37.svg?logo=turbo&logoColor=white)
