@@ -1,42 +1,33 @@
 <div id="footer">
-<table>
-  <thead>
-    <tr>
-      <th scope="col">
-        <div class= "icon">
-          <%= link_to root_path, class: "navbar-brand" do %>
-            <i class="fa-solid fa-house"></i>
-          <% end %>
-        </div>
-      </th>
+  <div class="row">
+    <div class="col icon">
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <i class="fa-solid fa-house"></i>
+        <% end %>    </div>
 
-      <th scope="col">
-        <div class= "icon">
-          <%= link_to discover_path do %>
-            <i class="fa-solid fa-compass"></i>
-            <%# fa-magnifying-glass%>
+    <div class="col icon">
+        <%= link_to discover_path do %>
+          <i class="fa-solid fa-compass"></i>
+          <%# fa-magnifying-glass%>
+        <% end %>
+    </div>
+
+    <div class="col icon">
+        <% if user_signed_in? && !current_user.spotify_auth.nil? %>
+          <%= link_to user_path(current_user) do %>
+            <i class="fa-solid fa-user"></i>
           <% end %>
-        </div>
-      </th>
-      <th scope="col">
-        <div class= "icon">
-          <% if user_signed_in? && !current_user.spotify_auth.nil? %>
-            <%=  link_to user_path(current_user) do %>
+        <% else %>
+          <% if user_signed_in? && current_user.spotify_auth.nil?%>
+            <%= link_to '/auth/spotify', method: :post, style: "text-decoration: none;" do%>
+              <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', style:"width: 28px; height: 28px;" %>
+            <% end %>
+          <% elsif !user_signed_in? %>
+            <%= link_to new_user_session_path do %>
               <i class="fa-solid fa-user"></i>
             <% end %>
-          <% else %>
-            <% if user_signed_in? && current_user.spotify_auth.nil?%>
-              <%= link_to '/auth/spotify', method: :post, style: "text-decoration: none;" do%>
-                  <%= image_tag 'Spotify_Icon_RGB_Green.png', alt: 'Spotify Icon', style:"width: 28px; height: 28px;" %>
-              <% end %>
-            <% elsif !user_signed_in? %>
-              <%=  link_to new_user_session_path do %>
-                <i class="fa-solid fa-user"></i>
-              <% end %>
-            <% end %>
           <% end %>
-        </div>
-      </th>
-    </tr>
-  </thead>
+        <% end %>
+    </div>
+  </div>
 </div>
