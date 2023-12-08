@@ -31,7 +31,7 @@ class PagesController < ApplicationController
         @user_spot = RSpotify::User.new(@user.spotify_auth)
 
         @user_top_tracks = Rails.cache.fetch("#{@user.id}/top_tracks", expires_in: 12.hours) do
-          @us er_spot.top_tracks(limit: 8, time_range: 'short_term')
+          @user_spot.top_tracks(limit: 8, time_range: 'short_term')
         end
 
         @user_top_artists = Rails.cache.fetch("#{@user.id}/top_artists", expires_in: 12.hours) do
