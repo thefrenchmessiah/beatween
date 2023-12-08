@@ -13,14 +13,15 @@ Please give it a try!
 TODO: Added Screenshots
 
 ## Technologies Used
-  ![Rails](https://img.shields.io/badge/Rails-CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white)
+  ![Rails](https://img.shields.io/badge/Rails-CC0000.svg?logo=ruby-on-rails&logoColor=white)
   ![Ruby](https://img.shields.io/badge/Ruby-v3.1.0-green.svg)
-  ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
-  ![SCSS](https://img.shields.io/badge/SCSS-CC6699.svg?style=for-the-badge&logo=sass&logoColor=white)
-  ![Turbo](https://img.shields.io/badge/Turbo-CC4B37.svg?style=for-the-badge&logo=turbo&logoColor=white)
-  ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
-  ![Heroku](https://img.shields.io/badge/Heroku-430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
-  ![GitHub](https://img.shields.io/badge/GitHub-100000.svg?style=for-the-badge&logo=github&logoColor=white)
+  ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?logo=javascript&logoColor=black)
+  ![SCSS](https://img.shields.io/badge/SCSS-CC6699.svg?logo=sass&logoColor=white)
+  ![Turbo](https://img.shields.io/badge/Turbo-CC4B37.svg?logo=turbo&logoColor=white)
+  ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192.svg?logo=postgresql&logoColor=white)
+  ![Heroku](https://img.shields.io/badge/Heroku-430098.svg?logo=heroku&logoColor=white)
+  ![GitHub](https://img.shields.io/badge/GitHub-100000.svg?logo=github&logoColor=white)
+  ![rspotify](https://img.shields.io/gem/dv/rspotify/2.12.0?label=rspotify)
 
 ## Features
 
